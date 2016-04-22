@@ -3,9 +3,6 @@ layout: default
 ---
 
 <div class="blog-index">
-  {% assign index = true %}
-  {% for post in paginator.posts %}
-  {% assign content = post.content %}
   {% for post in site.posts reverse %}
   {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
   {% unless year == this_year %}
@@ -15,7 +12,6 @@ layout: default
   <article>
   {% include archive_post.html %}
   </article>
-  {% endfor %}
   {% endfor %}
 
 </div>
