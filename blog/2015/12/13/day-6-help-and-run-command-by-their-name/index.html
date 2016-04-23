@@ -1,0 +1,770 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Day 6 - Help and Run Command by Their Name - my tech notes and what's going on</title>
+  <meta name="author" content="Om Prakash Singh">
+
+  
+  <meta name="description" content="Sixth day of writing my content, I had never thought i would be even writing for this many posts continuously(I am kind of a lazy writer) and I &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.omps.in/blog/2015/12/13/day-6-help-and-run-command-by-their-name">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="my tech notes and what's going on" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+<!--- MathJax Configuration -->
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">my tech notes and what's going on</a></h1>
+  
+    <h2>personal blog about my rendezvous with technology and life.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
+  
+</ul>
+  
+  
+  
+  
+  
+<ul class="subscribe">
+  <li><a href="https://github.com/omps" rel="subscribe-github" title="@omps on GitHub" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 50,0 C 22.385714,0 0,22.385714 0,50 0,77.614286 22.385714,100 50,100 77.614286,100 100,77.614286 100,50 100,22.385714 77.614286,0 50,0 z m 29.692858,79.692858 c -3.859184,3.859182 -8.351022,6.887754 -13.35,9.00306 -1.27041,0.536736 -2.560204,1.009184 -3.867348,1.415306 v -7.493878 c 0,-3.938774 -1.35102,-6.835714 -4.053062,-8.690816 1.692858,-0.163264 3.24694,-0.390816 4.663266,-0.683672 1.416326,-0.292858 2.913266,-0.716328 4.491838,-1.27041 1.57857,-0.55408 2.994896,-1.213264 4.247958,-1.97755 1.253062,-0.765306 2.458164,-1.758164 3.613266,-2.978572 1.155102,-1.220408 2.12449,-2.604082 2.905102,-4.15 0.780612,-1.545918 1.4,-3.40204 1.855102,-5.566326 0.455102,-2.164286 0.683674,-4.54898 0.683674,-7.153062 0,-5.045918 -1.643878,-9.341836 -4.931634,-12.890816 C 77.44796,33.35 77.285714,29.10204 75.463266,24.512244 l -1.22143,-0.145918 c -0.845918,-0.09796 -2.368366,0.260204 -4.565306,1.07449 -2.196938,0.814286 -4.663264,2.14796 -7.396938,4.004082 -3.87449,-1.07449 -7.893878,-1.611224 -12.061224,-1.611224 -4.19898,0 -8.203062,0.536734 -12.012246,1.611224 -1.72449,-1.17245 -3.361224,-2.139796 -4.907142,-2.905102 C 31.753062,25.77449 30.516326,25.254082 29.587756,24.97653 28.660204,24.7 27.79796,24.528572 27,24.463266 c -0.79796,-0.0653 -1.310204,-0.08062 -1.537756,-0.04898 -0.22755,0.03164 -0.390816,0.0653 -0.487754,0.09796 -1.82347,4.62245 -1.985714,8.87143 -0.487756,12.743878 -3.287754,3.54796 -4.931632,7.844898 -4.931632,12.890816 0,2.604082 0.227552,4.988776 0.683674,7.153062 0.456122,2.164286 1.07449,4.020408 1.855102,5.566326 0.780612,1.545918 1.75,2.929592 2.905102,4.15 1.155102,1.220408 2.360204,2.213266 3.613264,2.978572 1.253062,0.766326 2.669388,1.42449 4.24796,1.97755 1.578572,0.554082 3.07551,0.976532 4.491836,1.27041 1.416328,0.292856 2.970408,0.521428 4.663266,0.683672 -2.669388,1.82347 -4.004082,4.720408 -4.004082,8.690816 v 7.639796 C 36.536734,89.818368 35.083674,89.3 33.656122,88.695918 c -4.99898,-2.115306 -9.490816,-5.143878 -13.35,-9.00306 -3.859184,-3.859184 -6.887754,-8.351022 -9.00306,-13.35 C 9.1163263,61.171428 8.0071428,55.67347 8.0071428,50 c 0,-5.67347 1.1091835,-11.171428 3.2969392,-16.342858 2.115306,-4.998978 5.143878,-9.490816 9.00306,-13.35 3.859184,-3.859182 8.351022,-6.887754 13.35,-9.00306 C 38.828572,9.1163266 44.32653,8.0071428 50,8.0071428 c 5.67347,0 11.171428,1.1091838 16.342858,3.2969392 5,2.115306 9.490816,5.143878 13.35,9.00306 3.859182,3.859184 6.887754,8.351022 9.00306,13.35 2.186736,5.17245 3.295918,10.67041 3.295918,16.342858 0,5.672448 -1.109182,11.171428 -3.296938,16.342858 -2.115306,4.998978 -5.143878,9.490816 -9.00204,13.35 l 0,0 z"></path></svg></a></li>
+</ul>
+  
+  
+  
+<ul class="subscribe">
+  <li><a href="https://twitter.com/ohgnis" rel="subscribe-twitter" title="@ohgnis on Twitter" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewBox="0 0 512 512"><path class="social" d="M0.001,334.932c33.327,30.816,118.891,59.981,188.517-8.271c-12.52,1.955-22.972-0.416-30.913-8.269
+  c-7.531-7.465-7.945-15.182-3.914-22.202c3.275-5.725,10.184-9.741,16.977-13.934c-12.323,2.285-22.829,1.095-32.218-3.706
+  c-12.604-6.444-24.863-13.228-28.3-27.207c7.71-8.112,16.28-15.359,34.831-12.627c-17.45-5.83-33.087-13.429-44.41-24.815
+  c-11.028-11.091-12.163-18.302-13.932-26.996c9.632-3.567,19.688-5.421,30.478-4.353c-24.397-12.476-34.757-29.63-40.487-48.325
+  c-1.731-5.652-2.044-11.03-1.31-16.545c98.826,37.305,145.11,64.109,170.662,89.251c11.496-30.589,38.3-99.868,78.371-123.646
+  c0.191,3.77-1.309,7.837-4.357,12.189c11.863-6.609,21.125-17.188,37.445-16.98c-1.879,7.723-7.279,13.904-17.85,17.854
+  c10.662-4.084,21.463-7.545,32.65-9.578c10.375-1.881,10.229,6.304,4.355,10.444c-11.916,8.412-24.578,9.456-37.006,13.498
+  c38.105,0.949,69.266,18.994,93.604,58.343c8.088,13.074,13.52,26.149,14.807,40.487c16.254,4.563,32.426,5.494,48.76,2.61
+  c4.475-0.796,8.645-1.63,12.627-3.482c-6.354,9.529-13.686,17.356-23.947,20.899c-9.811,3.387-19.637,6.688-30.473,6.968
+  c17.641,6.675,37.082,7.045,57.033,5.659c-24.402,23.486-43.08,22.922-61.824,22.642c-8.221,34.703-25.025,69.315-60.52,101.005
+  c-46.559,41.569-96.678,61.397-148.457,65.742c-48.552,4.07-95.488,3.512-146.726-20.464
+  C56.486,393.349,24.648,368.884,0.001,334.932L0.001,334.932z"/></svg></a></li>
+</ul>
+  
+  
+  
+  
+  
+  
+    
+      <form action="https://www.google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="sitesearch" value="www.omps.in" />
+    
+          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+        </fieldset>
+      </form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Day 6 - Help and Run Command by Their Name</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-13T21:09:38+05:30'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:09 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Sixth day of writing my content, I had never thought i would be even writing for this many posts continuously(I am kind of a lazy writer) and I realize this experience of writing blogs and sharing my learnings or acquired knowledge is actually encouraging. I started to think that if I am able to put some extra time and effort, I may also complete a lot of things by taking similar challenegs. My priority ones are loosing weight(I am still finding myself in tough situation on to get myself motivated) and learning the python programming language, which as I had been told is pretty easy to learning. I may get inconsistent at times due to other priorities coming up, but writing my learnings and posting everyday keeps me motivated and keep reminiding me I have pending stuff to do.</p>
+
+<p>Every emacs command has a name which can be used against the convenient key bindings. Most emacs commands doesn&rsquo;t have key bindings so the only way to learn them is to use them as commands, by emacs convention all the command will consist one or more words separated  by &lsquo;-&rsquo;. For eg. auto-fill-mode or manual-entry. So to enter a command, type M-x enter the command name RET (to execute), C-g (to cancel). Its something similar to what we discussed in our Day 5, to enter the mini-buffer run the command and execute it and it does work similar for completion as it is to be done in mini-buffer.</p>
+
+<p>well there are many things which we need immediately and overlook to take the effort to read the manual, or say for LISP errors which we might not be aware of, the freenode.org IRC network&rsquo;s #emacs channel is the best place after failed attempt of finding any help on google and emacswiki.org. but again at the same time emacs itself has a very awesome online documentation for reference. Online means it is accessible within emacs all the time. The help commands are easily accessible with &lsquo;C-h&rsquo; help character, after this we usually put the character for which we are seeking help and can be canceled the same way as all the mini-buffers. &lsquo;C-h&rsquo; itself a help option, so typing &lsquo;C-h C-h&rsquo; will print the available help characters. Apart from C-h, F1 can also  be used. I have put some simple stuff about how to ask help in Emacs at &lt;<a id="put-the-link-here" name="put-the-link-here"></a>. A more detailed list s below.</p>
+
+<p>Similarly apropos are the commands which may answer certain questions as &ldquo;what are the commands for working with files?&rdquo;. specifying a apropos pattern such as a word, a list of words, or regular expressions, each apropos command display a list of item that matches the pattern in a separate window.</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Commands</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td class="left">C-h a *TOPICS*</td>
+<td class="left">Searched for the command whose name matches the arguments</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h i d m *emacs* RET i *TOPIC* RET</td>
+<td class="left">This searches for the topic in the indices of online emacs manual, and prints the first match</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">',' to jump to the subsequent matches, we can also use regexes here.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h i d m *emacs* RET s *TOPIC* RET</td>
+<td class="left">Same as above, but instead of just searching the indices, it searches the manual too.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h C-f</td>
+<td class="left">Displays the FAQ.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h p</td>
+<td class="left">Display all the emacs package based on the keywords.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h b</td>
+<td class="left">Display all active key bindings</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h c *key*</td>
+<td class="left">show the name of the command it runs. (describe-key-briefly)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h d *TOPICS* RET</td>
+<td class="left">Display command and variables whose documentation matches topic. (aprops-documentation)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h e</td>
+<td class="left">Display **Message** Buffer</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h f *function* RET</td>
+<td class="left">Display documentation on the LISP function (describe-function)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h h</td>
+<td class="left">Display the 'HELLO' file</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h i</td>
+<td class="left">Run info, the GNU documentation browser, the complete emacs document is available online in info</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h key</td>
+<td class="left">Display the name and the documentation of the command that the key runs. (describe-key)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h l</td>
+<td class="left">Description of last 300 keystrokes. (view-lossage)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h f</td>
+<td class="left">Display docuemntation of the current major mode. (describe-mode)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h n</td>
+<td class="left">Display news of recent changes. (view-emacs-news)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h p</td>
+<td class="left">find packages by topic keyword. ((finder-by-keyword)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h r</td>
+<td class="left">Display the emacs manual. (info-emacs-manual)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h s</td>
+<td class="left">Display the current contents of the syntax table, with explanation of what they mean</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">(describe-syntax)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h t</td>
+<td class="left">enter the emacs interactive tutorial. (help-with-tutorial)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h v *var* RET</td>
+<td class="left">Display the doc for the LISP variable var. (describe-variable).</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h w *command* RET</td>
+<td class="left">Show which keys run the command named command. (where-is)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h C *coding* RET</td>
+<td class="left">Describe the coding system. (describe-coding-system)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h C RET</td>
+<td class="left">Describe the coding system current in use.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h F *COMMAND* RET</td>
+<td class="left">Enter Info and go to node that documents emacs command *command*. (info-goto-emacs-command-node)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h I *method* RET</td>
+<td class="left">Describe the input *method*. (describe-input-method)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h K *key*</td>
+<td class="left">go to the key-sequence document in Info. (Infp-goto-emacs-key-command-node)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h L *Language-env* RET</td>
+<td class="left">Display info on the character set, coding system and input methods. (describe-language-environment)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h S *Symbol* RET</td>
+<td class="left">Display the info on the symbol *symbol* based on the programming mode you are using (info-lookup-symbol)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h .</td>
+<td class="left">Display message for the special text area. (display-local-help)</td>
+</tr>
+
+
+<tr>
+<td class="left">**Apropos**</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h a *pattern* RET</td>
+<td class="left">Search for command whose names matches the pattern.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-x apropos RET *pattern* RET</td>
+<td class="left">Search for functions(both interactive and non-interactive) and variables whose name matches the *pattern*</td>
+</tr>
+
+
+<tr>
+<td class="left">M-x apropos-variable RET *pattern* RET</td>
+<td class="left">Search for a user-option variables matching the *pattern*.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-x apropos-value RET *pattern* RET</td>
+<td class="left">search for function whose definition match *pattern* and variable whose value matches *pattern*</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h d *pattern* RET</td>
+<td class="left">search for function and variable whose documentation string matches *pattern*</td>
+</tr>
+
+
+<tr>
+<td class="left">**Emacs help files**</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h C-c</td>
+<td class="left">Describe the emacs copying condition. rules for copying and redistributing emacs. (describe-copying)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h C-d</td>
+<td class="left">Debugging in emacs. (view-emacs-debugging)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h g</td>
+<td class="left">Display general information about GNU Project. (describe-gnu-project)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h C-m</td>
+<td class="left">How to order printed copies. (view-order-manual)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h C-n</td>
+<td class="left">To see the emacs news and listing of new features. (view-emacs-news)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h C-o</td>
+<td class="left">How to get new version. (describe-distribution)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h C-p</td>
+<td class="left">Tells us about the known emacs problems. (view-emacs-problems)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h C-t</td>
+<td class="left">Display the emacs TODO list, or things that needs to be done. (view-emacs-todo)</td>
+</tr>
+
+
+<tr>
+<td class="left">C-h C-w</td>
+<td class="left">Describe warranty. (describe-no-warranty)</td>
+</tr>
+
+
+<tr>
+<td class="left">**Commands work in Help mode**</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+
+<tr>
+<td class="left">SPC</td>
+<td class="left">Scroll forward</td>
+</tr>
+
+
+<tr>
+<td class="left">DEL</td>
+<td class="left">Scroll backard</td>
+</tr>
+
+
+<tr>
+<td class="left">TAB</td>
+<td class="left">Move point forward to next cross refrence</td>
+</tr>
+
+
+<tr>
+<td class="left">S-TAB</td>
+<td class="left">Move point backward to previous reference</td>
+</tr>
+
+
+<tr>
+<td class="left">RET</td>
+<td class="left">Follow a cross refrence point.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-c C-c</td>
+<td class="left">Show all documents of symbol at the point.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>I just completed through the help documentation in emacs manual, and I am convinced the emacs has got the most extensive documentation an editor could ever have, the above table tries to cover as many things as possible but I am pretty sure, I would have definitely missed things, like this that once on IRC I had been suggested some lisp code to quickly take me to the help page and I missed it. Well, on many modern keyboards F1 as well works to call the help function.</p>
+
+<p>While doing the typing I do make a lot of mistakes and undo is the most fundamental command for correcting the mistakes. C-/ does the same trick as C-x u and C-_ all meant to undo my work. If you see the buffers have been modified accidentaly, the easiest way is to press <strong>C-/</strong> repetadely unless the stars disappears from the mod line. Just press <strong>C-/</strong> to see the last change, so that we can understand if the change was intentional, if yes then we can leave it like this, if no then we can undo by pressing <strong>C-/</strong> repeatedly.</p>
+
+<p>Its much easier to transpose characters in emacs using *C-t*(transpose-chars)  and transpose words using *M-t*(transpose-words) and moves the word containing or preceding point forward as tell, though it does not move any punctutation mark, for eg, FOO, BAR will become BAR, FOO. *C-M-t*(transpose-sexps) is similar to transposing two expressions and *C-x C-t*(transpose-lines) for transposing lines. The numeric command works here, it tell the transpose command to move forward the character before or containing point across several other characters.</p>
+
+<p><strong>M&#x2013; M-l</strong> Convert last word to lower-case, it is Meta-Minus. <strong>M&#x2013; M-u</strong> Convert last word to uppercase. <strong>M&#x2013; M-c</strong> convert last word to lowercase with capital letters.</p>
+
+<p>The spell checking ability of any editor should be good for the writer to help check spells on the fly, and emacs does have some nifty commands to do that as well. We need aspell, ispell, hunspell installed on the system for these commands to work. Once started the programs continue to run so that subsequent spell check commands complete more quickly and can be killed using <strong>M-x ispell-kill-ispell</strong> but is not required as it does not uses much memory and only active when spelling correcting is done, these programs using two dictionaries one is the standard dictionary and the other is our defined dictionary. The local dictionary can be defined by &ldquo;ispell-local-dictionary* or if nil by "ispell-dictionary&rdquo; or if both is nil then the default dictinary is selected. The variable &ldquo;ispell-complete-word-dict&rdquo; specifies the file name for its dictionary and is used for word completion. Flyspell mode is fully automatic mode of checking the words in the buffer as we insert them or edit them, when it finds the words it doesn&rsquo;t recognize it highlights that word. Right now I am seeing my buffer so colorful, thanks to flyspell mode, and my typing :). <strong>M-x flyspell-mode</strong> toggles the flyspell mode, to turn on flyspell mode for all text buffer <strong>turn-on-flyspell-mode</strong> to <strong>text-mode-hook</strong>.</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Key binding</td>
+<td class="left">command</td>
+<td class="left">Description</td>
+</tr>
+
+
+<tr>
+<td class="left">M-$</td>
+<td class="left">ispell-word</td>
+<td class="left">check and correct spelling of active region or word at point.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-x ipsell</td>
+<td class="left">&#xa0;</td>
+<td class="left">check or correct spelling in active region or entire buffer.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-x ispell-buffer</td>
+<td class="left">&#xa0;</td>
+<td class="left">check and correct spelling in the buffer.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-x ispell-region</td>
+<td class="left">&#xa0;</td>
+<td class="left">check and correct spelling in the region.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-x ispell-message</td>
+<td class="left">&#xa0;</td>
+<td class="left">check and correct spelling in the draft message, excluding citied content</td>
+</tr>
+
+
+<tr>
+<td class="left">M-x ispell-change-dictionary RET *Dictionary* RET</td>
+<td class="left">&#xa0;</td>
+<td class="left">restart ispell/aspell/hunspell using dict as dictionary.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-x ispell-kill-ispell</td>
+<td class="left">&#xa0;</td>
+<td class="left">kill the dictionary process</td>
+</tr>
+
+
+<tr>
+<td class="left">M-TAB / ESC-TAB</td>
+<td class="left">ispell-complete-word</td>
+<td class="left">complete the word based on the dictinary</td>
+</tr>
+
+
+<tr>
+<td class="left">M-x flyspell-mode</td>
+<td class="left">&#xa0;</td>
+<td class="left">enable flyspell mode which highlights misspelled words</td>
+</tr>
+
+
+<tr>
+<td class="left">M-x flyspell-prog-mode</td>
+<td class="left">&#xa0;</td>
+<td class="left">enable flyspell mode for comments and strings only</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>When the commands encounter the errors in case of misspelled words, it usually display the numbered &ldquo;near-misses&rdquo; close to the incorrect word, then we have to choose the valid response from the below list.</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">digit</td>
+<td class="left">replace the word, just this time, with one of the near misses, the near misses are displayed by no. and the no. can be used to select it.</td>
+</tr>
+
+
+<tr>
+<td class="left">SPC</td>
+<td class="left">skip this word, continue to consider incorrect and don't change.</td>
+</tr>
+
+
+<tr>
+<td class="left">r *NEW* RET</td>
+<td class="left">replace the word just this time, with the new word.</td>
+</tr>
+
+
+<tr>
+<td class="left">R *NEW* RET</td>
+<td class="left">replace the word and do query-replace so it can be replaced everywhere.</td>
+</tr>
+
+
+<tr>
+<td class="left">a</td>
+<td class="left">accept the incorrect word, treat it as correct one, but only in this editing session</td>
+</tr>
+
+
+<tr>
+<td class="left">A</td>
+<td class="left">same as above but include the buffer too.</td>
+</tr>
+
+
+<tr>
+<td class="left">i</td>
+<td class="left">insert this word in my private dictionary, so it can be treated as a correct word by my spell check applications</td>
+</tr>
+
+
+<tr>
+<td class="left">m</td>
+<td class="left">like i</td>
+</tr>
+
+
+<tr>
+<td class="left">u</td>
+<td class="left">save the lowercase version of this word to my private dictionary</td>
+</tr>
+
+
+<tr>
+<td class="left">l *word* RET</td>
+<td class="left">Look in the dictinary for the word that match *word*. these words become new list for near-misses.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-g X</td>
+<td class="left">quit interactive spell checking</td>
+</tr>
+
+
+<tr>
+<td class="left">C-g x</td>
+<td class="left">quit interactive spell checking and move point back to where it was when you started spell checking.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-g q</td>
+<td class="left">quit spell checking and kill the sub process as well.</td>
+</tr>
+
+
+<tr>
+<td class="left">?</td>
+<td class="left">show the list of options.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Well. I am done for the Day 6, being emacs is such a vast entity as an editor, i spend most of my time going through the help document and manual pages only and enable myself to write quality content, which should help me or any one else who might want to use my content for his/her reference. I am still at a very primitive level of doing things with emacs, but I am aware I am still to young here. I will put these text on git hub as well, for anyone to help me correcting the content or if adding anything more.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+
+  <span class="byline author vcard">Authored by <span class="fn">
+  
+    Om Prakash Singh
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-12-13T21:09:38+05:30'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:09 pm</span></time>
+      
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/emacs/'>emacs</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.omps.in/blog/2015/12/13/day-6-help-and-run-command-by-their-name/" data-via="ohgnis" data-counturl="http://www.omps.in/blog/2015/12/13/day-6-help-and-run-command-by-their-name/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/12/03/day-5-minibuffer/" title="Previous Post: Day 5 - Minibuffer">&laquo; Day 5 - Minibuffer</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2016/04/01/aws-cli/" title="Next Post: Using AWS CLI">Using AWS CLI &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Om Prakash Singh -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
