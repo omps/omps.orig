@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Emacs | my tech notes and what's going on]]></title>
+  <link href="http://www.omps.in/blog/categories/emacs/atom.xml" rel="self"/>
+  <link href="http://www.omps.in/"/>
+  <updated>2016-04-22T22:10:51+05:30</updated>
+  <id>http://www.omps.in/</id>
+  <author>
+    <name><![CDATA[Om Prakash Singh]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Day-2 - the Emacs Real Estate.]]></title>
+    <link href="http://www.omps.in/blog/2015/11/14/day-2-the-real-estate/"/>
+    <updated>2015-11-14T00:31:00+05:30</updated>
+    <id>http://www.omps.in/blog/2015/11/14/day-2-the-real-estate</id>
+    <content type="html"><![CDATA[<h4>The Emacs Real estate.</h4>
+
+<p>This is about the screen organization of emacs, how the text is placed and how the screen is drawn for the editor, this is about telling you how the things in #emacs as they are, and why they are important this way. Though, i should have started understanding it and writng it down on Day 1, but understanding the key contol is equally important to me, if I did not had learned about it, I surely would have faced difficulty closing my emacs and moving around. Now let me just try to see how much I  am understanding about the screen here and how well I can put it in my words. :) ofcourse it is not a tech doc, but this my 30 Days challenege to learn more about emacs and understand emacs for good.</p>
+
+<p>I would be mainly using a lot of images compared to lot of writing that, understanding the screen can better be understood by rightly poining to the correct area.</p>
+
+<h5>The Screen</h5>
+
+<p>Double clicking on the emacs icon does open up a GUI window and similarly typing it on command prompt from withing an X Windows system, I get the emacs as an editor with full flesh and bones, i actually means as an GUI application, like we see for other editors. And when  I do same while I am  on the command prompt with no X support, or with -nw or -t (with emacsclient, will write more about this in coming days.) i get the emacs taking up my entire terminal screen. We will call these frames and emace behaves almost similar in both these frames. It normally starts with just one frame, but many frames can be created.</p>
+
+<p>Each frame consist of several distinct regions. as shown in the picture below.</p>
+
+<p>The emacs frame consist of these important segments</p>
+
+<h6>Point: Where editing takes place</h6>
+
+<p>The place where the cusrsor is present is called as the point in a multiple windows emacs in GUI, the point can be moved by clicking the mouse in the respective region, the active window will have the curson as solid block and will appear to be on the cursor. While working with several buffers each buffer has its own valur for point.</p>
+
+<h6>Echo area: Where the commands and messages appear at bottom of the frame.</h6>
+
+<p>if you pause for more than a second in the middle of the command, you can see your commands being echoed in the echo area. it also shows you the error message when the command fails. The messages displayed in the echo area are generally saved in the special buffer calles as <strong>Messages</strong></p>
+
+<h6>Mode Line: Understanding the mode line.</h6>
+
+<p>At the bottom of every window there is a mode line.
+The text displayed on the mode line has the following format
+cs:ch-fr buf        pos line (major minor)</p>
+
+<p>o cs  display the character set.</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">'-'</td>
+<td class="left">implicate no special character set.  see [Coding System](http://www.gnu.org/software/emacs/manual/html_mono/emacs.html#Coding-Systems)</td>
+</tr>
+
+
+<tr>
+<td class="left">'='</td>
+<td class="left">means no coversion, and used for files with no textual data</td>
+</tr>
+
+
+<tr>
+<td class="left">'1'</td>
+<td class="left">ISO Latin-1, other characters represent various coding system</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>o ch   this usually show 2 dashes</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">(&#x2013;)</td>
+<td class="left">if the buffer is unmodified.</td>
+</tr>
+
+
+<tr>
+<td class="left">(\*\*)</td>
+<td class="left">if the buffer is modified.</td>
+</tr>
+
+
+<tr>
+<td class="left">'%\*'</td>
+<td class="left">for read only buffer if modified.</td>
+</tr>
+
+
+<tr>
+<td class="left">'%%'</td>
+<td class="left">otherwise, i.e read only buffer and not modified.</td>
+</tr>
+
+
+<tr>
+<td class="left">'-'</td>
+<td class="left">displayed after ch, if the directory is local.</td>
+</tr>
+
+
+<tr>
+<td class="left">'@'</td>
+<td class="left">if the directory if buffer is on remote macine is shows @.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>o fr   is the selected frame name, default is F1</p>
+
+<p>o buf   usually the name of the file or the buffer.</p>
+
+<p>o pos   where there is additional text above the top of the window or below the bottom.</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">All</td>
+<td class="left">In case of small buffer and everything visible on screen</td>
+</tr>
+
+
+<tr>
+<td class="left">Top</td>
+<td class="left">If you are at the beginning of the buffer</td>
+</tr>
+
+
+<tr>
+<td class="left">Bot</td>
+<td class="left">If you are at the bottom of the buffer</td>
+</tr>
+
+
+<tr>
+<td class="left">nn%</td>
+<td class="left">nn is the percentage of buffer above the window</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>o line   &lsquo;L&rsquo; Followed by the line no. at point.</p>
+
+<p>o major   Name of the major mode used in buffer, for eg. Text mode, Lisp Mode, Org Mode and so on.</p>
+
+<p>o minor   minor mode are the list of enabled minor modes on top of major mode, for eg visual-line-mode, flyspell-mode</p>
+
+<h6>The Menu Bar - How to use.</h6>
+
+<p>On the graphical display you can just use the mouse to open the menu bar, an arrow to the right of the menu denotes the menu having a sub menu. Many commands in menu bar have ordinary key bindings as well.</p>
+
+<p>On a text terminal menu bar can be opened using &rsquo;M-`&lsquo; or <F10>, or run the command tmm-menubar. Move around the menu bar using up and down arrow key, <RET> i.e enter key, to select the item or C-g to come out of the menu bar mode.</p>
+
+<p>I know its been a little late today, but I was quite able to give time one weekends than as on weekdays, I just don&rsquo;t want to loose focus so am trying to keep up with my posts daily, hope these should be helpful, and I am seriously looking forward for your comments and suggestion, so do please keep posting, tomorrow I think I will go more about buffers and frames.</p>
+
+<p>All in all I am enjoying and learning so many things while posting and writing.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Learn Emacs in 30 Days Challenge]]></title>
+    <link href="http://www.omps.in/blog/2015/11/14/day-1-learning-emacs/"/>
+    <updated>2015-11-14T00:02:00+05:30</updated>
+    <id>http://www.omps.in/blog/2015/11/14/day-1-learning-emacs</id>
+    <content type="html"><![CDATA[<p>Thank you for your support and encouragement. So here I am writing about my beginning of Day 1: part and working with EMACS.</p>
+
+<p>Quoting from Emacs Manual
+&ldquo; Emacs is the extensible, customizable, self-documenting real-time display editor.&rdquo;</p>
+
+<p>Emacs is an advanced editor because of its ability to perform complex operations related to OS, by controlling subprocesses, indenting programs automatically, showing multiple files at once and ofcourse we can use it as text editor.
+It is also a self-documenting means any time special command for help can be used for finding out what the particular command does.
+Emacs can be eaisly altered to behave in certain prefrence and is highly customizable.
+Emacs can go beyond simple customisation and can create entirely new commands. These new commands are simple program written in LISP.</p>
+
+<h4>Downloading<a id="sec-1" name="sec-1"></a></h4>
+
+<ul>
+<li>Downloaded Emacs: I downloaded for MAC OS X from <a href="http://emacsformacosx.com/">http://emacsformacosx.com/</a>. I had been suggested by many sites and also from the people on IRC #emacs channel, while you are learning to use emacs, do not start with a customised emacs. I believe it could be mainly because a lot of customisations are already done for you, hence limiting you learning curve. Well, downloading and installing with OS X is pretty simple and straight, I got &ldquo;Emacs Version 24.3 Universal Binary Released 2013-03-11&rdquo;. Double click on the installer and voilla the installation is completed on the fly.</li>
+</ul>
+
+
+<p>For windows and Linux you can download GNU Emacs releases from a <a href="http://ftpmirror.gnu.org/emacs/">nearby GNU mirror</a>; or if automatic redirection does not work see the list of <a href="http://www.gnu.org/order/ftp.html">GNU mirrors</a>, or use the main <a href="http://ftp.gnu.org/gnu/emacs">GNU ftp server</a>.</p>
+
+<p>GNU Emacs development is hosted on <a href="http://savannah.gnu.org/projects/emacs/">savannah.gnu.org</a>.</p>
+
+<h4>Working with emacs<a id="sec-2" name="sec-2"></a></h4>
+
+<ul>
+<li>Starting the editor: once downloaded and installed. From the Launchpad -> emacs, clicking on which took me to the editor in its full glory, with a nice welcome message with link to the manual and the beginner emacs tutorials to get a start working with emacs and to quickly get help in emacs &ldquo;C-h (Hold down Ctrl and Press h)</li>
+</ul>
+
+
+<h5>Few things to note and which is global to emacs.<a id="sec-2-1" name="sec-2-1"></a></h5>
+
+<p>Control Key in emacs is denoted as &lsquo;C&rsquo;.
+All or Esc Key in emacs is denoted as &rsquo;M' or referred in document as meta key.
+Shift will be denoted as &rsquo;S'.</p>
+
+<h5>Moving around<a id="sec-2-2" name="sec-2-2"></a></h5>
+
+<p>Most movements in emacs can be controlled using the arrow keys but some still say it is not advisable and use of key sequences controled by Ctrl and Meta keys are advisable. below table helps in understanding the movements with these keys.</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Keys</td>
+<td class="left">Movement</td>
+</tr>
+
+
+<tr>
+<td class="left">C-v</td>
+<td class="left">View next screen also as Page Up.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-v</td>
+<td class="left">Move Backward one screen or Page Down.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-l</td>
+<td class="left">redisplay the text with cursor at the center of the screen.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-p</td>
+<td class="left">Previous line or up arrow key.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-b</td>
+<td class="left">back one character or left arrow key.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-f</td>
+<td class="left">forward one character or right arrow key.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-n</td>
+<td class="left">Next line or down arrow key.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-f</td>
+<td class="left">Move one forward one word.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-b</td>
+<td class="left">Move back one word.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-a</td>
+<td class="left">Move to the beginning of the line.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-e</td>
+<td class="left">Move to the end of the line.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-a</td>
+<td class="left">Move to the beginning of the sentence.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-e</td>
+<td class="left">Move to the end of the sentence.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-u</td>
+<td class="left">to specify a repeat count.</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">C-v and M-v are exceptions as they won't move pages but</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">instead will scroll to that many lines forward/backward</td>
+</tr>
+
+
+<tr>
+<td class="left">C-g</td>
+<td class="left">Kill the running command in minibffer, or in case emacs</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">stop responding.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-d</td>
+<td class="left">Delete the next character after the cursor cursor.</td>
+</tr>
+
+
+<tr>
+<td class="left">DEL</td>
+<td class="left">delete the character just before the cursor.</td>
+</tr>
+
+
+<tr>
+<td class="left">Insert</td>
+<td class="left">text insertion is as simple as typing it.</td>
+</tr>
+
+
+<tr>
+<td class="left">text</td>
+<td class="left">you can use the C-u to insert text as well. for eg.</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">C-u 10 - will insert -&#x2014;&#x2014;&#x2014;.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-<DEL></td>
+<td class="left">Kill the word before the cursor.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-d</td>
+<td class="left">Kill the word after the cursor</td>
+</tr>
+
+
+<tr>
+<td class="left">C-k</td>
+<td class="left">Kill from the cursor position to end of line.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-k</td>
+<td class="left">Kill to the end of current sentence.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-<SPC></td>
+<td class="left">Set the mark, move aroung with the above keys to highlight</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">the text.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-y</td>
+<td class="left">Yank the file back.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-x C-f</td>
+<td class="left">Find file, can be used for creating a file or opening an</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">exitisitng file.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-x C-s</td>
+<td class="left">Save the file, when you made some changes to the file and</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">want to write the same to disk or save it.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-x s</td>
+<td class="left">Save some buffers.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-x C-b</td>
+<td class="left">List all the opened Buffers.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-x b</td>
+<td class="left">Switch buffer around.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-x C-c</td>
+<td class="left">Quit Emacs.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>These are some of the common keys for moving around while in emacs. It seems its really hard for getting used to it, but as I am working with emacs for sometime, I started to feel it is most obvious to be like that.</p>
+
+<p>I think most of the time as a beginner we could get along with using the arrow keys and we should highly discourage it and use the emacs specific keybindings to move around within emacs. Apart from bringing the emacs on and starting it up, the very important thing we should remeber is how to close it. During my initial days as emacs user I was not aware of quitting emacs, and have of the time ended in killing emacs from the process tree, now I feel so stupid. C-g and C-x C-c are the commands, which can help you all the time, while we are learning. I have heard more advanced user of emacs seldom close their emacs sessions and I may try to forget using C-x C-C again. It may take some time till I get there and stop closing my emacs and I am sure it would be more than 30 days.</p>
+]]></content>
+  </entry>
+  
+</feed>

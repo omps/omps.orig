@@ -5,14 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>my tech notes and what's going on</title>
+  <title>Using AWS CLI - my tech notes and what's going on</title>
   <meta name="author" content="Om Prakash Singh">
 
   
-  <meta name="description" content="2016 Welcome
-Apr 04 2016 Using AWS CLI
-Apr 01 2016 posted in how-to 2015 Day-2 - the Emacs Real Estate.
-Nov 14 2015 posted in emacs Learn Emacs in &hellip;">
+  <meta name="description" content="Notes on using aws cli. MY setup. I am using arch linux running a 32 bit system, kernel version 4.4.5 I run an aws system on amazon cloud and beleive &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +18,7 @@ Nov 14 2015 posted in emacs Learn Emacs in &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.omps.in">
+  <link rel="canonical" href="http://www.omps.in/blog/2016/04/01/aws-cli">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="my tech notes and what's going on" type="application/atom+xml">
@@ -101,87 +98,203 @@ Nov 14 2015 posted in emacs Learn Emacs in &hellip;">
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
-
-
-
+      <div>
+<article class="hentry" role="article">
   
-  <h2>2016</h2>
-
-<article>
+  <header>
     
-<h1><a href="/blog/2016/04/04/welcome/">Welcome</a></h1>
-<time datetime="2016-04-04T21:18:01+05:30" pubdate><span class='month'>Apr</span> <span class='day'>04</span> <span class='year'>2016</span></time>
-
-
-</article>
-
-
-
-<article>
+      
+        <h1 class="entry-title">Using AWS CLI</h1>
+      
     
-<h1><a href="/blog/2016/04/01/aws-cli/">Using AWS CLI</a></h1>
-<time datetime="2016-04-01T00:00:00+05:30" pubdate><span class='month'>Apr</span> <span class='day'>01</span> <span class='year'>2016</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/how-to/'>how-to</a></span>
-</footer>
-
-
-</article>
+    
+      <p class="meta">
+        
 
 
 
+
+<time class='entry-date' datetime='2016-04-01'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Notes on using aws cli.</h2>
+
+<h3>MY setup.</h3>
+
+<p>I am using arch linux running a 32 bit system, kernel version 4.4.5</p>
+
+<p>I run an aws system on amazon cloud and beleive me i am always kind of get confused with the immense set of tools they have and most of the time with their data centres. I tend to mess up the data centre and have to browse through all the data centres to find where my ec2 instance is running. I finally decided to have a look at how the aws cli works.</p>
+
+<h3>aws-cli tool installation.</h3>
+
+<p>For aws cli installation on arch linux its pretty simple. You can use yaourt to simple download and install it. I would not go much into how to install yaourt and aws through it. I would write about that sometime later, but for now trush google and arch wiki.</p>
+
+<p><code>yaourt aws-cli</code></p>
+
+<p>it will ask a couple of questions, please keep checking and respond accordingly.</p>
+
+<h3>configure the aws-cli</h3>
+
+<p>This is going to be a walk-through and I am doing it right now. Please bear if it look like random notes.</p>
+
+<h3><strong>Sign up for an AWS account.</strong></h3>
+
+<p>Since I am already done with it. Here is the quick guide at amazon, which will help you in registering on for you.</p>
+
+<ol>
+<li><p>Open <a href="http://aws.amazon.com/,">http://aws.amazon.com/,</a> and then choose Create an AWS Account.</p>
+
+<p>Follow the online instructions.</p></li>
+<li><p>Part of the sign-up procedure involves receiving a phone call and entering a PIN using the phone keypad.</p></li>
+</ol>
+
+
+<p>AWS sends you a confirmation email after the sign-up process is complete. At any time, you can view your current account activity and manage your account by going to <a href="http://aws.amazon.com">http://aws.amazon.com</a> and clicking My Account/Console.</p>
+
+<h4><strong>To get your access key ID and secret access key</strong></h4>
+
+<p>Amazon recommends we create a IAM account key instead of the root aws key, this will let us manage our console securly. I will prefer the IAM account key and here are the steps.</p>
+
+<ol>
+<li><p>Open the <a href="https://console.aws.amazon.com/iam/home?#home" title="ACCESS IAM CONSOLE">IAM console</a>.</p></li>
+<li><p>In the navigation pane, choose Users.</p></li>
+<li><p>Choose your IAM user name (not the check box).</p></li>
+<li><p>Choose the Security Credentials tab and then choose Create Access Key.</p></li>
+<li><p>To see your access key, choose Show User Security Credentials. Your credentials will look something like this:</p></li>
+</ol>
+
+
+<blockquote><p>Access Key ID: AKIAIOSFODNN7EXAMPLE
+Secret Access Key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY</p></blockquote>
+
+<p>Choose <strong>Download Credentials</strong>, and store the keys in a secure location.</p>
+
+<h4><strong>Configure the CLI</strong></h4>
+
+<ol>
+<li><p>This is quite simple</p>
+
+<p> $ aws configure
+   AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
+   AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+   Default region name [None]: us-west-2
+   Default output format [None]: ENTER</p></li>
+<li><p>Well now its not a lot simple.
+The problem is the user which is configured doesn&rsquo;t have access to any policy and without any policy one cannot be able to run commands. I did the basic testing without any policy and well. this is what happened.</p>
+
+<p>  [~ (master)]$ aws ec2 create-security-group &ndash;group-name my-sg &ndash;description &ldquo;My security group&rdquo;</p>
+
+<p>  A client error (UnauthorizedOperation) occurred when calling the CreateSecurityGroup operation: You are not authorized to perform this operation.</p>
+
+<p>  [~ (master)]$ aws ec2 describe-instances &ndash;output table &ndash;region us-west-2</p>
+
+<p>  A client error (UnauthorizedOperation) occurred when calling the DescribeInstances operation: You are not authorized to perform this operation.</p></li>
+</ol>
+
+
+<p>So the smart thing to do is to go back and attach a policy to it.</p>
+
+<p>This is my first time, so without taking time going through the nifty details of what each policy meant. I just attached the <strong>AdministratorAccess</strong> policy.
+    {
+    &ldquo;Version&rdquo;: &ldquo;2012-10-17&rdquo;,
+        &ldquo;Statement&rdquo;: [
+            {
+        &ldquo;Effect&rdquo;: &ldquo;Allow&rdquo;,
+            &ldquo;Action&rdquo;: &ldquo;<em>&rdquo;,
+                &ldquo;Resource&rdquo;: &ldquo;</em>&rdquo;
+            }
+        ]
+    }</p>
+
+<p>Now, the commands work like a charm.</p>
+
+<pre><code>[~ (master)]$ aws ec2 create-security-group --group-name omps-sg --description "My security group"
+{
+    "GroupId": "sg-51146e36"
+}
+
+[~ (master)]$ aws ec2 describe-instances --output table --region us-west-2
+------------------------------------------------------------------------------------
+|                                 DescribeInstances                                |
++----------------------------------------------------------------------------------+
+||                                  Reservations                                  ||
+|+----------------------------------------+---------------------------------------+|
+||  OwnerId                               |  855938437083                         ||
+||  ReservationId                         |  r-2ce7c3e9                           ||
+|+----------------------------------------+---------------------------------------+|
+|||                                   Instances                                  |||
+||+------------------------+-----------------------------------------------------+||
+|||  AmiLaunchIndex        |  0                                                  |||
+|||  Architecture          |  x86_64                                             |||
+</code></pre>
+
+<p>and very long output. Trimmed the output to keep the page short.</p>
+
+<p>Thats it.</p>
+
+<p>I would probably write more about IAM Policies later.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-  <h2>2015</h2>
 
-<article>
+
+
+  <span class="byline author vcard">Authored by <span class="fn">
+  
+    Om Prakash Singh
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-04-01'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+      
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/how-to/'>how-to</a>
+  
+</span>
+
+
+    </p>
     
-<h1><a href="/blog/2015/11/14/day-2-the-real-estate/">Day-2 - the Emacs Real Estate.</a></h1>
-<time datetime="2015-11-14T00:31:00+05:30" pubdate><span class='month'>Nov</span> <span class='day'>14</span> <span class='year'>2015</span></time>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.omps.in/blog/2016/04/01/aws-cli/" data-via="ohgnis" data-counturl="http://www.omps.in/blog/2016/04/01/aws-cli/" >Tweet</a>
+  
+  
+  
+</div>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/emacs/'>emacs</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
     
-<h1><a href="/blog/2015/11/14/day-1-learning-emacs/">Learn Emacs in 30 Days Challenge</a></h1>
-<time datetime="2015-11-14T00:02:00+05:30" pubdate><span class='month'>Nov</span> <span class='day'>14</span> <span class='year'>2015</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/emacs/'>emacs</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-    
-<h1><a href="/blog/2015/02/26/applications-for-kids/">Games of Kids</a></h1>
-<time datetime="2015-02-26T00:00:00+05:30" pubdate><span class='month'>Feb</span> <span class='day'>26</span> <span class='year'>2015</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/games/'>games</a></span>
-</footer>
-
-
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/11/14/day-2-the-real-estate/" title="Previous Post: Day-2 - The Emacs Real estate.">&laquo; Day-2 - The Emacs Real estate.</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2016/04/04/welcome/" title="Next Post: welcome">welcome &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
 
 
 </div>
-<aside class="sidebar">
-  
-    
-  
-</aside>
 
     </div>
   </div>
