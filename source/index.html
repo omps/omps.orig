@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<div class="blog-index">
+<div id="blog-archives">
 {% for post in site.posts reverse %}
 {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
 {% unless year == this_year %}
@@ -10,15 +10,7 @@ layout: default
   <h2>{{ year }}</h2>
 {% endunless %}
 <article>
-    {% include archive_post.html %}
+  {% include archive_post.html %}
 </article>
 {% endfor %}
-
 </div>
-<aside class="sidebar">
-  {% if site.blog_index_asides.size %}
-    {% include_array blog_index_asides %}
-  {% else %}
-    {% include_array default_asides %}
-  {% endif %}
-</aside>
