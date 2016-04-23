@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: How-to | my tech notes and what's going on]]></title>
+  <title><![CDATA[Category: how-to | my tech notes and what's going on]]></title>
   <link href="http://www.omps.in/blog/categories/how-to/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-04-23T11:29:52+05:30</updated>
+  <updated>2016-04-23T11:41:05+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>

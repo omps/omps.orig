@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Emacs | my tech notes and what's going on]]></title>
+  <title><![CDATA[Category: emacs | my tech notes and what's going on]]></title>
   <link href="http://www.omps.in/blog/categories/emacs/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-04-23T11:29:52+05:30</updated>
+  <updated>2016-04-23T11:41:05+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Day-2 - the Emacs Real Estate.]]></title>
+    <title type="html"><![CDATA[Day-2 - The Emacs Real estate.]]></title>
     <link href="http://www.omps.in/blog/2015/11/14/day-2-the-real-estate/"/>
     <updated>2015-11-14T00:31:00+05:30</updated>
     <id>http://www.omps.in/blog/2015/11/14/day-2-the-real-estate</id>
@@ -186,7 +186,7 @@ cs:ch-fr buf        pos line (major minor)</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Learn Emacs in 30 Days Challenge]]></title>
+    <title type="html"><![CDATA[Learn Emacs in 30 days challenge]]></title>
     <link href="http://www.omps.in/blog/2015/11/14/day-1-learning-emacs/"/>
     <updated>2015-11-14T00:02:00+05:30</updated>
     <id>http://www.omps.in/blog/2015/11/14/day-1-learning-emacs</id>

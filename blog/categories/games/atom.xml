@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Games | my tech notes and what's going on]]></title>
+  <title><![CDATA[Category: games | my tech notes and what's going on]]></title>
   <link href="http://www.omps.in/blog/categories/games/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-04-23T11:29:52+05:30</updated>
+  <updated>2016-04-23T11:41:05+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Games of Kids]]></title>
+    <title type="html"><![CDATA[Games of kids]]></title>
     <link href="http://www.omps.in/blog/2015/02/26/applications-for-kids/"/>
     <updated>2015-02-26T00:00:00+05:30</updated>
     <id>http://www.omps.in/blog/2015/02/26/applications-for-kids</id>
