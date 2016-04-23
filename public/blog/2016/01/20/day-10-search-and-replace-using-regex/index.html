@@ -1,0 +1,911 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Day 10 - Search and Replace Using Regex - my tech notes and what's going on</title>
+  <meta name="author" content="Om Prakash Singh">
+
+  
+  <meta name="description" content="It is important that I am also should be able to search within my text/code when using the editor. Emacs have commands to search for occurrences of a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.omps.in/blog/2016/01/20/day-10-search-and-replace-using-regex">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="my tech notes and what's going on" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+<!--- MathJax Configuration -->
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">my tech notes and what's going on</a></h1>
+  
+    <h2>personal blog about my rendezvous with technology and life.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
+  
+</ul>
+  
+  
+  
+  
+  
+<ul class="subscribe">
+  <li><a href="https://github.com/omps" rel="subscribe-github" title="@omps on GitHub" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 50,0 C 22.385714,0 0,22.385714 0,50 0,77.614286 22.385714,100 50,100 77.614286,100 100,77.614286 100,50 100,22.385714 77.614286,0 50,0 z m 29.692858,79.692858 c -3.859184,3.859182 -8.351022,6.887754 -13.35,9.00306 -1.27041,0.536736 -2.560204,1.009184 -3.867348,1.415306 v -7.493878 c 0,-3.938774 -1.35102,-6.835714 -4.053062,-8.690816 1.692858,-0.163264 3.24694,-0.390816 4.663266,-0.683672 1.416326,-0.292858 2.913266,-0.716328 4.491838,-1.27041 1.57857,-0.55408 2.994896,-1.213264 4.247958,-1.97755 1.253062,-0.765306 2.458164,-1.758164 3.613266,-2.978572 1.155102,-1.220408 2.12449,-2.604082 2.905102,-4.15 0.780612,-1.545918 1.4,-3.40204 1.855102,-5.566326 0.455102,-2.164286 0.683674,-4.54898 0.683674,-7.153062 0,-5.045918 -1.643878,-9.341836 -4.931634,-12.890816 C 77.44796,33.35 77.285714,29.10204 75.463266,24.512244 l -1.22143,-0.145918 c -0.845918,-0.09796 -2.368366,0.260204 -4.565306,1.07449 -2.196938,0.814286 -4.663264,2.14796 -7.396938,4.004082 -3.87449,-1.07449 -7.893878,-1.611224 -12.061224,-1.611224 -4.19898,0 -8.203062,0.536734 -12.012246,1.611224 -1.72449,-1.17245 -3.361224,-2.139796 -4.907142,-2.905102 C 31.753062,25.77449 30.516326,25.254082 29.587756,24.97653 28.660204,24.7 27.79796,24.528572 27,24.463266 c -0.79796,-0.0653 -1.310204,-0.08062 -1.537756,-0.04898 -0.22755,0.03164 -0.390816,0.0653 -0.487754,0.09796 -1.82347,4.62245 -1.985714,8.87143 -0.487756,12.743878 -3.287754,3.54796 -4.931632,7.844898 -4.931632,12.890816 0,2.604082 0.227552,4.988776 0.683674,7.153062 0.456122,2.164286 1.07449,4.020408 1.855102,5.566326 0.780612,1.545918 1.75,2.929592 2.905102,4.15 1.155102,1.220408 2.360204,2.213266 3.613264,2.978572 1.253062,0.766326 2.669388,1.42449 4.24796,1.97755 1.578572,0.554082 3.07551,0.976532 4.491836,1.27041 1.416328,0.292856 2.970408,0.521428 4.663266,0.683672 -2.669388,1.82347 -4.004082,4.720408 -4.004082,8.690816 v 7.639796 C 36.536734,89.818368 35.083674,89.3 33.656122,88.695918 c -4.99898,-2.115306 -9.490816,-5.143878 -13.35,-9.00306 -3.859184,-3.859184 -6.887754,-8.351022 -9.00306,-13.35 C 9.1163263,61.171428 8.0071428,55.67347 8.0071428,50 c 0,-5.67347 1.1091835,-11.171428 3.2969392,-16.342858 2.115306,-4.998978 5.143878,-9.490816 9.00306,-13.35 3.859184,-3.859182 8.351022,-6.887754 13.35,-9.00306 C 38.828572,9.1163266 44.32653,8.0071428 50,8.0071428 c 5.67347,0 11.171428,1.1091838 16.342858,3.2969392 5,2.115306 9.490816,5.143878 13.35,9.00306 3.859182,3.859184 6.887754,8.351022 9.00306,13.35 2.186736,5.17245 3.295918,10.67041 3.295918,16.342858 0,5.672448 -1.109182,11.171428 -3.296938,16.342858 -2.115306,4.998978 -5.143878,9.490816 -9.00204,13.35 l 0,0 z"></path></svg></a></li>
+</ul>
+  
+  
+  
+<ul class="subscribe">
+  <li><a href="https://twitter.com/ohgnis" rel="subscribe-twitter" title="@ohgnis on Twitter" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewBox="0 0 512 512"><path class="social" d="M0.001,334.932c33.327,30.816,118.891,59.981,188.517-8.271c-12.52,1.955-22.972-0.416-30.913-8.269
+  c-7.531-7.465-7.945-15.182-3.914-22.202c3.275-5.725,10.184-9.741,16.977-13.934c-12.323,2.285-22.829,1.095-32.218-3.706
+  c-12.604-6.444-24.863-13.228-28.3-27.207c7.71-8.112,16.28-15.359,34.831-12.627c-17.45-5.83-33.087-13.429-44.41-24.815
+  c-11.028-11.091-12.163-18.302-13.932-26.996c9.632-3.567,19.688-5.421,30.478-4.353c-24.397-12.476-34.757-29.63-40.487-48.325
+  c-1.731-5.652-2.044-11.03-1.31-16.545c98.826,37.305,145.11,64.109,170.662,89.251c11.496-30.589,38.3-99.868,78.371-123.646
+  c0.191,3.77-1.309,7.837-4.357,12.189c11.863-6.609,21.125-17.188,37.445-16.98c-1.879,7.723-7.279,13.904-17.85,17.854
+  c10.662-4.084,21.463-7.545,32.65-9.578c10.375-1.881,10.229,6.304,4.355,10.444c-11.916,8.412-24.578,9.456-37.006,13.498
+  c38.105,0.949,69.266,18.994,93.604,58.343c8.088,13.074,13.52,26.149,14.807,40.487c16.254,4.563,32.426,5.494,48.76,2.61
+  c4.475-0.796,8.645-1.63,12.627-3.482c-6.354,9.529-13.686,17.356-23.947,20.899c-9.811,3.387-19.637,6.688-30.473,6.968
+  c17.641,6.675,37.082,7.045,57.033,5.659c-24.402,23.486-43.08,22.922-61.824,22.642c-8.221,34.703-25.025,69.315-60.52,101.005
+  c-46.559,41.569-96.678,61.397-148.457,65.742c-48.552,4.07-95.488,3.512-146.726-20.464
+  C56.486,393.349,24.648,368.884,0.001,334.932L0.001,334.932z"/></svg></a></li>
+</ul>
+  
+  
+  
+  
+  
+  
+    
+      <form action="https://www.google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="sitesearch" value="www.omps.in" />
+    
+          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+        </fieldset>
+      </form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Day 10 - Search and Replace Using Regex</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-20T21:44:31+05:30'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:44 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>It is important that I am also should be able to search within my text/code when using the editor. Emacs have commands to search for occurrences of a string within the buffer and across the buffers. Emacs has the commands to replace occurrences of a string with a different string. Emacs provides the ability to search multiple files under the control of a tags table or through dired &lsquo;A&rsquo; command , or ask the &lsquo;grep&rsquo; program to do it.</p>
+
+<h2>Incremental Search</h2>
+
+<p>All the searches done in Emacs are &ldquo;incremental&rdquo; in nature i.e. it starts searching as soon as we start typing the first character of the search string. As we start typing emacs shows where the string and as we type further, would be found. We can end our search using RETURN.</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Keybindings</th>
+<th scope="col" class="left">Commands</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">C-s</td>
+<td class="left">isearch-forward</td>
+<td class="left">Incremental search forward</td>
+</tr>
+
+<tr>
+<td class="left">C-r</td>
+<td class="left">isearch-backward</td>
+<td class="left">Incremental search backward</td>
+</tr>
+</tbody>
+</table>
+
+
+<p></div></p>
+
+<h3>Basic incremental search</h3>
+
+<p>Incremental search starts a forward incremental search. It reads characters from the keyboard, and moves point just past the end of the next occurrence of those characters in the buffer. When you type <code>C-s</code> and then F that puts the cursor after the first &lsquo;F&rsquo; that occurs in the buffer after the starting point then if you type O it moves the cursor to just after the FO. At each step emacs highlights, the &ldquo;current match&rdquo; – the buffer text which matches the string &ndash; using the &lsquo;isearch&rsquo; face. The current search string is also displayed in the echo area. While we made mistake typing the search string, just press <code>&lt;DEL&gt;</code>. Each <code>&lt;DEL&gt;</code> cancels the last character of the search string. Once satified, press <RET> Typing <code>C-a</code> exits the search and moved to the beginning of the line.</p>
+
+<p>As an exception, entering <RET> when the search string is empty launches nonincremental search.</p>
+
+<p>When you exit the search, it add the original value of the point to the mark ring, without activating the mark; use <code>C-u C-&lt;SPC&gt;</code> to return to where you were before the beginning the search.</p>
+
+<p>Use <code>C-r</code> to search backwards. A backward search finds matches that end before the starting point.</p>
+
+<h3>Repeating incremental search</h3>
+
+<p>Suppose you searched for some word &lsquo;FOO&rsquo; and find a match, but its not the one you expected to find, typing C-s again will jump to the next occurence of the word FOO, repeat this any number of time, till you reach the correct instance. If you overshoot(i.e. added more characters to the search string) your search string cancel the same using the <code>&lt;DEL&gt;</code> character, which will delete the last visible character in the search string. When you pause a little after typing your search string, Emacs highlights all the possible matches for the search string. This helps in anticipating how many &lsquo;C-s&rsquo; or &lsquo;C-r&rsquo; you may need to type before you end at the right search. The other matches are highlighted differently than the current match, this can be changes by customizing the face lazy-highlight. This feature can be disabled by setting isearch-lazy-highlight to nil.</p>
+
+<p>Once exited from the search the same string can be used to search again using &lsquo;C-s C-s&rsquo; , the first &lsquo;C-s&rsquo; invokes the search, the second &lsquo;C-s&rsquo; means search again. The similar concepts can be applied while searching backward. While searching forward, you realise, that what you are looking for is before the starting point, you can easily switch with &lsquo;C-r&rsquo;.</p>
+
+<p>To reuse a search string, use the &ldquo;search ring&rdquo;. The commands M-p and &rsquo;M-n' move through the ring to pick a search string to reuse. It leaves the selected search ring element in the minibuffer, which can then be edited. If we just need to edit the current search string in the minibuffer without replaying it with items from the search ring, type &rsquo;M-e', then type <RET>, &lsquo;C-s&rsquo; or &lsquo;C-r&rsquo; to finish editing and search for the string.</p>
+
+<h3>Erros while incremental search</h3>
+
+<p>After typing the search string and if the search string is not found in the buffer, the echo area will say Failing I-Search, and the cursor moves to the place where Emacs found as much of your string as it could. Thus, if you search for &lsquo;FOOT&rsquo; and there is no &lsquo;FOOT&rsquo; in the buffer, then the cursor would be placed after &lsquo;FOO&rsquo; in &lsquo;FOOL&rsquo;. While, in the echo area, the part of the search string that failed to match is highlighted using face isearch-fail. We can correct our string if it was mis-typed, if we liked the place where it is found we can remain there by pressing <RET> or can just remove the character from search string which cannot be found by typing &lsquo;C-g&rsquo;, so this will remove the &rsquo;T' in &lsquo;FOOT&rsquo; which could not be found and leaving those that are found. i.e will leave the &lsquo;FOO&rsquo; in &lsquo;FOOT&rsquo;, repressing &lsquo;C-g&rsquo; cancels the search altogether and return to the point where it was before the search has started.</p>
+
+<h3>Special input for incremental search</h3>
+
+<p>There are characters which has special effects when typed during incremental search. In default, the incremental search perform lax space matching i.e. each space, or sequence of spaces, matches any sequence of one or more spaces in the text. Hence, &lsquo;foo bar&rsquo; will match &lsquo;foo bar&rsquo;, &lsquo;foo bar&rsquo;, &lsquo;foo bar&rsquo;, and so on but it will not match &lsquo;foobar&rsquo;. Emacs matches each sequence of space characters in the match string to a regular expression specified by the variable search-whitespace-regexp. To toggle lax space matching &rsquo;M-s <SPC>&lsquo; isearch-toggle-lax-whitespace, and to disable this feature entirely set search-whitespace-regexp to nil, and then each single space will be matched to single space only.</p>
+
+<p>By default the searches in emacs are case-insenitive, when there is an uppercase letter is present in search string, the searches become case-sensitive, once the upper case letter it deleted the search string becomes case-insensitive again.</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Keybindings</th>
+<th scope="col" class="left">Command</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">M-s i</td>
+<td class="left">&#xa0;</td>
+<td class="left">isearch-toggle-invisible</td>
+</tr>
+
+<tr>
+<td class="left">C-s C-j</td>
+<td class="left">&#xa0;</td>
+<td class="left">search for newline character</td>
+</tr>
+
+<tr>
+<td class="left">C-s C-\\</td>
+<td class="left">isearch-toggle-input-method</td>
+<td class="left">Toggle the input method</td>
+</tr>
+
+<tr>
+<td class="left">C-s C-^</td>
+<td class="left">isearch-toggle-specified-input-method</td>
+<td class="left">prompts for the name of the input method.</td>
+</tr>
+
+<tr>
+<td class="left">C-s M-%</td>
+<td class="left">query-replace or query-replace-regexp</td>
+<td class="left">with current search string used as a string to replace.</td>
+</tr>
+
+<tr>
+<td class="left">C-s M-&lt;TAB&gt;</td>
+<td class="left">isearch-complete</td>
+<td class="left">tries to complete the search string using the search ring as a list of completion alternatives.</td>
+</tr>
+
+<tr>
+<td class="left">C-s C-h C-h</td>
+<td class="left">&#xa0;</td>
+<td class="left">Interactive help.</td>
+</tr>
+
+<tr>
+<td class="left">C-s C-y</td>
+<td class="left">isearch-yank-kill</td>
+<td class="left">Appends the current kill to the search string.</td>
+</tr>
+
+<tr>
+<td class="left">C-s M-y</td>
+<td class="left">isearch-yank-pop</td>
+<td class="left">If called after 'C-y', replaces the appended text with an earlier kill, similar to usual 'M-y'.</td>
+</tr>
+
+<tr>
+<td class="left">C-s C-w</td>
+<td class="left">isearch-yank-word-or-char</td>
+<td class="left">Appends the next character or word at point to the search string.</td>
+</tr>
+
+<tr>
+<td class="left">C-s M-s C-e</td>
+<td class="left">isearch-yank-line</td>
+<td class="left">Appends the rest of the line to the search string. if point is already at the end of a line, it appends the next-line.</td>
+</tr>
+
+<tr>
+<td class="left">C-s C-M-w</td>
+<td class="left">isearch-del-char</td>
+<td class="left">Deletes the last character from the search string.</td>
+</tr>
+
+<tr>
+<td class="left">C-s C-M-y</td>
+<td class="left">isearch-yank-char</td>
+<td class="left">Appends the character after the point to the search string. Alternately, to add the character after point by entering minibuffer with '<b>M-e</b>' and type '<b>C-f</b>' at the end of the search string in the minibuffer</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+<colgroup>
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Search for non-ASCII characters.</td>
+</tr>
+
+<tr>
+<td class="left">C-q <b>non graphical character</b></td>
+</tr>
+
+<tr>
+<td class="left">C-x 8 &lt;RET&gt;</td>
+</tr>
+
+<tr>
+<td class="left">Use an INPUT Method, so if the INPUT method is enabled in the current buffer so when you start the search, you can use it in the seach string also.</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Not exiting incremental search</h3>
+
+<p>There are two categories of commands which you can type without exiting the current incremental search. They are</p>
+
+<ul>
+<li><p>Prefix arguments
+With these arguments, by default it will apply either to the next action in the search or to the command that exits the search. When isearch-allow-prefix is set to nil, entering a prefix argument will terminate the search.</p></li>
+<li><p>Scrolling commands
+Scrolling commands exit search. changing variable <code>isearch-allow-scroll</code> to non-nil value, this enables the use of the scroll-bar as well as keyboard scrolling commands. The isearch-allow-scroll also afects some other commands, such as <code>C-x 2</code> and <code>C-x ^</code> which don&rsquo;t actually scroll but do affect where the text appears on the screen.</p></li>
+</ul>
+
+
+<h3>Searching the minibuffer</h3>
+
+<p>If you start search while the minibuffer is active, Emacs searches the content of the minibuffer. If the search fails in the minibuffer, it tries searching the minibuffer history. The minibuffer can be visualized in series of pages. A forward search searches forward to later pages and similarly a reverse search does the backward search. If the current search is a history element, that history element is pulled in the minibuffer. Even you exit the incremental search by press RET, the point remains in the minibuffer unless it is specifically cancelled using C-g.</p>
+
+<h2>Non Incremental search</h2>
+
+<p>So we have visited how the incremental search works, i.e while you type the characters the emacs already begun it searching process and as every word gets added it moves you closer to what you are looking for, and if this is too annoying, emacs does have a conventional non-ncremental search, which require the complete string to present before it start searching.</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Keybinding</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">C-s &lt;RET&gt; STRING &lt;RET&gt;</td>
+<td class="left">search for string</td>
+</tr>
+
+<tr>
+<td class="left">C-r &lt;RET&gt; STRING &lt;RET&gt;</td>
+<td class="left">Search backward for string</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
+<p></div>
+</div></p>
+
+<h3>Search for word.</h3>
+
+<p>A &ldquo;word search&rdquo; finds a sequence of words without regard to the type of punctuation between them. For instance, if you enter a search string that consists of two words seperated by a single space, the search matched any sequence of those two words separated by one or more spaces, newlines, or other punctiation characters. Useful for searching text documents where you do not have to worry about the words you are looking for and wether they are sperated by newlines of spaces.
+</p></p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Keybinding</th>
+<th scope="col" class="left">Commands</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">M-s-w</td>
+<td class="left">isearch-toggle-word</td>
+<td class="left">if incremental search is active toggle to word search mode.</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">isearch-forward-searching</td>
+<td class="left">begin and incremental forward word search.</td>
+</tr>
+
+<tr>
+<td class="left">M-s-w &lt;RET&gt; WORDS &lt;RET&gt;</td>
+<td class="left">&#xa0;</td>
+<td class="left">similar to the non-incremenatal forward search.</td>
+</tr>
+
+<tr>
+<td class="left">M-s w C-r &lt;RET&gt; WORDS &lt;RET&gt;</td>
+<td class="left">&#xa0;</td>
+<td class="left">similar to non-incremental backward search.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p></div>
+</div></p>
+
+<h3>search for symbols.</h3>
+
+<p>
+It is just like normal search, except the boundaries of the search must match the boundaries of the symbol. This feature is mainly useful for searching the source code. 
+</p>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Keybinding</th>
+<th scope="col" class="left">Command</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">M-s</td>
+<td class="left">isearch-toggle-symbol</td>
+<td class="left">If active incremental search is, toggle symbol search mode.</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">isearch-forward-symbol</td>
+<td class="left">else, begin an incremental forward search.</td>
+</tr>
+
+<tr>
+<td class="left">M-s .</td>
+<td class="left">&#xa0;</td>
+<td class="left">Start incremental symbol searching forward with the symbol found at the point is added to the initial search.</td>
+</tr>
+
+<tr>
+<td class="left">M-s \_ &lt;RET&gt; SYMBOL &lt;RET&gt;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Searches forward for symbol non-incrementally.</td>
+</tr>
+
+<tr>
+<td class="left">M-s \_ C-r &lt;RET&gt; SYMBOL &lt;RET&gt;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Search backward for symbol non-incrementally.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p></div>
+</div></p>
+
+<h3>search using regular expressions.</h3>
+
+<p>
+A regexp denotes a class of alternative strings to match. Emacs provides both incremental and non-incremental ways to search for a match for a regexp. Below is the syntax for regluar expressions.
+</p>
+
+
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Keybindings</th>
+<th scope="col" class="left">Command</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">C-M-s</td>
+<td class="left">isearch-forward-regexp</td>
+<td class="left">Begin incrmental search.</td>
+</tr>
+
+<tr>
+<td class="left">C-M-r</td>
+<td class="left">isearch-backward-regexp</td>
+<td class="left">Begin reverse incremental search.</td>
+</tr>
+
+<tr>
+<td class="left">C-M-s &lt;RET&gt;</td>
+<td class="left">re-search-forward</td>
+<td class="left">non incremental forward search</td>
+</tr>
+
+<tr>
+<td class="left">C-M-r &lt;RET&gt;</td>
+<td class="left">re-search-backward</td>
+<td class="left">non incremental backward search</td>
+</tr>
+</tbody>
+</table>
+
+
+<p></div></p>
+
+<h2>Understanding Regular expressions (regex)</h2>
+
+<p><a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Regexps.html">The Emacs Regular Expression</a> have syntax in which a few characters are special constructs and the rest are ordinary. I will just go through the special constructs below, this would be similar to what the emacs tutorial says about regex, except I am putting it in the tabular format.</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Regex</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">'.' (period)</td>
+<td class="left">Matches any single character except a new line.</td>
+</tr>
+
+<tr>
+<td class="left">'\*'</td>
+<td class="left">Means to match preceding regular expression any no. of time as possible.</td>
+</tr>
+
+<tr>
+<td class="left">'+'</td>
+<td class="left">Matches the preceding expression atleast once.</td>
+</tr>
+
+<tr>
+<td class="left">'?'</td>
+<td class="left">Matches the expression either once or none.</td>
+</tr>
+
+<tr>
+<td class="left">'\*?', '+?', '??'</td>
+<td class="left">Non-greedy variants of above operators.</td>
+</tr>
+
+<tr>
+<td class="left">'\\{N\\}'</td>
+<td class="left">That the preceding regular expression matches exactly N times in a row.</td>
+</tr>
+
+<tr>
+<td class="left">'\\{N,M\\}'</td>
+<td class="left">Match N times but not more than M times.</td>
+</tr>
+
+<tr>
+<td class="left">'[ &#x2026; ]'</td>
+<td class="left">Set of character within the bracket.</td>
+</tr>
+
+<tr>
+<td class="left">'[:char classes:]'</td>
+<td class="left">Encloses character classes. [[</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>Searching and cases</h2>
+
+<p>While searching within emacs, emacs usually ignores the case of the text which is being searched through, when the search is specified in lower case, for example, searching for word &lsquo;nutrients&rsquo; so while typing the word in incremental search will match &lsquo;nutrients&rsquo; begining with either &lsquo;Nutri&rsquo; and &lsquo;nutri&rsquo;. Likewise, &lsquo;[ab]&rsquo; matches &lsquo;a&rsquo;, &lsquo;A&rsquo;, &lsquo;B&rsquo;, &lsquo;b&rsquo;. Any appearance of the uppercase letter within the search makes the searches case-sensisive, thus, searching for &lsquo;Nutri&rsquo; doesn&rsquo;t matches &lsquo;nutri&rsquo; and &lsquo;NUTRI&rsquo;. Typing <em>&rsquo;M-c'</em> within an incremental search toggles the case sensetivity of that search.</p>
+
+<p>When we set <strong>case-fold-search</strong> to nil then all the letters must match exactly incuding the case. This is per-buffer variable, setting this variable to a particular buffer will only affect that buffer and will have no effects on the other buffers. The effect of this variable applies to non-incremental searches and to the replace commands as well.</p>
+
+<h2>Replaement commands</h2>
+
+<p>There is a simple replace command as <strong>M-x replace-string</strong> which replaces the occurunces in the buffer. <strong>M-% command</strong> is for query replace, which presents each occurence of the pattern and asks wether to replace it.</p>
+
+<p>The replace command usually work from the point place where your cursor is to the end of the buffer. In an active region replace commands will work in that region only. The basic replace commands replaces one search string with one replacement string. <strong>expand-region-abbrevs</strong> makes emacs possible to perform several replacements in parellel. Replacement commands do not use lax space matching1 by default and can be enabled by changing the variable <strong>replace-lax-withespaces</strong> to <strong>t</strong>.</p>
+
+<h3>Unconditional replacements</h3>
+
+<table>
+<thead>
+<tr>
+<th> Unconditional Replacements </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> M-x replace-string RET string RET newstring RET | Replace all string with new string </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>This replace every occurence of the string with the new string <em>from the point to the end of the buffer</em>. For doing this in the whole buffer, you must begin with the beginning2 of the buffer. In an active region the replacement is limited to the region.</p>
+
+<h3>Regexp replacement</h3>
+
+<p>Similarly,</p>
+
+<table>
+<thead>
+<tr>
+<th> Regexp replcatement commands. </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> M-x replace-regexp RET regexp RET newstring | Replace every match for regexp with the new string. </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Here the newstring need not required to be constant: it can refer to all or part of the string as matched by the regex. &amp; in newstring stands for the entire match being replaced. \d in newstring where d = digit, stands for whatever matched the d/th/ parenthesized grouping in regexp, also called as backrefrence. # refers to the count of replacements already made in this command. \? will asks for the replacement string each time.</p>
+
+<p><strong>Examples</strong>: M-x replace-regexp RET c[ad]+r RET &amp;-safe RET : replaces cadr with cadr-safe and cddr with cddr-safe M-x replace-regexp RET c[ad]+r-safe RET \1 RET: performs the inverse of above.</p>
+
+<h3>Command and case</h3>
+
+<p>Cases in emacs replace the similar way as it is in incremental search i.e. if the first argument of the replace command is all in lower case it ignores the cases. However, if the case-fold-search is set to nil, case would be significant in the searches.</p>
+
+<h3>Query Replace</h3>
+
+<table>
+<thead>
+<tr>
+<th> Keybinding </th>
+<th> Description </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> M-% string RET newstring RET </td>
+<td> Replaces some occurrences of string with newstring. </td>
+</tr>
+<tr>
+<td> C-M-% regexp RET newstring RET </td>
+<td> Replace some matches for regexp with new string. </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>if you want to change only few occurrences and not all of them in the buffer the <strong>M-% (query-replace)</strong> will replace the words one by one and ask for your permission before doing it. Similarly, <strong>C-M-%</strong> performs performs regexp search and replace (query-replace-regexp). It works like replace-regexp except it queries like query-replace .</p>
+
+<p>Character which are used when a match is shown in query-replace or <strong>query-replace-regexp</strong></p>
+
+<table>
+<thead>
+<tr>
+<th> Characters </th>
+<th> Their actions while in query-replace </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> SPC, y </td>
+<td> Replace </td>
+</tr>
+<tr>
+<td> DEL, n </td>
+<td> Skip to next occurrence </td>
+</tr>
+<tr>
+<td> , (comma) </td>
+<td>   Replace and display result.</td>
+</tr>
+<tr>
+<td> C-r </td>
+<td> To undo the replaced text. C-x u can also be used. </td>
+</tr>
+<tr>
+<td> RET, q </td>
+<td>  Exit without doing any more replacements. </td>
+</tr>
+<tr>
+<td> . (period) </td>
+<td> Replace this one and exit, do not replace any more. </td>
+</tr>
+<tr>
+<td> ! (exclamation) </td>
+<td> Replace everything do not ask me again. </td>
+</tr>
+<tr>
+<td> Y (UPPERCASE) </td>
+<td> Replace all remaining occurrences in all remaining buffer in multi-buffer replacements </td>
+</tr>
+<tr>
+<td> N (UPPERCASE) </td>
+<td> Skip to the next buffer in the multi-buffer replacement without replacing remaining occurrences in the current buffer. </td>
+</tr>
+<tr>
+<td> ^ (caret) </td>
+<td> Go back to the position of the previous occurrences. </td>
+</tr>
+<tr>
+<td> C-w </td>
+<td> to delete the occurrences and enter into recursive editing level. </td>
+</tr>
+<tr>
+<td> e </td>
+<td> Edit the replacement string in the mini-buffer. This also becomes new replacement string for any further occurrences. </td>
+</tr>
+<tr>
+<td> C-l </td>
+<td> Re-display the screen. </td>
+</tr>
+<tr>
+<td> C-h </td>
+<td> Display message summarizing these options.</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Some more commands for searching and looping</h3>
+
+<table>
+<thead>
+<tr>
+<th> Keybindings </th>
+<th> Description </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> M-x multi-search-buffers </td>
+<td> Prompt for one or more buffer name ending with RET. Do an incremental search in all the buffers. </td>
+</tr>
+<tr>
+<td> M-x multi-isearch-buffers-regexp </td>
+<td> same as multi-isearch-buffer, except it performs incremental regexp search. </td>
+</tr>
+<tr>
+<td> M-x occur </td>
+<td> Prompt for a regexp and display a list showing each line in buffer that contains a match for it. To limit the search to part of the buffer, narrow to that part. In the occur buffer you can click on each entry or move point there and type RET, to visit the corresponding position in the buffer that was searched. o and C-o display the match in another window. Typing e in the occur buffer switches to occur edit mode, in which edits made to the entries are also applied to the text in originating buffer. Type C-c C-c to return to the occur mode. Command M-x list-matching-lines is synonymous to Occur mode. </td>
+</tr>
+<tr>
+<td> M-s o </td>
+<td> Run occur using the last used search string. Running M-s o when the search is active used the current search string. </td>
+</tr>
+<tr>
+<td> M-x multi-occur </td>
+<td> This command is like occur, except it is able to search through buffers. It asks for the buffer names one-by-one. </td>
+</tr>
+<tr>
+<td> M-x multi-occur-in-matching-buffers </td>
+<td> Same as multi-occur, except the buffers to search are specified by regular expression which matches visited file names. </td>
+</tr>
+<tr>
+<td> M-x how-many </td>
+<td> Prompt for regexp and print for the number of matches for it in the buffer for point. </td>
+</tr>
+<tr>
+<td> M-x flush-lines </td>
+<td> Prompt for regexp and delete the line which contains the match for it, operating on the text after point. This deletes the current line if it contains the match starting after point. </td>
+</tr>
+<tr>
+<td> M-x keep-lines </td>
+<td> Prompt for regexp and deletes the line which doesn&rsquo;t contain the match regexp. This command always keeps the current line where the match is found. </td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+
+  <span class="byline author vcard">Authored by <span class="fn">
+  
+    Om Prakash Singh
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-01-20T21:44:31+05:30'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:44 pm</span></time>
+      
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/emacs/'>emacs</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.omps.in/blog/2016/01/20/day-10-search-and-replace-using-regex/" data-via="ohgnis" data-counturl="http://www.omps.in/blog/2016/01/20/day-10-search-and-replace-using-regex/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/12/28/day-9-cut/" title="Previous Post: Day 9 - Cut, Copy, Paste">&laquo; Day 9 - Cut, Copy, Paste</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2016/04/01/aws-cli/" title="Next Post: Using AWS CLI">Using AWS CLI &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Om Prakash Singh -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

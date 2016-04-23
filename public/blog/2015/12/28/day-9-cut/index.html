@@ -1,0 +1,702 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Day 9 - Cut, Copy, Paste - my tech notes and what's going on</title>
+  <meta name="author" content="Om Prakash Singh">
+
+  
+  <meta name="description" content="As in my last post and coming posts I would be using org2blog to write content further to my blog sites and would further be writing about how to use &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.omps.in/blog/2015/12/28/day-9-cut">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="my tech notes and what's going on" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+<!--- MathJax Configuration -->
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">my tech notes and what's going on</a></h1>
+  
+    <h2>personal blog about my rendezvous with technology and life.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
+  
+</ul>
+  
+  
+  
+  
+  
+<ul class="subscribe">
+  <li><a href="https://github.com/omps" rel="subscribe-github" title="@omps on GitHub" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 50,0 C 22.385714,0 0,22.385714 0,50 0,77.614286 22.385714,100 50,100 77.614286,100 100,77.614286 100,50 100,22.385714 77.614286,0 50,0 z m 29.692858,79.692858 c -3.859184,3.859182 -8.351022,6.887754 -13.35,9.00306 -1.27041,0.536736 -2.560204,1.009184 -3.867348,1.415306 v -7.493878 c 0,-3.938774 -1.35102,-6.835714 -4.053062,-8.690816 1.692858,-0.163264 3.24694,-0.390816 4.663266,-0.683672 1.416326,-0.292858 2.913266,-0.716328 4.491838,-1.27041 1.57857,-0.55408 2.994896,-1.213264 4.247958,-1.97755 1.253062,-0.765306 2.458164,-1.758164 3.613266,-2.978572 1.155102,-1.220408 2.12449,-2.604082 2.905102,-4.15 0.780612,-1.545918 1.4,-3.40204 1.855102,-5.566326 0.455102,-2.164286 0.683674,-4.54898 0.683674,-7.153062 0,-5.045918 -1.643878,-9.341836 -4.931634,-12.890816 C 77.44796,33.35 77.285714,29.10204 75.463266,24.512244 l -1.22143,-0.145918 c -0.845918,-0.09796 -2.368366,0.260204 -4.565306,1.07449 -2.196938,0.814286 -4.663264,2.14796 -7.396938,4.004082 -3.87449,-1.07449 -7.893878,-1.611224 -12.061224,-1.611224 -4.19898,0 -8.203062,0.536734 -12.012246,1.611224 -1.72449,-1.17245 -3.361224,-2.139796 -4.907142,-2.905102 C 31.753062,25.77449 30.516326,25.254082 29.587756,24.97653 28.660204,24.7 27.79796,24.528572 27,24.463266 c -0.79796,-0.0653 -1.310204,-0.08062 -1.537756,-0.04898 -0.22755,0.03164 -0.390816,0.0653 -0.487754,0.09796 -1.82347,4.62245 -1.985714,8.87143 -0.487756,12.743878 -3.287754,3.54796 -4.931632,7.844898 -4.931632,12.890816 0,2.604082 0.227552,4.988776 0.683674,7.153062 0.456122,2.164286 1.07449,4.020408 1.855102,5.566326 0.780612,1.545918 1.75,2.929592 2.905102,4.15 1.155102,1.220408 2.360204,2.213266 3.613264,2.978572 1.253062,0.766326 2.669388,1.42449 4.24796,1.97755 1.578572,0.554082 3.07551,0.976532 4.491836,1.27041 1.416328,0.292856 2.970408,0.521428 4.663266,0.683672 -2.669388,1.82347 -4.004082,4.720408 -4.004082,8.690816 v 7.639796 C 36.536734,89.818368 35.083674,89.3 33.656122,88.695918 c -4.99898,-2.115306 -9.490816,-5.143878 -13.35,-9.00306 -3.859184,-3.859184 -6.887754,-8.351022 -9.00306,-13.35 C 9.1163263,61.171428 8.0071428,55.67347 8.0071428,50 c 0,-5.67347 1.1091835,-11.171428 3.2969392,-16.342858 2.115306,-4.998978 5.143878,-9.490816 9.00306,-13.35 3.859184,-3.859182 8.351022,-6.887754 13.35,-9.00306 C 38.828572,9.1163266 44.32653,8.0071428 50,8.0071428 c 5.67347,0 11.171428,1.1091838 16.342858,3.2969392 5,2.115306 9.490816,5.143878 13.35,9.00306 3.859182,3.859184 6.887754,8.351022 9.00306,13.35 2.186736,5.17245 3.295918,10.67041 3.295918,16.342858 0,5.672448 -1.109182,11.171428 -3.296938,16.342858 -2.115306,4.998978 -5.143878,9.490816 -9.00204,13.35 l 0,0 z"></path></svg></a></li>
+</ul>
+  
+  
+  
+<ul class="subscribe">
+  <li><a href="https://twitter.com/ohgnis" rel="subscribe-twitter" title="@ohgnis on Twitter" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewBox="0 0 512 512"><path class="social" d="M0.001,334.932c33.327,30.816,118.891,59.981,188.517-8.271c-12.52,1.955-22.972-0.416-30.913-8.269
+  c-7.531-7.465-7.945-15.182-3.914-22.202c3.275-5.725,10.184-9.741,16.977-13.934c-12.323,2.285-22.829,1.095-32.218-3.706
+  c-12.604-6.444-24.863-13.228-28.3-27.207c7.71-8.112,16.28-15.359,34.831-12.627c-17.45-5.83-33.087-13.429-44.41-24.815
+  c-11.028-11.091-12.163-18.302-13.932-26.996c9.632-3.567,19.688-5.421,30.478-4.353c-24.397-12.476-34.757-29.63-40.487-48.325
+  c-1.731-5.652-2.044-11.03-1.31-16.545c98.826,37.305,145.11,64.109,170.662,89.251c11.496-30.589,38.3-99.868,78.371-123.646
+  c0.191,3.77-1.309,7.837-4.357,12.189c11.863-6.609,21.125-17.188,37.445-16.98c-1.879,7.723-7.279,13.904-17.85,17.854
+  c10.662-4.084,21.463-7.545,32.65-9.578c10.375-1.881,10.229,6.304,4.355,10.444c-11.916,8.412-24.578,9.456-37.006,13.498
+  c38.105,0.949,69.266,18.994,93.604,58.343c8.088,13.074,13.52,26.149,14.807,40.487c16.254,4.563,32.426,5.494,48.76,2.61
+  c4.475-0.796,8.645-1.63,12.627-3.482c-6.354,9.529-13.686,17.356-23.947,20.899c-9.811,3.387-19.637,6.688-30.473,6.968
+  c17.641,6.675,37.082,7.045,57.033,5.659c-24.402,23.486-43.08,22.922-61.824,22.642c-8.221,34.703-25.025,69.315-60.52,101.005
+  c-46.559,41.569-96.678,61.397-148.457,65.742c-48.552,4.07-95.488,3.512-146.726-20.464
+  C56.486,393.349,24.648,368.884,0.001,334.932L0.001,334.932z"/></svg></a></li>
+</ul>
+  
+  
+  
+  
+  
+  
+    
+      <form action="https://www.google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="sitesearch" value="www.omps.in" />
+    
+          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+        </fieldset>
+      </form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Day 9 - Cut, Copy, Paste</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-28T21:32:41+05:30'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:32 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>As in my last post and coming posts I would be using org2blog to write content further to my blog sites and would further be writing about how to use customize it, in my later posts. This is a cool tool to use when you are writing and posting.</p>
+
+<p>In my earlier days of using computers, copy and pasting something was such an interesting thing to do and the most innovative thing possibly could happen to computers. we just copy things around and move on. I started using emacs some couple of years back, and using it fully only some months back. So many things I learnt and learning. Believe me today, I am amused to know the possiblities cut and paste does have.</p>
+
+<p>In Emacs, killing means erasing the text and copying it into the &ldquo;kill ring&rdquo;. &ldquo;Yanking&rdquo; means bringing it back. The generalized terms for these are cutting and paste, copy and paste. Killing and yanking a text are the most common ways to move or copy text within emacs.</p>
+
+<h1>Commands which remove text</h1>
+
+<p>Most commands which erases text from the buffer saves it in the kill ring. These are known as &ldquo;kill&rdquo; commands. We usually on other editors or place also call it is cut. But Emacs, unlike other editors, stores several recents cuts and not just the last one, which makes killing a safe process, now I don&rsquo;t have to worry about loosing my text. Never felt this confident earlier while killing something. :) The kill ring is shared by all buffers , so the text that&rsquo;s killed is shared among all the buffers. &lsquo;C - /&rsquo; (undo) to undo a kill comannd and bring the killed text back into the buffer, but will keep the killed buffer in the kill ring and this can also be used elsewhere.</p>
+
+<p>On graphical displays, killing some text back copies it to the system clipboard as well and then there are commands which kills the text but do not save it into the kill-ring are called as the delete command. &lsquo;C-d&rsquo; (delete-char) and &lsquo;DEL&rsquo; (delete-backward-character) will delete only one character at time, and those character which deletes only spaces or newlines, killing erase signigicant amount of nontrivial data and do a kill operation as mentioned above.</p>
+
+<h3>Deletion</h3>
+
+<p>This will erase the text and not saving in the kill ringh. In emacs, usually those command used for deletion, just delete a character at a time or whitspaces. Some of the delete commands to avoid future confusion.</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Keybindings</th>
+<th scope="col" class="left">Commands</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td class="left">DEL or</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+
+<tr>
+<td class="left">Backspace</td>
+<td class="left">delete-backward-char</td>
+<td class="left">Delete the previous character or text in the region</td>
+</tr>
+
+
+<tr>
+<td class="left">Delete</td>
+<td class="left">delete-foward-char</td>
+<td class="left">Delete the next character or the next in the region if it's active.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-d</td>
+<td class="left">delete-char</td>
+<td class="left">Delete the next character.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-\\</td>
+<td class="left">delete-horizontal-space</td>
+<td class="left">Delete spaces and tabs around point.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-SPC</td>
+<td class="left">just-one-space</td>
+<td class="left">Delete space and tabs around point leaving just one space.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-x C-o</td>
+<td class="left">delete-blank-lines</td>
+<td class="left">Delete blank lines aroung the current line.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-^</td>
+<td class="left">delete-indentation</td>
+<td class="left">Join two lines by deleting the intervening newline, along with and indentation following it.</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Killing or cutting</h3>
+
+<p>The simplest way to kill something is using the kill-command i.e. C-k (kill-line), this will invaribaly will remove anything from the point to the end of the line, the point is place where my cursor is, and everything from the cursor to the end of the line would be removed. If the cursor is at the end of the line, it kills the line ending the newline character, merging the next line into the current one; if point is at the beginning of the line, this leave the line blank.  Spaces and tabs are usually ignored while deciding the case to apply. As long as point is after the last visible character in the line, you can be sure that &lsquo;C-k&rsquo; will kill the newline; hence to kill an entire non-blank line, go to the beginning of the line and type &lsquo;C-k&rsquo; twice. This can also be done by giving the positive arguments to &lsquo;C-k&rsquo;, and with negative arguments it kill the previous lines before the point. &lsquo;C-k&rsquo; cannot be used to kill a character instead use the deletion commands above. Another way to kill the line and its new line is C-S-backspace, it kills regardless of the position where it is.</p>
+
+<p>Killing a line acts as cutting line, and saving it into the kill-ring. Remember, killing a line can be recovered from the kill-ring, but not deleting the characters.</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Keybindings</th>
+<th scope="col" class="left">Commands</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td class="left">C-k</td>
+<td class="left">kill-line</td>
+<td class="left">Kill the rest of the line from the point.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-S-backspace</td>
+<td class="left">kill-whole-line</td>
+<td class="left">Kill an entire line at once.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-w</td>
+<td class="left">kill-region</td>
+<td class="left">Kill the region as the name suggets.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-w</td>
+<td class="left">kill-ring-save</td>
+<td class="left">Copy the region into the kill ring.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-d</td>
+<td class="left">kill-word</td>
+<td class="left">kill the next word.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-DEL</td>
+<td class="left">backward-kill-word</td>
+<td class="left">Kill one word backwards</td>
+</tr>
+
+
+<tr>
+<td class="left">C-x DEL</td>
+<td class="left">backward-kill-sentence</td>
+<td class="left">Kill back to the beginning of sentence.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-k</td>
+<td class="left">kill-sentence</td>
+<td class="left">Kill to the end of sentence.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-M-k</td>
+<td class="left">kill-sexp</td>
+<td class="left">Kill the following balanced sexp.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-z CHAR</td>
+<td class="left">zap-to-char</td>
+<td class="left">Kill through the next occurence of CHAR.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>M-w and C-w are commonly used commands, which kils text in the region and save it in kill-ring. M-w is the emacs copy command. The command M-z combines killing with searching, it read a character and kill from point up to the next occurence of that character in the buffer. A numeric argument would act as a repeat count; a negative argument meant search the text backward and kill text before point.</p>
+
+<p>The are certain buffers which contain &lsquo;read-only text&rsquo; which cannot be modified and therefore cannot be killed, but the kill command still works. they move over text and save it into the kill-ring, without actually deleting the buffer. Normall, they will beep and display error message if this will happen. There may be times when we copy the similar text again, but if we change the varibale &lsquo;kill-do-not-save-duplicates&rsquo; to a non-nil value, identical subsequent killls would yeild a single kill-ring entry, without duplication.</p>
+
+<h1>Commands which insert text</h1>
+
+<p>It simply means pasting, and for theory, &ldquo;Yanking means reinserting text previously killed.&rdquo;</p>
+
+<p>The basic yanking command is &lsquo;C-y&rsquo; (yank). It inserts the most recent kill, leaving the cursor at the end of the inserted text. It also sets the mark at the beginning of the inserted text, without activating it; this lets jumping to the posisition eaisly with &lsquo;C-u C-SPC&rsquo;. With &lsquo;C-u C-y&rsquo; it does exact opposite which means leaving the cursor in the front of the inserted text and sets the mark at the end. ON graphical display the yank command checks the clipboard if any other application has placed any text and is more recently than the last emacs kill.</p>
+
+<h3>The kill ring</h3>
+
+<p>The kill ring is a list of blocks of text that were previously killed. There is only one kill ring shared by all buffers, so we can kill(cut) text from one buffer and yank(paste) it in another buffer. The maximum no. of buffer stored in kill ring is controlled by the variable &lsquo;kill-ring-max&rsquo;. The default is 60. Emacs cycles the kill ring by removing the older entries if we reach the limit. The actual contents of the kill ring are stored in buffer &lsquo;kill-ring&rsquo; and can be viewed using &lsquo;C-h v kill-ring&rsquo;</p>
+
+<h3>Yank(paste)ing earlier kills</h3>
+
+<p>Numeric arguments can be used to yank a text that is no longer the most recent. If you remeber the kill entry you can eaisly yank it back. If you don&rsquo;t remember you can use &rsquo;M-y' (yank-pop) command to cycle through the possiblities. If the previous command was yank command, &rsquo;M-y' takes the text that was yanked and replaces it with the txt of the next-to-the-last kill, first use C-y to yank the last kill and then use M-y to replace it with the previous kill.</p>
+
+<h3>Appending kills</h3>
+
+<p>If two or more kill commands are run in a row, combines their text into a single entry n the kill ring, so a single &lsquo;C-y&rsquo; yanks all the text as a unit. Basically the commands that kill forward from point add onto the end of the previous killed text. Any sequence of mixed forward and backward kill commands puts all the killed text into one entry without rearrangement and Numeric arguments do not break the sequence of appending kills.</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Keybindings</th>
+<th scope="col" class="left">Commands</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td class="left">C-y</td>
+<td class="left">yank</td>
+<td class="left">yank(paste) the last kill in the buffer</td>
+</tr>
+
+
+<tr>
+<td class="left">M-y</td>
+<td class="left">yank-pop</td>
+<td class="left">replace the text just yanked with an earlier batch of killed text</td>
+</tr>
+
+
+<tr>
+<td class="left">C-M-w</td>
+<td class="left">append-next-kill</td>
+<td class="left">Cause the following command if it is a kill command to append to previous kill</td>
+</tr>
+</tbody>
+</table>
+
+
+<h1>Cut and paste in X</h1>
+
+<p>I have covered enough about copying, cutting and  pasting of the text, these all work expeceted in the terminal window, certain further operations are added while we are working with emacs GUI, they mainly involve usage of the OS clipboard along with the kill-ring. On a graphical display it eases us in transferring the data among other applications using clipboard. On X. two other similar facilities are available, known as primary selection and secondary selection, emacs running on the graphical system integrate with these facilities. Emacs by default uses UTF-8 encoding for interprogram text transfers. If you are not happy with the text you pasted(well, I meant the encoding here.) another coding system can be specified &lsquo;C-x RET x&rsquo; or &lsquo;C-x RET X&rsquo;. Let me briefly go through the available facilities.</p>
+
+<h3>Clipboard</h3>
+
+<p>Its a facility that most graphical applications use for &ldquo;cutting and pasting&rdquo;, when it exists emacs is going to use it for its kill and yank commands. When some text is killed or copied to kill-ring, the text is also placed in the clipboard. Usually, emacs wipes the clipboard clean before putting its contents in there, though this behavior can be modified by setting variable &lsquo;save-interprogram-paste-before-kill&rsquo; to t. This will allow emacs to first save the contents of the clipboard to its kill-ring before deleting it from the clipboard, preventing you from loosing critical data. Yank commands too uses the clipboard, so if someother program is using the clipboard.</p>
+
+<h3>The Temp text selection or the Primary Selection</h3>
+
+<p>When in X, there is a primary selection containing the last stretch of text selected, usually by dragging the mouse. This is usually seperate from the clipboard. The contents in this selection are changed over every new selection, whereas the clipboard changes is only possible by cutting, copying and pasting. Under X, when the region is active (i.e when primary selection is made or in other words the text is selected by dragging or clicking the mouse or by keyboard commands and moving point.)</p>
+
+<h3>The Secondary selection</h3>
+
+<p>The X Window system provides a second facility known as the secondary selection.</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Mouse binding</th>
+<th scope="col" class="left">Command</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td class="left">M-Drag-Mouse-</td>
+<td class="left">mouse-set-secondary</td>
+<td class="left">With one end at the place where you press down the button, and the other end at the place where you release it. This text is highlighted using the \`secondary-selection\` face, as you drag. The windows scrolls automatically if you drag the mouse off the top or bottom of the window</td>
+</tr>
+
+
+<tr>
+<td class="left">M-Mouse-1</td>
+<td class="left">mouse-start-secondary</td>
+<td class="left">set one endpoint for the secondary selection.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-Mouse-3</td>
+<td class="left">mouse-secondary-save-then-kill</td>
+<td class="left">Set the secondary selection, with one end at the position clicked and the other at the position specified with M-Mouse-1</td>
+</tr>
+
+
+<tr>
+<td class="left">M-mouse-2</td>
+<td class="left">mouse-yank-secondary</td>
+<td class="left">Insert the secondary selection where you click, placing point at the end of the yanked text</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>Accumulating text</h2>
+
+<p>The text can be moved by killing or yanking, but there are other ways that are also convinient methods for copying one block of text in many places, or for copying many scattered blocks of text in one place.</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Commands</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td class="left">M-x append-to-buffer</td>
+<td class="left">Apend region to the contents of a specified buffer</td>
+</tr>
+
+
+<tr>
+<td class="left">M-x prepend-to-buffer</td>
+<td class="left">prepend region to the contents of a specified buffer</td>
+</tr>
+
+
+<tr>
+<td class="left">M-x copy-to-buffer</td>
+<td class="left">Copy regions into a specified buffer, deleting that buffers old contents.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-x insert-buffer</td>
+<td class="left">Insert the content of a specified buffer into current buffer at point.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-x append-to-file</td>
+<td class="left">Append region to the contents of a specified file at the end.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>M-x append-to-buffer, this reads the buffer name, then inserts a copy of the region into the buffer specified. If you specify non-existent buffer, `append-to-buffer` creates the buffer. The text is inserted whenever point is in that buffer.</p>
+
+<p>Point in that buffer is left at the end of the copied text, so successive uses of `append-to-buffer` accumulate the text in the specified buffer in the same order as they were copied.  `prepend-to-buffer` is just like `append-to-buffer` except that point in the other buffer is left before the copied text, so successive prepending happens in the reverse order.</p>
+
+<p>As it can append to buffer it can also accumulated the text directly to the file with &rsquo;M-x appened-to-file" only with the files which are not yet being visited to the file. because if we add it to the file we are editing in Emacs, would chnage the file behind Emacs&rsquo;s back and you can loose your precious editing.</p>
+
+<h2>Rectangles</h2>
+
+<p>&ldquo;Rectangle&rdquo; commands operate on rectangular areas of the text: and all of the characters between certain pair of columns, in a certain range of lines. In Emacs there are commands to operate on these rectangular areas, i.e to kill, yank and delete them off. These commands are useful with text in multicolumn formats, and for changing text into or out of such formats.</p>
+
+<p>To specify a rectangle for a command to work on, set the mark at one corener and point at the opposite corener. This is called as the region-rectangle. If point and mark are in the same column, the rectangle region is considered empty.</p>
+
+<p>The rectangle region is controlled in much similar way as the region  is controlled. But remember that a given combination of point and mark values can be interpreted as a region or as a rectangle.</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Key bindings</th>
+<th scope="col" class="left">Command</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td class="left">C-x r k</td>
+<td class="left">kill-rectangle</td>
+<td class="left">kill the text of the rectangle region, and saving its contents to the "last-killed-rectangle"</td>
+</tr>
+
+
+<tr>
+<td class="left">C-x r M-w</td>
+<td class="left">copy-rectangle-as-kill</td>
+<td class="left">Save the text of the region-rectangle as the last-killed-rectangle.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-x r d</td>
+<td class="left">delete-rectangle</td>
+<td class="left">Deletes the text of the region rectangle. The delete command works too.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-x r y</td>
+<td class="left">yank-rectangle</td>
+<td class="left">As the name suggests, it yanks the rectangle.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-x r o</td>
+<td class="left">open-rectangle</td>
+<td class="left">Insert blank space to fill the space of the region-rectangle.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-x r N</td>
+<td class="left">rectangle-line-numbers</td>
+<td class="left">Insert line numbers along the left edge of the region rectangle.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-x r c</td>
+<td class="left">clear-rectangle</td>
+<td class="left">CLear the region-rectangle by replacing all of its contents with spaces.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-x delete-whitespace-rectangle</td>
+<td class="left">&#xa0;</td>
+<td class="left">Delete whitespaces in each of the lines on the specified rectangle.</td>
+</tr>
+
+
+<tr>
+<td class="left">C-x r t STRING <RET></td>
+<td class="left">string-rectangle</td>
+<td class="left">Replace rectangle contents with STRING on each line.</td>
+</tr>
+
+
+<tr>
+<td class="left">M-x string-insert-rectangle <RET> STRING <RET></td>
+<td class="left">&#xa0;</td>
+<td class="left">Insert string on each line of the rectangle.</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>CUA Bindings</h2>
+
+<p>Now, this is some interesting keybindings provided by emacs to its users who are migrating from windows or other editing systems. The command &rsquo;M-x cua-mode" sets up keybindings, that are compatible with the Common User Access (CUA) systems used in many other applications. When CUA mode is enabled the &lsquo;C-x&rsquo;, &lsquo;C-c&rsquo;, &lsquo;C-v&rsquo;, and &lsquo;C-z&rsquo; invoke commands that cut (kill), copy, paste(yank), and undo respectively. The &lsquo;C-x&rsquo; and &lsquo;C-c&rsquo; work only on the active regions. Otherwise they still act as the prefix keys and the standard emacs commands like &lsquo;C-x C-c&rsquo; still works.</p>
+
+<p>To enter an Emacs command like `C-x C-f' while the mark is active, use one of the following methods: either hold `Shift' together with the prefix key, e.g., `S-C-x C-f', or quickly type the prefix key twice,e.g., `C-x C-x C-f'.</p>
+
+<p>CUA mode provides enhanced rectangle support with visible rectangle highlighting.  Use `C-RET' to start a rectangle, extend it using the movement commands, and cut or copy it using `C-x' or `C-c'.  `RET' moves the cursor to the next (clockwise) corner of the rectangle, so you can easily expand it in any direction.  Normal text you type is
+inserted to the left or right of each line in the rectangle (on the same side as the cursor).</p>
+
+<p>With CUA you can easily copy text and rectangles into and out of registers by providing a one-digit numeric prefix to the kill, copy, and yank commands, e.g., `C-1 C-c' copies the region into register `1', and `C-2 C-v' yanks the contents of register `2'.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+
+  <span class="byline author vcard">Authored by <span class="fn">
+  
+    Om Prakash Singh
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-12-28T21:32:41+05:30'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:32 pm</span></time>
+      
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/emacs/'>emacs</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.omps.in/blog/2015/12/28/day-9-cut/" data-via="ohgnis" data-counturl="http://www.omps.in/blog/2015/12/28/day-9-cut/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/12/26/day-8-mark/" title="Previous Post: Day 8 - Mark and The Region">&laquo; Day 8 - Mark and The Region</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2016/01/20/day-10-search-and-replace-using-regex/" title="Next Post: Day 10 - Search and Replace using regex">Day 10 - Search and Replace using regex &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Om Prakash Singh -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Day 2 - the Emacs Real Estate - my tech notes and what's going on</title>
+  <title>Day 3 - Understanding Files and Buffers - my tech notes and what's going on</title>
   <meta name="author" content="Om Prakash Singh">
 
   
-  <meta name="description" content="The Emacs Real estate. This is about the screen organization of emacs, how the text is placed and how the screen is drawn for the editor, this is &hellip;">
+  <meta name="description" content="The windows and the buffer. I will touch upon one new topic and what I learned today. While writing my Day 2 article I learnt intersting usage of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.omps.in/blog/2015/11/14/day-2-the-real-estate">
+  <link rel="canonical" href="http://www.omps.in/blog/2015/11/23/day3-understanding-files-and-buffers">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="my tech notes and what's going on" type="application/atom+xml">
@@ -103,7 +103,7 @@
   <header>
     
       
-        <h1 class="entry-title">Day 2 - the Emacs Real Estate</h1>
+        <h1 class="entry-title">Day 3 - Understanding Files and Buffers</h1>
       
     
     
@@ -113,7 +113,7 @@
 
 
 
-<time class='entry-date' datetime='2015-11-14T00:31:00+05:30'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:31 am</span></time>
+<time class='entry-date' datetime='2015-11-23T20:06:40+05:30'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>8:06 pm</span></time>
         
         
       </p>
@@ -121,35 +121,178 @@
   </header>
 
 
-<div class="entry-content"><h4>The Emacs Real estate.</h4>
+<div class="entry-content"><h1>The windows and the buffer.<a id="sec-1" name="sec-1"></a></h1>
 
-<p>This is about the screen organization of emacs, how the text is placed and how the screen is drawn for the editor, this is about telling you how the things in #emacs as they are, and why they are important this way. Though, i should have started understanding it and writng it down on Day 1, but understanding the key contol is equally important to me, if I did not had learned about it, I surely would have faced difficulty closing my emacs and moving around. Now let me just try to see how much I  am understanding about the screen here and how well I can put it in my words. :) ofcourse it is not a tech doc, but this my 30 Days challenege to learn more about emacs and understand emacs for good.</p>
+<p>I will touch upon one new topic and what I learned today. While writing my <a href="http://www.omps.in/blog/2015/11/14/day-2-the-real-estate/">Day 2</a> article I learnt intersting usage of windows and frames (well, the one where we do our editing and writing stuff. It would be good to understand how opening emacs creates the frame and window within.)</p>
 
-<p>I would be mainly using a lot of images compared to lot of writing that, understanding the screen can better be understood by rightly poining to the correct area.</p>
+<p>We start emacs the same way we start our other application. (on Linux, by typing on the terminal window; on Windows and Mac, clicking on to the application icon.) When emacs starts up it usually display a special buffer name <strong>GNU Emacs</strong>. This contains information about emacs and links to common good stuff for begineers(in later days we will figure out how we can skip this)</p>
 
-<h5>The Screen</h5>
+<p>It is good not to start multiple emacs session, instead just start once and do all the editing in the same sessions. In this way the emacs context accumlates valuable context, such as kill ring, registers, undo history, which helps a lot at advanced stages.</p>
 
-<p>Double clicking on the emacs icon does open up a GUI window and similarly typing it on command prompt from withing an X Windows system, I get the emacs as an editor with full flesh and bones, i actually means as an GUI application, like we see for other editors. And when  I do same while I am  on the command prompt with no X support, or with -nw or -t (with emacsclient, will write more about this in coming days.) i get the emacs taking up my entire terminal screen. We will call these frames and emace behaves almost similar in both these frames. It normally starts with just one frame, but many frames can be created.</p>
+<h2>Buffer<a id="sec-1-1" name="sec-1-1"></a></h2>
 
-<p>Each frame consist of several distinct regions. as shown in the picture below.</p>
+<p>The text we are going to edit in emacs is called as buffers and is used to hold the files text. So everytime we visit a file, run dired, send message with &lsquo;C-x m&rsquo; or ask for help, a buffer is used for holding the text of the message.</p>
 
-<p>The emacs frame consist of these important segments</p>
+<h3>Creating and selecting buffers<a id="sec-1-1-1" name="sec-1-1-1"></a></h3>
 
-<h6>Point: Where editing takes place</h6>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
-<p>The place where the cusrsor is present is called as the point in a multiple windows emacs in GUI, the point can be moved by clicking the mouse in the respective region, the active window will have the curson as solid block and will appear to be on the cursor. While working with several buffers each buffer has its own valur for point.</p>
 
-<h6>Echo area: Where the commands and messages appear at bottom of the frame.</h6>
+<colgroup>
+<col  class="left" />
 
-<p>if you pause for more than a second in the middle of the command, you can see your commands being echoed in the echo area. it also shows you the error message when the command fails. The messages displayed in the echo area are generally saved in the special buffer calles as <strong>Messages</strong></p>
+<col  class="left" />
 
-<h6>Mode Line: Understanding the mode line.</h6>
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Command Keybinding</th>
+<th scope="col" class="left">Command</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
 
-<p>At the bottom of every window there is a mode line.
-The text displayed on the mode line has the following format
-cs:ch-fr buf        pos line (major minor)</p>
+<tbody>
+<tr>
+<td class="left">C-x b BUFFER</td>
+<td class="left">switch-to-buffer</td>
+<td class="left">select of create a buffer</td>
+</tr>
 
-<p>o cs  display the character set.</p>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">named BUFFER.</td>
+</tr>
+</tbody>
+
+<tbody>
+<tr>
+<td class="left">C-x 4 b BUFFER</td>
+<td class="left">switch-to-buffer-other-window</td>
+<td class="left">slect BUFFER in other</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">window.</td>
+</tr>
+</tbody>
+
+<tbody>
+<tr>
+<td class="left">C-x 5 b BUFFER</td>
+<td class="left">switch-to-buffer-other-frame</td>
+<td class="left">select BUFFER in other</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">frame.</td>
+</tr>
+</tbody>
+
+<tbody>
+<tr>
+<td class="left">C-x <LEFT></td>
+<td class="left">previous-buffer</td>
+<td class="left">select the previous buffer</td>
+</tr>
+
+
+<tr>
+<td class="left">C-x <RIGHT></td>
+<td class="left">next-buffer</td>
+<td class="left">select the next buffer</td>
+</tr>
+</tbody>
+
+<tbody>
+<tr>
+<td class="left">C-u M-g M-g</td>
+<td class="left">&#xa0;</td>
+<td class="left">read num N and move to line N</td>
+</tr>
+
+
+<tr>
+<td class="left">C-u M-g g</td>
+<td class="left">&#xa0;</td>
+<td class="left">in the most recent buffer</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">other than current</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Listing Buffers<a id="sec-1-1-2" name="sec-1-1-2"></a></h3>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Command Keybinding</th>
+<th scope="col" class="left">Command</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td class="left">C-x C-b</td>
+<td class="left">list-buffer</td>
+<td class="left">List the exisitng buffers</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Here is an example of a buffer list:</p>
+
+<p>CRM Buffer                Size  Mode              File
+. * .emacs                3294  Emacs-Lisp        ~/.emacs
+ %  <strong>Help</strong>                 101  Help
+    search.c             86055  C                 ~/cvs/emacs/src/search.c
+ %  src                  20959  Dired by name     ~/cvs/emacs/src/
+-   <strong>mail</strong>                  42  Mail</p>
+
+<p>%  HELLO                 1607  Fundamental       ~/cvs/emacs/etc/HELLO
+%  NEWS                481184  Outline           ~/cvs/emacs/etc/NEWS
+   <strong>scratch</strong>              191  Lisp Interaction
+-   <strong>Messages</strong>            1554  Fundamental</p>
+
+<p>`.&lsquo; in the first field indicates that this is the current buffer.<br/>
+`%&rsquo; indicates a read-only buffer.<br/>
+`*&lsquo; indicates that the buffer is &ldquo;modified&rdquo;.</p>
+
+<p>The buffer `*Help*&lsquo; was made by a help request (*note Help::); it is not visiting any file.
+The buffer `src&rsquo; was made by Dired on the directory `~/cvs/emacs/src/&lsquo;.</p>
+
+<h3>Killing<a id="sec-1-1-3" name="sec-1-1-3"></a></h3>
+
+<p>The buffers can simply be done by just pressing C-x k BUFFER or in the C-x C-b we can select the buffer by pressing k and then exectue it.</p>
+
+<h2>Windows<a id="sec-1-2" name="sec-1-2"></a></h2>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -159,132 +302,87 @@ cs:ch-fr buf        pos line (major minor)</p>
 
 <col  class="left" />
 </colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Key Bindings</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+
 <tbody>
 <tr>
-<td class="left">'-'</td>
-<td class="left">implicate no special character set.  see [Coding System](http://www.gnu.org/software/emacs/manual/html_mono/emacs.html#Coding-Systems)</td>
+<td class="left">'C-x 2'</td>
+<td class="left">To split the windows into 2 one above the another.</td>
 </tr>
 
 
 <tr>
-<td class="left">'='</td>
-<td class="left">means no coversion, and used for files with no textual data</td>
+<td class="left">'C-x 3'</td>
+<td class="left">Split the windows side by side.</td>
 </tr>
 
 
 <tr>
-<td class="left">'1'</td>
-<td class="left">ISO Latin-1, other characters represent various coding system</td>
+<td class="left">'C-x o'</td>
+<td class="left">to move around windows, or click in the window with the mouse click to have the focus on that window.</td>
+</tr>
+
+
+<tr>
+<td class="left">'C-M-v'</td>
+<td class="left">Scroll the next window.</td>
+</tr>
+
+
+<tr>
+<td class="left">'C-x 0'</td>
+<td class="left">Delete the selected window</td>
+</tr>
+
+
+<tr>
+<td class="left">'C-x 1'</td>
+<td class="left">Delete all windows except the select one.</td>
+</tr>
+
+
+<tr>
+<td class="left">'C-x 4 0'</td>
+<td class="left">Delete the selected window and kill the buffer showing in that window.</td>
+</tr>
+
+
+<tr>
+<td class="left">'C-x ^'</td>
+<td class="left">Make selected window taller.</td>
+</tr>
+
+
+<tr>
+<td class="left">'C-x }'</td>
+<td class="left">Make selected window wider</td>
+</tr>
+
+
+<tr>
+<td class="left">'C-x {'</td>
+<td class="left">Make selected window narrower</td>
+</tr>
+
+
+<tr>
+<td class="left">'C-x -'</td>
+<td class="left">Shrink window if buffer dont need so many lines.</td>
+</tr>
+
+
+<tr>
+<td class="left">'C-x +'</td>
+<td class="left">Make all window same height.</td>
 </tr>
 </tbody>
 </table>
 
-
-<p>o ch   this usually show 2 dashes</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="left">(&#x2013;)</td>
-<td class="left">if the buffer is unmodified.</td>
-</tr>
-
-
-<tr>
-<td class="left">(\*\*)</td>
-<td class="left">if the buffer is modified.</td>
-</tr>
-
-
-<tr>
-<td class="left">'%\*'</td>
-<td class="left">for read only buffer if modified.</td>
-</tr>
-
-
-<tr>
-<td class="left">'%%'</td>
-<td class="left">otherwise, i.e read only buffer and not modified.</td>
-</tr>
-
-
-<tr>
-<td class="left">'-'</td>
-<td class="left">displayed after ch, if the directory is local.</td>
-</tr>
-
-
-<tr>
-<td class="left">'@'</td>
-<td class="left">if the directory if buffer is on remote macine is shows @.</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>o fr   is the selected frame name, default is F1</p>
-
-<p>o buf   usually the name of the file or the buffer.</p>
-
-<p>o pos   where there is additional text above the top of the window or below the bottom.</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="left">All</td>
-<td class="left">In case of small buffer and everything visible on screen</td>
-</tr>
-
-
-<tr>
-<td class="left">Top</td>
-<td class="left">If you are at the beginning of the buffer</td>
-</tr>
-
-
-<tr>
-<td class="left">Bot</td>
-<td class="left">If you are at the bottom of the buffer</td>
-</tr>
-
-
-<tr>
-<td class="left">nn%</td>
-<td class="left">nn is the percentage of buffer above the window</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>o line   &lsquo;L&rsquo; Followed by the line no. at point.</p>
-
-<p>o major   Name of the major mode used in buffer, for eg. Text mode, Lisp Mode, Org Mode and so on.</p>
-
-<p>o minor   minor mode are the list of enabled minor modes on top of major mode, for eg visual-line-mode, flyspell-mode</p>
-
-<h6>The Menu Bar - How to use.</h6>
-
-<p>On the graphical display you can just use the mouse to open the menu bar, an arrow to the right of the menu denotes the menu having a sub menu. Many commands in menu bar have ordinary key bindings as well.</p>
-
-<p>On a text terminal menu bar can be opened using &rsquo;M-`&lsquo; or <F10>, or run the command tmm-menubar. Move around the menu bar using up and down arrow key, <RET> i.e enter key, to select the item or C-g to come out of the menu bar mode.</p>
-
-<p>I know its been a little late today, but I was quite able to give time one weekends than as on weekdays, I just don&rsquo;t want to loose focus so am trying to keep up with my posts daily, hope these should be helpful, and I am seriously looking forward for your comments and suggestion, so do please keep posting, tomorrow I think I will go more about buffers and frames.</p>
-
-<p>All in all I am enjoying and learning so many things while posting and writing.</p>
 </div>
 
 
@@ -307,7 +405,7 @@ cs:ch-fr buf        pos line (major minor)</p>
 
 
 
-<time class='entry-date' datetime='2015-11-14T00:31:00+05:30'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:31 am</span></time>
+<time class='entry-date' datetime='2015-11-23T20:06:40+05:30'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>8:06 pm</span></time>
       
       
 
@@ -322,7 +420,7 @@ cs:ch-fr buf        pos line (major minor)</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.omps.in/blog/2015/11/14/day-2-the-real-estate/" data-via="ohgnis" data-counturl="http://www.omps.in/blog/2015/11/14/day-2-the-real-estate/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.omps.in/blog/2015/11/23/day3-understanding-files-and-buffers/" data-via="ohgnis" data-counturl="http://www.omps.in/blog/2015/11/23/day3-understanding-files-and-buffers/" >Tweet</a>
   
   
   
@@ -331,10 +429,10 @@ cs:ch-fr buf        pos line (major minor)</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/11/14/day-1-learning-emacs/" title="Previous Post: Day 1 - Learn Emacs in 30 days challenge">&laquo; Day 1 - Learn Emacs in 30 days challenge</a>
+        <a class="basic-alignment left" href="/blog/2015/11/14/day-2-the-real-estate/" title="Previous Post: Day 2 - The Emacs Real estate">&laquo; Day 2 - The Emacs Real estate</a>
       
       
-        <a class="basic-alignment right" href="/blog/2015/11/23/day3-understanding-files-and-buffers/" title="Next Post: Day 3 - Understanding Files and Buffers">Day 3 - Understanding Files and Buffers &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2015/11/28/day-4-editing/" title="Next Post: Day 4 - Editing">Day 4 - Editing &raquo;</a>
       
     </p>
   </footer>

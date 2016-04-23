@@ -1,13 +1,39 @@
 ---
 layout: post
-title: Learn Emacs in 30 days challenge
-date: 2015-11-14 00:02
+title: "Day 1 - Learn Emacs in 30 days challenge"
+date: 2015-11-14 00:02 +0530
 category: emacs
-tags: emacs, challenge
+tags: emacs, 30daychallenge, #day1
 comments: true
 ---
 
 Thank you for your support and encouragement. So here I am writing about my beginning of Day 1: part and working with EMACS.
+
+The below is the content I am planning to touch upon during my 30 Days challenge. The checklist is not in any particular order, but just to remind me of the topics what I need to cover.
+
+-   [ ] Modes.
+-   [ ] IDO Mode
+-   [ ] org-mode
+    -   [ ] Todo items
+    -   [ ] Hyperlinks
+    -   [ ] tags, tables
+    -   [ ] propertis and columns
+    -   [ ] Date and time.
+    -   [ ] AGenda views
+    -   [ ] Exporting
+-   [ ] tramp
+-   [X] Running command by the name/ help/ commands for fixing typos. - Day 6
+-   [ ] Commands for human languages.
+-   [ ] Mark and the region / Killing and moving text / Registers
+-   [ ] COntrlling the display / Multiple buffers / Multiple windows / frames and graphical display
+-   [ ] Search and replacement.
+-   [ ] File handelling.
+-   [ ] Editing compling, testing and mantaining programs.
+-   [ ] Sending mail, reading mail with rmail.
+-   [ ] Dired mode.
+-   [ ] The calendar and the diary.
+-   [ ] Miscellaneous commands
+-   [ ] Customization.
 
 Quoting from Emacs Manual
 " Emacs is the extensible, customizable, self-documenting real-time display editor."
@@ -286,3 +312,5 @@ Most movements in emacs can be controlled using the arrow keys but some still sa
 These are some of the common keys for moving around while in emacs. It seems its really hard for getting used to it, but as I am working with emacs for sometime, I started to feel it is most obvious to be like that.
 
 I think most of the time as a beginner we could get along with using the arrow keys and we should highly discourage it and use the emacs specific keybindings to move around within emacs. Apart from bringing the emacs on and starting it up, the very important thing we should remeber is how to close it. During my initial days as emacs user I was not aware of quitting emacs, and have of the time ended in killing emacs from the process tree, now I feel so stupid. C-g and C-x C-c are the commands, which can help you all the time, while we are learning. I have heard more advanced user of emacs seldom close their emacs sessions and I may try to forget using C-x C-C again. It may take some time till I get there and stop closing my emacs and I am sure it would be more than 30 days.
+
+

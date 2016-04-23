@@ -1,7 +1,7 @@
-Title: Day-2: The Emacs Real estate.
+Title: Day 2 - The Emacs Real estate.
 Date: 2015-11-14 00:31
 Category: emacs
-Tags: emacs, day2
+Tags: emacs, day2, 30dayschallenge
 
 #### The Emacs Real estate.
 

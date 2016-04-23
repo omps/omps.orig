@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Day-2 - The Emacs Real estate.
+title: Day 2 - The Emacs Real estate
 date: 2015-11-14 00:31
 category: emacs
-tags: emacs, day2
+tags: #emacs, #day2, #30daychallenge
 ---
 #### The Emacs Real estate.
 
