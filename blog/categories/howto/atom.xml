@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Howto | my tech notes and what's going on]]></title>
+  <link href="http://www.omps.in/blog/categories/howto/atom.xml" rel="self"/>
+  <link href="http://www.omps.in/"/>
+  <updated>2016-04-23T17:47:40+05:30</updated>
+  <id>http://www.omps.in/</id>
+  <author>
+    <name><![CDATA[Om Prakash Singh]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Working With Octopress]]></title>
+    <link href="http://www.omps.in/blog/2016/04/23/working-with-octopress/"/>
+    <updated>2016-04-23T11:58:21+05:30</updated>
+    <id>http://www.omps.in/blog/2016/04/23/working-with-octopress</id>
+    <content type="html"><![CDATA[<h3>Good old saturday.</h3>
+
+<p>Well it is the good old saturday, when I planned to blog about something after around 2 weeks.</p>
+
+<h4>2 Weeks earlier</h4>
+
+<p>Two weeks earlier I sat up, migrated my blog from pelican to octopress keeping the unerlying githubpages intact, hardly did I know after two week, I will again face the same problem what I did with pelican, anycase this time I was determined not to rework again on mihration to a nw platform, instead I will fix what was missing and will try to resolve the issue with octopress only.</p>
+
+<h4>Today</h4>
+
+<p>My octopress did worked fine without any error, I made some cosmetic changes to the blog and published some post. The problem is the blog and the changes are not being published, while I am making changes, the <code>rake deploy</code> did worked but I was not able to see anychanges happening to my blog page. But yes, the <code>rake preview</code> did worked fine and I was able to see my changes to localhost. Tried fixing it hard for sometimes but I didn&rsquo;t work.</p>
+
+<p>To make it work, I deleted my github.io repository from github, ran the command <code>rake github_setup_pages</code> pushed the content from my local repository back to github again, and well, after this I was able to see the changes on the web. That&rsquo;s a releif.</p>
+
+<p>Finally, I made some cosmetic changes, write this as my notes on to what happened and how I fixed it. I also need to find out why it failed in the first place, I am assuming I changed my Laptop, that could be a reason, but this I am not convinced by this.</p>
+]]></content>
+  </entry>
+  
+</feed>
