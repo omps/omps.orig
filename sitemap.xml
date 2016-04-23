@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://www.omps.in/blog/2016/04/23/day-5-minibuffer/</loc>
+<lastmod>2016-04-23T20:33:04+05:30</lastmod>
+</url>
+<url>
 <loc>http://www.omps.in/blog/2016/04/23/working-with-octopress/</loc>
 <lastmod>2016-04-23T11:58:21+05:30</lastmod>
 </url>

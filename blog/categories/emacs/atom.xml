@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Emacs | my tech notes and what's going on]]></title>
   <link href="http://www.omps.in/blog/categories/emacs/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-04-23T20:28:09+05:30</updated>
+  <updated>2016-04-23T20:34:01+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
@@ -397,7 +397,7 @@ The buffer `src&rsquo; was made by Dired on the directory `~/cvs/emacs/src/&lsqu
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Day-2 - the Emacs Real Estate.]]></title>
+    <title type="html"><![CDATA[Day 2 - the Emacs Real Estate]]></title>
     <link href="http://www.omps.in/blog/2015/11/14/day-2-the-real-estate/"/>
     <updated>2015-11-14T00:31:00+05:30</updated>
     <id>http://www.omps.in/blog/2015/11/14/day-2-the-real-estate</id>

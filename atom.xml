@@ -4,7 +4,7 @@
   <title><![CDATA[my tech notes and what's going on]]></title>
   <link href="http://www.omps.in/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-04-23T20:28:09+05:30</updated>
+  <updated>2016-04-23T20:34:01+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
@@ -12,6 +12,200 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Day 5 - Minibuffer]]></title>
+    <link href="http://www.omps.in/blog/2016/04/23/day-5-minibuffer/"/>
+    <updated>2016-04-23T20:33:04+05:30</updated>
+    <id>http://www.omps.in/blog/2016/04/23/day-5-minibuffer</id>
+    <content type="html"><![CDATA[<h1>Day 5: The Minibuffer</h1>
+
+<p>Emacs have a minibuffer, and called the same because of its small screen space, the minibuffer resides in the same area as echo area so many time when any error or informative message appear in the echo area, it just hides the minibuffer for a few seconds or till the time any new keypress is made.</p>
+
+<p>Minibuffer can be activated using typing text to it, and exited by typing <strong><RET></strong> (execute the command) or <strong>C-g</strong> (cancel the command). The minibuffer prompt shows the default arguments suppose the commands that read buffer names usually show buffer name as the default and can be activated using <strong><RET></strong></p>
+
+<p>When finding a file in emacs, for opening or creating one, the minibuffer usually open the default dir, the default directory is stored in buffer-local variable as &lsquo;default-directory&rsquo;, now whenever emacs will read a filename using a minibuffer it will insert the directory name of the file being opened.</p>
+
+<p>Emacs interpret &lsquo;~/&rsquo; as your home directory. you can specify something like this in case you do not want to type the complete path from where you want your files to be opened / created.</p>
+
+<p>The minibuffer in emacs is also a buffer and the usual emacs commands are available for editing. <strong><RET></strong> in the minibuffer submits the argument and the same cannot be used to insert a new line and can be done with <strong>C-q C-j</strong> and <strong>C-o</strong>. The keys <TAB>, <SPC>, and ? are bound to completion of the commands.</p>
+
+<p>When the minibuffer is active, the echo area is treated like an ordinary Emacs window.</p>
+
+<p>Minibuffer uses a feature called as completion these(<TAB>, <RET> and <SPC>) commands attempt to complete the text in the minibuffer, &lsquo;?&rsquo; usually provide a list of possible completions. These commands work by narrowing down a large list of to a smaller subsets of matches. Emacs perform completion using one or more of the below <em>Completion Styles</em>.</p>
+
+<p>The variable  <span class="underline">completion styles</span> specify the completion style to use.</p>
+
+<p>From the Emacs Manual:</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">basic</td>
+<td class="left">A matching completion alternative must have the same beginning as</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">the text in the minibuffer before point.  Furthermore, if there is</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">any text in the minibuffer after point, the rest of the completion</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">alternative must contain that text as a substring.</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+
+<tr>
+<td class="left">partial-completions</td>
+<td class="left">This aggressive completion style divides the minibuffer text into</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">words separated by hyphens or spaces, and completes each word</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">separately. a \* in the minibuffer is treated as a wildcard and matches</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">any character at the corresponding position.</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+
+<tr>
+<td class="left">emacs22</td>
+<td class="left">this is similar to basic, except it ignores the text in minibuffer after the</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">point.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Below additional completions are also defined, and can be used in <strong>completion-styles</strong></p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">substring</td>
+<td class="left">A completion alternative must contain the text in the minibuffer before point., and</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">text after point, as substrings.</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+
+<tr>
+<td class="left">initials</td>
+<td class="left">the very agressive completions style attempts to complete acronyms and initalisms</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+
+<tr>
+<td class="left">emacs21</td>
+<td class="left">a very simple completion style, if the text in minibuffer is foobar, only matches</td>
+</tr>
+
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">starting with foobar is considered.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>M-x uses the minibuffer to read the name of a command, so completion works by matching the minibuffer text with available emacs commands.</p>
+
+<p>THe commands for completion works as defined in the minibuffer when the completion is allowed.</p>
+
+<p><strong><TAB></strong>     complete as much as possible; if unable to complete display a list of possible completions (minibuffer-complete)</p>
+
+<p><strong><SPC></strong>     Completes up to one word. (minibuffer-complete-word)</p>
+
+<p><strong><RET></strong>     Submit the minibuffer text as argument. (minibuffer-complete-and-exit)</p>
+
+<p><strong>?</strong>         Display list of completions. (minibuffer-complete-help)</p>
+
+<p><strong>Mouse-1</strong>   Clicking mouse button 1 or 2 on a completion alternative chooses it
+<strong>Mouse-2</strong>   (mouse-choose-completion).</p>
+
+<p><strong>M-v</strong>       Selects the window showing the completion list. (switch-to-completion)
+<strong><PageUp></strong>  and then we can use the below pageup and prior commands.
+<strong><prior></strong></p>
+
+<p><strong><Right></strong>    (next-completion) this moves to point following alternatives.</p>
+
+<p><strong><Left></strong>    (previous-completion) this moves to previous alternatives.</p>
+
+<p>There are many modes in emacs which let you do so many things with the minibuffer, some noted ones are ido-mode and helm-mode.</p>
+
+<p>Ido mode is part of the emacs from version 22.</p>
+
+<p>I will cover these modes in my later learnings, and keep updating.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Working With Octopress]]></title>
@@ -563,7 +757,7 @@ The buffer `src&rsquo; was made by Dired on the directory `~/cvs/emacs/src/&lsqu
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Day-2 - the Emacs Real Estate.]]></title>
+    <title type="html"><![CDATA[Day 2 - the Emacs Real Estate]]></title>
     <link href="http://www.omps.in/blog/2015/11/14/day-2-the-real-estate/"/>
     <updated>2015-11-14T00:31:00+05:30</updated>
     <id>http://www.omps.in/blog/2015/11/14/day-2-the-real-estate</id>
