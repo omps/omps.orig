@@ -3,8 +3,8 @@
 # ----------------------- #
 
 url: http://www.omps.in
-title: "my tech notes and what's going on"
-subtitle: personal blog about my rendezvous with technology and life.
+title: "Om Prakash Singh"
+subtitle: Technology and me
 author: Om Prakash Singh
 simple_search: https://www.google.com/search
 description: about life with technology and memories.
@@ -19,7 +19,7 @@ date_format: "ordinal"
 subscribe_rss: /atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
-email:
+email: omps@omps.in
 
 # ----------------------- #
 #    Jekyll & Plugins     #
