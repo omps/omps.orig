@@ -60,10 +60,13 @@
 <loc>http://www.omps.in/blog/archives/</loc>
 </url>
 <url>
+<loc>http://www.omps.in/blog/</loc>
+</url>
+<url>
 <loc>http://www.omps.in/</loc>
 </url>
 <url>
-<loc>http://www.omps.in/about-me/</loc>
+<loc>http://www.omps.in/about/</loc>
 </url>
 <url>
 <loc>http://www.omps.in/blog/categories/games/</loc>
@@ -77,7 +80,7 @@
 <url>
 <loc>http://www.omps.in/blog/categories/howto/</loc>
 </url>
-</urlset>
->http://www.omps.in/posts/2/</loc>
+<url>
+<loc>http://www.omps.in/posts/2/</loc>
 </url>
 </urlset>
