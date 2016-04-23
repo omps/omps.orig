@@ -4,7 +4,7 @@
   <title><![CDATA[my tech notes and what's going on]]></title>
   <link href="http://www.omps.in/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-04-23T11:46:16+05:30</updated>
+  <updated>2016-04-23T11:50:48+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
@@ -14,13 +14,10 @@
 
   
   <entry>
-    
-    <title type="html"><![CDATA[welcome]]></title>
+    <title type="html"><![CDATA[Welcome]]></title>
     <link href="http://www.omps.in/blog/2016/04/04/welcome/"/>
-    
     <updated>2016-04-04T21:18:01+05:30</updated>
     <id>http://www.omps.in/blog/2016/04/04/welcome</id>
-    
     <content type="html"><![CDATA[<p>For two years I wanted to write but was figuring out what and how. I think the impossible task was not to figure out, but to sit down and start writing.</p>
 
 <p>Finally, I make my mind and start finishing the stuff which I always wanted to finish. I have tidbits kept in here, which soon will be blogged.</p>
@@ -33,17 +30,13 @@
 
 <p>Others may soon follow.</p>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
     <title type="html"><![CDATA[Using AWS CLI]]></title>
     <link href="http://www.omps.in/blog/2016/04/01/aws-cli/"/>
-    
     <updated>2016-04-01T00:00:00+05:30</updated>
     <id>http://www.omps.in/blog/2016/04/01/aws-cli</id>
-    
     <content type="html"><![CDATA[<h2>Notes on using aws cli.</h2>
 
 <h3>MY setup.</h3>
@@ -161,17 +154,13 @@ The problem is the user which is configured doesn&rsquo;t have access to any pol
 
 <p>I would probably write more about IAM Policies later.</p>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[Day-2 - The Emacs Real estate.]]></title>
+    <title type="html"><![CDATA[Day-2 - the Emacs Real Estate.]]></title>
     <link href="http://www.omps.in/blog/2015/11/14/day-2-the-real-estate/"/>
-    
     <updated>2015-11-14T00:31:00+05:30</updated>
     <id>http://www.omps.in/blog/2015/11/14/day-2-the-real-estate</id>
-    
     <content type="html"><![CDATA[<h4>The Emacs Real estate.</h4>
 
 <p>This is about the screen organization of emacs, how the text is placed and how the screen is drawn for the editor, this is about telling you how the things in #emacs as they are, and why they are important this way. Though, i should have started understanding it and writng it down on Day 1, but understanding the key contol is equally important to me, if I did not had learned about it, I surely would have faced difficulty closing my emacs and moving around. Now let me just try to see how much I  am understanding about the screen here and how well I can put it in my words. :) ofcourse it is not a tech doc, but this my 30 Days challenege to learn more about emacs and understand emacs for good.</p>
@@ -337,17 +326,13 @@ cs:ch-fr buf        pos line (major minor)</p>
 
 <p>All in all I am enjoying and learning so many things while posting and writing.</p>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[Learn Emacs in 30 days challenge]]></title>
+    <title type="html"><![CDATA[Learn Emacs in 30 Days Challenge]]></title>
     <link href="http://www.omps.in/blog/2015/11/14/day-1-learning-emacs/"/>
-    
     <updated>2015-11-14T00:02:00+05:30</updated>
     <id>http://www.omps.in/blog/2015/11/14/day-1-learning-emacs</id>
-    
     <content type="html"><![CDATA[<p>Thank you for your support and encouragement. So here I am writing about my beginning of Day 1: part and working with EMACS.</p>
 
 <p>Quoting from Emacs Manual
@@ -635,17 +620,13 @@ Shift will be denoted as &rsquo;S'.</p>
 
 <p>I think most of the time as a beginner we could get along with using the arrow keys and we should highly discourage it and use the emacs specific keybindings to move around within emacs. Apart from bringing the emacs on and starting it up, the very important thing we should remeber is how to close it. During my initial days as emacs user I was not aware of quitting emacs, and have of the time ended in killing emacs from the process tree, now I feel so stupid. C-g and C-x C-c are the commands, which can help you all the time, while we are learning. I have heard more advanced user of emacs seldom close their emacs sessions and I may try to forget using C-x C-C again. It may take some time till I get there and stop closing my emacs and I am sure it would be more than 30 days.</p>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[Games of kids]]></title>
+    <title type="html"><![CDATA[Games of Kids]]></title>
     <link href="http://www.omps.in/blog/2015/02/26/applications-for-kids/"/>
-    
     <updated>2015-02-26T00:00:00+05:30</updated>
     <id>http://www.omps.in/blog/2015/02/26/applications-for-kids</id>
-    
     <content type="html"><![CDATA[<h5>Applications for Kids.</h5>
 
 <p>I was trying to figure out some application/games for kids based on Linux to teach my Kid about some programming, I tried to teach him some computer at times and found him very interested in leaning stuff. There must be many for windows but being myself an avid Linux user from quite a long time, I really want to introduce him to Linux quite early, unlike me, who got my hands on Linux late in life and still waiting to explore the endless possiblities it offers.<a id="sec-1" name="sec-1"></a></p>
@@ -717,7 +698,6 @@ Whether you&rsquo;re a parent, a teacher, or a kid, give Tux4Kids software a try
 </ol>
 
 ]]></content>
-    
   </entry>
   
 </feed>

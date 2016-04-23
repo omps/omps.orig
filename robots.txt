@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: 
+Disallow:
 
-Sitemap: http://www.omps.in/sitemap.xml 
+Sitemap: http://www.omps.in/sitemap.xml
