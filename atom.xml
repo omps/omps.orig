@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Om Prakash Singh]]></title>
+  <title><![CDATA[my tech notes and what's going on]]></title>
   <link href="http://www.omps.in/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-04-24T03:23:58+05:30</updated>
+  <updated>2016-04-24T03:56:54+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
-    <email><![CDATA[omps@omps.in]]></email>
+    
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
