@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Howto | Om Prakash Singh]]></title>
   <link href="http://www.omps.in/blog/categories/howto/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-04-24T14:33:59+05:30</updated>
+  <updated>2016-04-24T16:19:55+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
@@ -12,6 +12,150 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Tweet Posts With Octopress]]></title>
+    <link href="http://www.omps.in/blog/2016/04/24/howto-tweet-new-posts-in-octopress/"/>
+    <updated>2016-04-24T08:19:20+05:30</updated>
+    <id>http://www.omps.in/blog/2016/04/24/howto-tweet-new-posts-in-octopress</id>
+    <content type="html"><![CDATA[<p>Thanks to the <a href="http://fusion94.org/blog/2013/01/13/howto-tweet-new-posts-in-octopress/">blog post</a> by <a href="http://fusion94.org">Tony Guntharp</a> who got inspired from another blog post by <a href="http://blog.prydoni.us">Adnan Abdulhussein</a> on how to integrate twitter posting with <a href="http://octopress.org">Octopress</a>. His post was some 3 Years old and the <a href="https://github.com/sferik/twitter">twitter gem</a> for <a href="http://octopress.org">Octopress</a> version <code>5.16.0</code> has gone through a lot of changes, So technically I did some rewrite into the ruby configuration code and fixed it so I can post the tweets with the latest twitter gem.</p>
+
+<p>The basic idea remains the same taken from the predecessors blogs, you create a post and print the tweet message you want to give and it create a link to the post in the tweet_queue file. When the <code>rake deploy</code> task is called, it reads from the <strong>tweet_queue</strong> file and tweets what&rsquo;s in their line by line. This way you can create multiple posts at a time, and they all will be tweeted when you run your <code>rake deploy</code> task for your blog.</p>
+
+<h3>Create a twitter application.</h3>
+
+<p>A twitter application is must to post to <a href="http://www.twitter.com">twitter</a>. Head over to <a href="https://apps.twitter.com/app/new,">https://apps.twitter.com/app/new,</a> sign in and create a new application for your blog.</p>
+
+<p>In <em>settings</em>: ensure <em>read</em> and <em>write</em> is <strong>enabled</strong>.</p>
+
+<p>In <em>Keys and access tokens</em>: take note of the following details.</p>
+
+<ul>
+<li>Consumer Keys</li>
+<li>Consumer Secret</li>
+<li>Access Token</li>
+<li>Access Token Secret</li>
+</ul>
+
+
+<h3>Install the gem</h3>
+
+<p>We&rsquo;ll be using the <a href="https://github.com/sferik/twitter">twitter gem</a> to update the status. Put the below line in your development <code>Gemfile</code></p>
+
+<pre><code>gem twitter
+</code></pre>
+
+<p>from the terminal run <code>bundle install</code></p>
+
+<h3>Configure Octopress to use twitter gem</h3>
+
+<p>Open the <code>Rakefile</code> in your favorite editor and add the below near the top with other required in the <code>Rakefile</code>.</p>
+
+<pre><code>require twitter
+</code></pre>
+
+<p>Add the following lines after the <code>server_port</code> line</p>
+
+<pre><code class="ruby Twitter Configuration">    # Twitter config (for tweeting posts)
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key = "YOUR_CONSUMER_KEY"
+      config.consumer_secret = "YOUR_CONSUMER_SECRET"
+      config.access_token = "YOUR_ACCESS_TOKEN""
+      config.access_token_secret = "YOUR_ACCESS_TOKEN_SECRET
+    end
+
+    # MAKE SURE THERE IS A TRAILING SLASH, otherwise the linking won't work
+    blog_url = "YOUR_BLOG_URL/"
+</code></pre>
+
+<p>ensure the trailing slash(/), It is required to append the date-name combination of the posts to form the url of the post.</p>
+
+<h3>Modify the new_post rake task</h3>
+
+<p>Search for <code>:new_post</code> rake task in the <code>Rakefile</code> and replace the task with the following.</p>
+
+<pre><code class="ruby Modifying new_post task"># usage rake new_post[my-new-post] or rake new_post['my new post'] or rake new_post (defaults to "new-post")
+desc "Begin a new post in #{source_dir}/#{posts_dir}"
+task :new_post, :title, :tweet do |t, args|
+  raise "### You haven't set anything up yet. First run `rake install` to set up an Octopress theme." unless File.directory?(source_dir)
+  mkdir_p "#{source_dir}/#{posts_dir}"
+  args.with_defaults(:title =&gt; 'new-post', :tweet =&gt; '')
+  title = args.title
+  filename = "#{source_dir}/#{posts_dir}/#{Time.now.strftime('%Y-%m-%d')}-#{title.to_url}.#{new_post_ext}"
+  if File.exist?(filename)
+    abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
+  end
+  puts "Creating new post: #{filename}"
+  open(filename, 'w') do |post|
+    post.puts "---"
+    post.puts "layout: post"
+    post.puts "title: \"#{title.gsub(/&amp;/,'&amp;amp;')}\""
+    post.puts "date: #{Time.now.strftime('%Y-%m-%d %H:%M')}"
+    post.puts "comments: true"
+    post.puts "categories: "
+    post.puts "---"
+  end
+  tweet = args.tweet
+  if not tweet == ''
+    # add to twitter status queue
+    puts 'Adding post to tweet queue, it will be tweeted after deploying.'
+    open('tweet_queue', 'a') do |file|
+      file.puts "#{tweet} - #{blog_url}#{Time.now.strftime('%Y/%m/%d')}/#{title.to_url}/"
+    end
+  end
+end
+</code></pre>
+
+<p>If you already have a modified task, the only changes are the task declaration <code>(task :new_post, :title, :tweet do |t, args|)</code> and the last few lines starting with <code>tweet = args.tweet</code>.</p>
+
+<h3>Setup to post tweets on deploy</h3>
+
+<p>Look for the <code>deplpoy_task</code> in the <code>Rakefile</code> and change or replace the files accordingly.</p>
+
+<pre><code class="ruby Deploy task">desc "Default deploy task"
+task :deploy do
+  # Check if preview posts exist, which should not be published
+  if File.exists?(".preview-mode")
+    puts "## Found posts in preview mode, regenerating files ..."
+    File.delete(".preview-mode")
+    Rake::Task[:generate].execute
+  end
+
+  Rake::Task[:copydot].invoke(source_dir, public_dir)
+  Rake::Task["#{deploy_default}"].execute
+
+  # Tweet
+  next if not File.exists? 'tweet_queue'
+  puts "Tweeting..."
+  open('tweet_queue', 'r') do |file|
+    while (line = file.gets)
+      puts "Tweeting '#{line.gsub("\n", "")}' for @#{client.current_user.screen_name}..."
+      client.update(line)
+    end
+  end
+  puts "Deleting queue..."
+  rm 'tweet_queue'
+end
+</code></pre>
+
+<p>or just add the <code>#Tweet</code> task in deploy task.</p>
+
+<h3>Usage</h3>
+
+<p>Now while creating your <code>new_post</code> you need to specify a separate message for the tweet when you create a post. This is the best way to give you the option of choosing whether you want to tweet the post or not. It also allows you to add @’s and #’s to the tweet message separately from the post title.</p>
+
+<p>For Example:</p>
+
+<p>The first part is the URL, and the second part is your tweet message.</p>
+
+<pre><code>rake new_post["HowTo Tweet New Posts in Octopress","HowTo Tweet New Posts in Octopress @twitter"]
+</code></pre>
+
+<p>You should be able to see your new post generated by the rake task.</p>
+
+<p>Once, this is done. Go Ahead and write into your post and <code>rake gen_deploy</code> should do the rest of it.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Working With Octopress]]></title>

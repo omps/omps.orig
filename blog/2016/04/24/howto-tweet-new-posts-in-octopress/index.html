@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>HowTo Tweet New Posts in Octopress - Om Prakash Singh</title>
+  <title>Tweet Posts With Octopress - Om Prakash Singh</title>
   <meta name="author" content="Om Prakash Singh">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="Thanks to the blog post by Tony Guntharp who got inspired from another blog post by Adnan Abdulhussein on how to integrate twitter posting with &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -105,7 +104,7 @@
   <header>
     
       
-        <h1 class="entry-title">HowTo Tweet New Posts in Octopress</h1>
+        <h1 class="entry-title">Tweet Posts With Octopress</h1>
       
     
     
@@ -125,7 +124,209 @@
   </header>
 
 
-<div class="entry-content">
+<div class="entry-content"><p>Thanks to the <a href="http://fusion94.org/blog/2013/01/13/howto-tweet-new-posts-in-octopress/">blog post</a> by <a href="http://fusion94.org">Tony Guntharp</a> who got inspired from another blog post by <a href="http://blog.prydoni.us">Adnan Abdulhussein</a> on how to integrate twitter posting with <a href="http://octopress.org">Octopress</a>. His post was some 3 Years old and the <a href="https://github.com/sferik/twitter">twitter gem</a> for <a href="http://octopress.org">Octopress</a> version <code>5.16.0</code> has gone through a lot of changes, So technically I did some rewrite into the ruby configuration code and fixed it so I can post the tweets with the latest twitter gem.</p>
+
+<p>The basic idea remains the same taken from the predecessors blogs, you create a post and print the tweet message you want to give and it create a link to the post in the tweet_queue file. When the <code>rake deploy</code> task is called, it reads from the <strong>tweet_queue</strong> file and tweets what&rsquo;s in their line by line. This way you can create multiple posts at a time, and they all will be tweeted when you run your <code>rake deploy</code> task for your blog.</p>
+
+<h3>Create a twitter application.</h3>
+
+<p>A twitter application is must to post to <a href="http://www.twitter.com">twitter</a>. Head over to <a href="https://apps.twitter.com/app/new,">https://apps.twitter.com/app/new,</a> sign in and create a new application for your blog.</p>
+
+<p>In <em>settings</em>: ensure <em>read</em> and <em>write</em> is <strong>enabled</strong>.</p>
+
+<p>In <em>Keys and access tokens</em>: take note of the following details.</p>
+
+<ul>
+<li>Consumer Keys</li>
+<li>Consumer Secret</li>
+<li>Access Token</li>
+<li>Access Token Secret</li>
+</ul>
+
+
+<h3>Install the gem</h3>
+
+<p>We&rsquo;ll be using the <a href="https://github.com/sferik/twitter">twitter gem</a> to update the status. Put the below line in your development <code>Gemfile</code></p>
+
+<pre><code>gem twitter
+</code></pre>
+
+<p>from the terminal run <code>bundle install</code></p>
+
+<h3>Configure Octopress to use twitter gem</h3>
+
+<p>Open the <code>Rakefile</code> in your favorite editor and add the below near the top with other required in the <code>Rakefile</code>.</p>
+
+<pre><code>require twitter
+</code></pre>
+
+<p>Add the following lines after the <code>server_port</code> line</p>
+
+<figure class='code'><figcaption><span>Twitter Configuration</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Twitter config (for tweeting posts)</span>
+</span><span class='line'><span class="n">client</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">::</span><span class="no">REST</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">consumer_key</span> <span class="o">=</span> <span class="s2">&quot;YOUR_CONSUMER_KEY&quot;</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">consumer_secret</span> <span class="o">=</span> <span class="s2">&quot;YOUR_CONSUMER_SECRET&quot;</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">access_token</span> <span class="o">=</span> <span class="s2">&quot;YOUR_ACCESS_TOKEN&quot;&quot;</span>
+</span><span class='line'><span class="s2">  config.access_token_secret = &quot;</span><span class="no">YOUR_ACCESS_TOKEN_SECRET</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># MAKE SURE THERE IS A TRAILING SLASH, otherwise the linking won&#39;t work</span>
+</span><span class='line'><span class="n">blog_url</span> <span class="o">=</span> <span class="s2">&quot;YOUR_BLOG_URL/&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ensure the trailing slash(/), It is required to append the date-name combination of the posts to form the url of the post.</p>
+
+<h3>Modify the new_post rake task</h3>
+
+<p>Search for <code>:new_post</code> rake task in the <code>Rakefile</code> and replace the task with the following.</p>
+
+<figure class='code'><figcaption><span>Modifying new_post task</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># usage rake new_post[my-new-post] or rake new_post[&#39;my new post&#39;] or rake new_post (defaults to &quot;new-post&quot;)</span>
+</span><span class='line'><span class="n">desc</span> <span class="s2">&quot;Begin a new post in </span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">posts_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="n">task</span> <span class="ss">:new_post</span><span class="p">,</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:tweet</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">|</span>
+</span><span class='line'>  <span class="k">raise</span> <span class="s2">&quot;### You haven&#39;t set anything up yet. First run `rake install` to set up an Octopress theme.&quot;</span> <span class="k">unless</span> <span class="no">File</span><span class="o">.</span><span class="n">directory?</span><span class="p">(</span><span class="n">source_dir</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">mkdir_p</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">posts_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="n">args</span><span class="o">.</span><span class="n">with_defaults</span><span class="p">(</span><span class="ss">:title</span> <span class="o">=&gt;</span> <span class="s1">&#39;new-post&#39;</span><span class="p">,</span> <span class="ss">:tweet</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">title</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">title</span>
+</span><span class='line'>  <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">posts_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">-</span><span class="si">#{</span><span class="n">title</span><span class="o">.</span><span class="n">to_url</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="n">new_post_ext</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">abort</span><span class="p">(</span><span class="s2">&quot;rake aborted!&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">ask</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> already exists. Do you want to overwrite?&quot;</span><span class="p">,</span> <span class="o">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="o">]</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;Creating new post: </span><span class="si">#{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">post</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;---&quot;</span>
+</span><span class='line'>    <span class="n">post</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;layout: post&quot;</span>
+</span><span class='line'>    <span class="n">post</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;title: </span><span class="se">\&quot;</span><span class="si">#{</span><span class="n">title</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&amp;/</span><span class="p">,</span><span class="s1">&#39;&amp;amp;&#39;</span><span class="p">)</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="n">post</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;date: </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-%d %H:%M&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="n">post</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;comments: true&quot;</span>
+</span><span class='line'>    <span class="n">post</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;categories: &quot;</span>
+</span><span class='line'>    <span class="n">post</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;---&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">tweet</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">tweet</span>
+</span><span class='line'>  <span class="k">if</span> <span class="ow">not</span> <span class="n">tweet</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span>
+</span><span class='line'>    <span class="c1"># add to twitter status queue</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s1">&#39;Adding post to tweet queue, it will be tweeted after deploying.&#39;</span>
+</span><span class='line'>    <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tweet_queue&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+</span><span class='line'>      <span class="n">file</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">tweet</span><span class="si">}</span><span class="s2"> - </span><span class="si">#{</span><span class="n">blog_url</span><span class="si">}#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y/%m/%d&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">title</span><span class="o">.</span><span class="n">to_url</span><span class="si">}</span><span class="s2">/&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you already have a modified task, the only changes are the task declaration <code>(task :new_post, :title, :tweet do |t, args|)</code> and the last few lines starting with <code>tweet = args.tweet</code>.</p>
+
+<h3>Setup to post tweets on deploy</h3>
+
+<p>Look for the <code>deplpoy_task</code> in the <code>Rakefile</code> and change or replace the files accordingly.</p>
+
+<figure class='code'><figcaption><span>Deploy task</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">desc</span> <span class="s2">&quot;Default deploy task&quot;</span>
+</span><span class='line'><span class="n">task</span> <span class="ss">:deploy</span> <span class="k">do</span>
+</span><span class='line'>  <span class="c1"># Check if preview posts exist, which should not be published</span>
+</span><span class='line'>  <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exists?</span><span class="p">(</span><span class="s2">&quot;.preview-mode&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;## Found posts in preview mode, regenerating files ...&quot;</span>
+</span><span class='line'>    <span class="no">File</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;.preview-mode&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:generate</span><span class="o">].</span><span class="n">execute</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:copydot</span><span class="o">].</span><span class="n">invoke</span><span class="p">(</span><span class="n">source_dir</span><span class="p">,</span> <span class="n">public_dir</span><span class="p">)</span>
+</span><span class='line'>  <span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">deploy_default</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">].</span><span class="n">execute</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Tweet</span>
+</span><span class='line'>  <span class="k">next</span> <span class="k">if</span> <span class="ow">not</span> <span class="no">File</span><span class="o">.</span><span class="n">exists?</span> <span class="s1">&#39;tweet_queue&#39;</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;Tweeting...&quot;</span>
+</span><span class='line'>  <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tweet_queue&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+</span><span class='line'>    <span class="k">while</span> <span class="p">(</span><span class="n">line</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">gets</span><span class="p">)</span>
+</span><span class='line'>      <span class="nb">puts</span> <span class="s2">&quot;Tweeting &#39;</span><span class="si">#{</span><span class="n">line</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39; for @</span><span class="si">#{</span><span class="n">client</span><span class="o">.</span><span class="n">current_user</span><span class="o">.</span><span class="n">screen_name</span><span class="si">}</span><span class="s2">...&quot;</span>
+</span><span class='line'>      <span class="n">client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;Deleting queue...&quot;</span>
+</span><span class='line'>  <span class="n">rm</span> <span class="s1">&#39;tweet_queue&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>or just add the <code>#Tweet</code> task in deploy task.</p>
+
+<h3>Usage</h3>
+
+<p>Now while creating your <code>new_post</code> you need to specify a separate message for the tweet when you create a post. This is the best way to give you the option of choosing whether you want to tweet the post or not. It also allows you to add @’s and #’s to the tweet message separately from the post title.</p>
+
+<p>For Example:</p>
+
+<p>The first part is the URL, and the second part is your tweet message.</p>
+
+<pre><code>rake new_post["HowTo Tweet New Posts in Octopress","HowTo Tweet New Posts in Octopress @twitter"]
+</code></pre>
+
+<p>You should be able to see your new post generated by the rake task.</p>
+
+<p>Once, this is done. Go Ahead and write into your post and <code>rake gen_deploy</code> should do the rest of it.</p>
 </div>
 
 
@@ -151,6 +352,12 @@
 <time class='entry-date' datetime='2016-04-24T08:19:20+05:30'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:19 am</span></time>
       
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/howto/'>howto</a>
+  
+</span>
 
 
     </p>
