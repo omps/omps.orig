@@ -1,0 +1,28 @@
+<div class="highlight"><pre><span class="nb">set</span> -e
+
+<span class="nv">REPO_URL</span><span class="o">=</span><span class="s2">&quot;http://yum.puppetlabs.com/el/6/products/i386/puppetlabs-release-6-11.noarch.rpm&quot;</span>
+
+<span class="k">if</span> <span class="o">[</span><span class="s2">&quot;$EUID&quot;</span> -ne <span class="s2">&quot;0&quot;</span><span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&quot;This script should be run as root&quot;</span> &gt;<span class="p">&amp;</span>2
+    <span class="nb">exit </span>1
+<span class="k">fi</span>
+
+<span class="k">if</span> which puppet &gt; /dev/null 2&gt;<span class="p">&amp;</span>1<span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Puppet already installed&quot;</span>
+    <span class="nb">exit </span>0
+<span class="k">fi</span>
+
+
+
+<span class="c"># Install puppet labs repo</span>
+<span class="nb">echo</span> <span class="s2">&quot;configuring puppetlabs repo..&quot;</span>
+<span class="nv">repo_path</span> <span class="o">=</span><span class="k">$(</span>mktemp<span class="k">)</span>
+wget --output-document<span class="o">=</span><span class="k">${</span><span class="nv">repo_path</span><span class="k">}</span> <span class="k">${</span><span class="nv">REPO_URL</span><span class="k">}</span> 2&gt;/dev/null
+rpm -i <span class="k">${</span><span class="nv">repo_path</span><span class="k">}</span> &gt; /dev/null
+
+<span class="c"># Install puppet..</span>
+<span class="nb">echo</span> <span class="s2">&quot;installing puppet&quot;</span>
+yum install -y puppet &gt; /dev/null
+
+<span class="nb">echo</span> <span class="s2">&quot;Puppet installed!!&quot;</span>
+</pre></div>

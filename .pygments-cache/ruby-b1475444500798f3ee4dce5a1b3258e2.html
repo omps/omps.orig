@@ -1,0 +1,25 @@
+<div class="highlight"><pre><span class="n">desc</span> <span class="s2">&quot;Default deploy task&quot;</span>
+<span class="n">task</span> <span class="ss">:deploy</span> <span class="k">do</span>
+  <span class="c1"># Check if preview posts exist, which should not be published</span>
+  <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exists?</span><span class="p">(</span><span class="s2">&quot;.preview-mode&quot;</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s2">&quot;## Found posts in preview mode, regenerating files ...&quot;</span>
+    <span class="no">File</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;.preview-mode&quot;</span><span class="p">)</span>
+    <span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:generate</span><span class="o">].</span><span class="n">execute</span>
+  <span class="k">end</span>
+
+  <span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:copydot</span><span class="o">].</span><span class="n">invoke</span><span class="p">(</span><span class="n">source_dir</span><span class="p">,</span> <span class="n">public_dir</span><span class="p">)</span>
+  <span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">deploy_default</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">].</span><span class="n">execute</span>
+
+  <span class="c1"># Tweet</span>
+  <span class="k">next</span> <span class="k">if</span> <span class="ow">not</span> <span class="no">File</span><span class="o">.</span><span class="n">exists?</span> <span class="s1">&#39;tweet_queue&#39;</span>
+  <span class="nb">puts</span> <span class="s2">&quot;Tweeting...&quot;</span>
+  <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tweet_queue&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">line</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">gets</span><span class="p">)</span>
+      <span class="nb">puts</span> <span class="s2">&quot;Tweeting &#39;</span><span class="si">#{</span><span class="n">line</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39; for @</span><span class="si">#{</span><span class="n">client</span><span class="o">.</span><span class="n">current_user</span><span class="o">.</span><span class="n">screen_name</span><span class="si">}</span><span class="s2">...&quot;</span>
+      <span class="n">client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+  <span class="nb">puts</span> <span class="s2">&quot;Deleting queue...&quot;</span>
+  <span class="n">rm</span> <span class="s1">&#39;tweet_queue&#39;</span>
+<span class="k">end</span>
+</pre></div>

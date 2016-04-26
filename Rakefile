@@ -1,7 +1,7 @@
 require "rubygems"
 require "bundler/setup"
 require "stringex"
-
+require "twitter"
 ## -- Rsync Deploy config -- ##
 # Be sure your public key is listed in your server's ~/.ssh/authorized_keys file
 ssh_user       = "user@domain.com"
@@ -26,6 +26,17 @@ themes_dir      = ".themes"   # directory for blog files
 new_post_ext    = "markdown"  # default new post file extension when using the new_post task
 new_page_ext    = "markdown"  # default new page file extension when using the new_page task
 server_port     = "4000"      # port for preview server eg. localhost:4000
+
+# Twitter config (for tweeting posts)
+client = Twitter::REST::Client.new do |config|
+  config.consumer_key = "NtuNNe69nphkUrSJrtLnA"
+  config.consumer_secret = "Du0E1BzLkUmaFJR2UHBnFF9lyUfnrrUJuicRqAxjY0"
+  config.access_token = "103176791-ISZfsHcch3wSO524MTXcLtHoOZhdTkt66KUAX99K"
+  config.access_token_secret = "vOo5wrxK3lCYziuLTCm1nXnRikX9pVOJzTIE0ExgwcI4X"
+end
+
+# MAKE SURE THERE IS A TRAILING SLASH, otherwise the linking won't work
+blog_url = "www.omps.in/blog/"
 
 if (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
   puts '## Set the codepage to 65001 for Windows machines'
@@ -95,7 +106,7 @@ end
 
 # usage rake new_post[my-new-post] or rake new_post['my new post'] or rake new_post (defaults to "new-post")
 desc "Begin a new post in #{source_dir}/#{posts_dir}"
-task :new_post, :title do |t, args|
+task :new_post, :title, :tweet do |t, args|
   if args.title
     title = args.title
   else
@@ -103,6 +114,7 @@ task :new_post, :title do |t, args|
   end
   raise "### You haven't set anything up yet. First run `rake install` to set up an Octopress theme." unless File.directory?(source_dir)
   mkdir_p "#{source_dir}/#{posts_dir}"
+  args.with_defaults(:title => 'new-post', :tweet => '')
   filename = "#{source_dir}/#{posts_dir}/#{Time.now.strftime('%Y-%m-%d')}-#{title.to_url}.#{new_post_ext}"
   if File.exist?(filename)
     abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
@@ -117,8 +129,15 @@ task :new_post, :title do |t, args|
     post.puts "categories: "
     post.puts "---"
   end
+  tweet = args.tweet
+  if not tweet == ''
+    # add to twitter status queue
+    puts 'Adding post to tweet queue, it will be tweeted after deploying.'
+    open('tweet_queue', 'a') do |file|
+      file.puts "#{tweet} - #{blog_url}#{Time.now.strftime('%Y/%m/%d')}/#{title.to_url}/"
+    end
+  end
 end
-
 # usage rake new_page[my-new-page] or rake new_page[my-new-page.html] or rake new_page (defaults to "new-page.markdown")
 desc "Create a new page in #{source_dir}/(filename)/index.#{new_page_ext}"
 task :new_page, :filename do |t, args|
@@ -225,6 +244,18 @@ task :deploy do
 
   Rake::Task[:copydot].invoke(source_dir, public_dir)
   Rake::Task["#{deploy_default}"].execute
+
+  # Tweet
+  next if not File.exists? 'tweet_queue'
+  puts "Tweeting..."
+  open('tweet_queue', 'r') do |file|
+    while (line = file.gets)
+      puts "Tweeting '#{line.gsub("\n", "")}' for @#{client.current_user.screen_name}..."
+      client.update(line)
+    end
+  end
+  puts "Deleting queue..."
+  rm 'tweet_queue'
 end
 
 desc "Generate website and deploy"

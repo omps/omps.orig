@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Puppet | my tech notes and what's going on]]></title>
+  <link href="http://www.omps.in/blog/categories/puppet/atom.xml" rel="self"/>
+  <link href="http://www.omps.in/"/>
+  <updated>2016-04-25T23:04:17+05:30</updated>
+  <id>http://www.omps.in/</id>
+  <author>
+    <name><![CDATA[Om Prakash Singh]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Puppet Development With Vagrant]]></title>
+    <link href="http://www.omps.in/blog/2016/04/24/puppet-development-environment/"/>
+    <updated>2016-04-24T16:40:46+05:30</updated>
+    <id>http://www.omps.in/blog/2016/04/24/puppet-development-environment</id>
+    <content type="html"><![CDATA[<p>I started working DevOps which initiated me to learn the about the configuration management and automation tools, Though it does have a learning curve but it provides great oppurtunity to automate most of your tasks. Don&rsquo;t worry it will not make you redundant, learning automation may indeed inflate your profile. Searching on the internet for the same purpose I encountered with <a href="http://garylarizza.com/">Gary Larizza&rsquo;s</a> blog on <a href="http://garylarizza.com/blog/2013/02/01/repeatable-puppet-development-with-vagrant/">Repeatable puppet development with vagrant</a>. Of course the blog being 3 years old, need some rework with the commands, I am hence updating this article as my updated version of his workflow.</p>
+
+<p>In smaller organizations &lsquo;testing&rsquo; and &lsquo;development&rsquo; consist of making changes directly to the server, logging in to the running system and hoping the commands to just work. Once done we document the changes we made, but more OFTEN we happen to keep the information in our head to refer to it later. This is how the manual configuration works. In bigger organization though the things are pretty neat and ready, a centralized configuration management system with everything automated and well documented and code repositories to version control code. This is not a very likely situation while we are writing modules in a development environment and it really doesn&rsquo;t make sense that we put the code in production environment just to test. We need something smaller setup for ourselves, let it be either for the development environment or for my work setup on my personal laptop to automate the things, menial daily jobs, etc etc.. You never know when you find somethings interesting to automate and this can put us in to the good habit of automating things.</p>
+
+<p>And of course I want to keep these things separate from my laptop base configuration, without spending money for buying additional server HW just to test my development work. Vagrant and Virtualbox are boon for the developers who wanted to produce definitive work from anywhere without being dependent on network connection, any need for special physical hardware and a place to code.</p>
+
+<p>We would require ability to create vm&rsquo;s for the purpose of testing our automation workflow, before committing and pushing it to production nodes.</p>
+
+<p><a href="http://www.puppetlabs.com/">Puppet</a> is a configuration management tool which helps autotmates all the aspects of manual configuration. I won&rsquo;t be putting too much puppet in here, however we will be using it to describe the changes we are making to the system.</p>
+
+<p><a href="http://www.vagrantup.com/">Vagrant</a> is a boon for developers and SA for testing their work without making changes to your comfortable laptop work env. It uses minimal VM&rsquo;s template and create virtualized environment on your workstation for the purpose of testing. While writing this Vagrant has support for almost all the major virtualization providers such as Virtualbox, VMware Fusion, Hyper - V, docker.</p>
+
+<h2>Getting Ready for work.</h2>
+
+<p>The only thing which get installed on your system is Vagrant and Virtualbox(if your dones&rsquo;t have one already installed). If you have never used Vagrant before and NOT an ruby developer, it&rsquo;s good to opt of native installaton, its the easiest method to get Vagrant Installed.</p>
+
+<h3>Installing vagrant</h3>
+
+<p><a href="http://downloads.vagrantup.com/">http://downloads.vagrantup.com/</a> should provide one pre-packaged binary for your OS.</p>
+
+<p>For ruby developers or those who knows RVM and gem installation</p>
+
+<pre><code>$ gem install vagrant --no-ri --no-rdoc
+</code></pre>
+
+<p><strong>Note:</strong> stick with <a href="http://downloads.vagrantup.com/">native installers</a> for now, if you are not much aware about RVM and Rbenv.</p>
+
+<p>We will be installing puppet only of to the VM&rsquo;s and not on our system.</p>
+
+<h3>Living in the box</h3>
+
+<p>Vagrant uses box files as templates from which it creates new virtual machine for development machine. <a href="http://vagrantbox.es/">There are sites that host boxes available for download</a>, OR, you could use to build your box using virtualbox. Building your box file is outside the scope of this article, so just make sure you download a box with an OS that’s to your liking. This box DOES NOT need to have Puppet preinstalled – in fact, it’s probably better that it doesn’t (because the version will probably be old, and we’re going to work around this anyways). I’m going to choose a CentOS 7 box, but, and again, it’s up to you.</p>
+
+<p>I usually create my own <a href="http://www./blog/2016/04/25/create-box-from-vagrant-virtualmachines/">box from the exiting vagrant box</a>, my primary purpose is so that I do not have to download the box and reconfigure it again if I plan to destroy existing vagrant environment.</p>
+
+<p><a href="https://atlas.hashicorp.com/boxes/search">https://atlas.hashicorp.com/boxes/search</a> maintains a list of boxes which are very up to date, you might want to download the latest box, incase you haven&rsquo;t downloaded any.</p>
+
+<h3>Fixing your vagrantfile.</h3>
+
+<p>We need to create a VM for the project and a <code>Vagrantfile</code> to direct vagrant on how it should setup your VM. You can create any directory in your home area which you can use for work with puppet.</p>
+
+<pre><code class="sh ">$ mkdir -p ~/puppet-vagrant
+$ cd ~/puppet-vagrant
+</code></pre>
+
+<p>Open Vagrantfile in your favorite editor.</p>
+
+<p>Below is the Sample Vagrantfile which I used to get puppet installed on my box.</p>
+
+<pre><code class="ruby">Vagrant.configure(2) do |config|
+  config.vm.box = "centos/7"
+  config.vm.hostname = "development.puppetlabs.vm"
+  config.vm.network "private_network", ip: "172.31.0.202"
+  config.vm.network "forwarded_port", guest: 80, host: 8084
+  config.vm.provision :shell, :path =&gt; "centos_7_x.sh"
+end
+</code></pre>
+
+<p>the first two config.vm lines establish the box we want to use for our development VM. Because, initially, this box will NOT be known to Vagrant, it will attempt to reach out to that <a href="https://atlas.hashicorp.com/boxes/search">Atlas</a> site and download it. The next three lines define the machine’s hostname, the network type, and the IP address for this VM. In this case, I’m using a private network and giving it an IP address on a made-up 172.31.0.0/24 subnet (feel free to use your own private IP range as long as it doesn’t conflict with anything). The next line is forwarding port 80 on the VM to port 8084 on my local laptop – this allows you to test out web services by simply navigating to <a href="http://localhost:8084">http://localhost:8084</a> from your web browser. I’ll save explaining the last line for the next section.</p>
+
+<p>NOTE: For more documentation on these settings, <a href="http://docs.vagrantup.com/v1/docs/vagrantfile.html">visit Vagrant’s documentation</a> site as it’s quite good. The post I referred to create my dev environment and the post I am writing has many changes may be because of Vagrant version changes. Please refer to the Vagrant docs in case you are reading in near future.</p>
+
+<pre><code class="ruby Vagrantfile">Vagrant.configure(2) do |config|
+  config.vm.box = "dev-env"
+  config.vm.hostname = "development.puppetlabs.vm"
+  config.vm.network "private_network", ip: "172.31.0.202"
+  config.vm.network "forwarded_port", guest: 80, host: 8084
+  config.vm.provision :shell, :path =&gt; "centos_7_x.sh"
+
+  # Puppet shared folder
+  config.vm.synced_folder "puppet", "/puppet"
+
+  #puppet provision setup
+  config.vm.provision :puppet do |puppet|
+    puppet.manifests_path = "puppet/manifests"
+    puppet.module_path = "puppet/modules"
+    puppet.manifest_file = "site.pp"
+  end
+end
+</code></pre>
+
+<h3>Installing virtualbox</h3>
+
+<p>Vagrant needs an underlying provider for it to run, the provider is an application which allows your system to run virtual machine. By default vagrant does comes with VirtualBox but in case yours didn&rsquo;t please feel free to download one from <a href="https://www.virtualbox.org/wiki/Downloads">Virtualbox Download</a> site and install it according to your system.</p>
+
+<h3>Installing virtualbox Guest Additions</h3>
+
+<p>While setting up all this, I did got lots of issue with some or the other feature not working, different OSes threw me different errors. But it is always good to have it installed. We may in further be taking about how to share folders with your virtual machine and the host machine. The Virtualbox tools is to be installed on to the Virtual Machine only. So, you may need to do it once box is created. Its an ISO image and can be downloaded from the <a href="http://download.virtualbox.org/">Virtualbox page</a></p>
+
+<h3>Getting started with puppet on your VM.</h3>
+
+<p>The final line of the <code>Vagrantfile</code> runs the &lsquo;Shell Provisioner&rsquo; for vagrant. Essentially, this runs a shell script on the VM once its been booted and configured.</p>
+
+<p><figure class='code'><figcaption><span> (centos_7_x.sh)</span> <a href='/downloads/code/vagrant/centos_7_x.sh'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">set</span> -e
+</span><span class='line'>
+</span><span class='line'><span class="nv">REPO_URL</span><span class="o">=</span><span class="s2">&quot;http://yum.puppetlabs.com/el/6/products/i386/puppetlabs-release-6-11.noarch.rpm&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="o">[</span><span class="s2">&quot;$EUID&quot;</span> -ne <span class="s2">&quot;0&quot;</span><span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="s2">&quot;This script should be run as root&quot;</span> &gt;<span class="p">&amp;</span>2
+</span><span class='line'>    <span class="nb">exit </span>1
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> which puppet &gt; /dev/null 2&gt;<span class="p">&amp;</span>1<span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="s2">&quot;Puppet already installed&quot;</span>
+</span><span class='line'>    <span class="nb">exit </span>0
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Install puppet labs repo</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;configuring puppetlabs repo..&quot;</span>
+</span><span class='line'><span class="nv">repo_path</span> <span class="o">=</span><span class="k">$(</span>mktemp<span class="k">)</span>
+</span><span class='line'>wget --output-document<span class="o">=</span><span class="k">${</span><span class="nv">repo_path</span><span class="k">}</span> <span class="k">${</span><span class="nv">REPO_URL</span><span class="k">}</span> 2&gt;/dev/null
+</span><span class='line'>rpm -i <span class="k">${</span><span class="nv">repo_path</span><span class="k">}</span> &gt; /dev/null
+</span><span class='line'>
+</span><span class='line'><span class="c"># Install puppet..</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;installing puppet&quot;</span>
+</span><span class='line'>yum install -y puppet &gt; /dev/null
+</span><span class='line'>
+</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;Puppet installed!!&quot;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>With this script, I setup the puppetlabs el7 repo containing the current package for Puppet/Facter/Hiera/PuppetDB and install the most recent version of puppet and facter present in the repository. This will ensure you get the latest version of puppet, and you don&rsquo;t need to worry about creating a new box everytime, puppet releases a new verion.</p>
+
+<p>This code is from <a href="https://github.com/hashicorp/puppet-bootstrap/blob/master/centos_6_x.sh">Mitchell&rsquo;s puppet bootstrap repo</a>. This code is working for me, but keep checking the repo for any updates. If you maintaining your <strong>own</strong> provisioning script, consider filling a pull request so we can take the benefit from good-code.</p>
+
+<h3>Action time</h3>
+
+<p>Once the <code>Vagrantfile</code> is created the next logical thing is to start the VM and test out vagrant.</p>
+
+<pre><code class="sh">$ vagrant status
+Current machine states:
+
+default                   not created (virtualbox)
+
+The environment has not yet been created. Run `vagrant up` to
+create the environment. If a machine is not created, only the
+default provider will be shown. So if a provider is not listed,
+then the machine is not created for that environment.
+</code></pre>
+
+<p>Good, so there is no VM created, so lets create one by starting vagrant.</p>
+
+<pre><code class="sh">$ vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+==&gt; default: Importing base box 'centos/7'...
+==&gt; default: Matching MAC address for NAT networking...
+==&gt; default: Checking if box 'centos/7' is up to date...
+==&gt; default: Setting the name of the VM: octopressnotes_default_1461604478526_97058
+==&gt; default: Clearing any previously set network interfaces...
+==&gt; default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+    default: Adapter 2: hostonly
+==&gt; default: Forwarding ports...
+    default: 80 (guest) =&gt; 8084 (host) (adapter 1)
+    default: 22 (guest) =&gt; 2222 (host) (adapter 1)
+==&gt; default: Booting VM...
+==&gt; default: Waiting for machine to boot. This may take a few minutes...
+==&gt; default: Machine booted and ready!
+==&gt; default: Checking for guest additions in VM...
+==&gt; default: Setting hostname...
+==&gt; default: Configuring and enabling network interfaces...
+==&gt; default: Mounting shared folders...
+==&gt; default: Machine already provisioned. Run `vagrant provision` or use the `--provision`
+==&gt; default: flag to force provisioning. Provisioners marked to run always will still run.
+</code></pre>
+
+<p>Vagrant first noticed and checked for the centos/7 box, since I already have the box added into my Vagrant it didn&rsquo;t redownload it but used the same box to create a custom VM. Then it configured the hostname and the network configuration as per our Vagrantfile, and Lastly it runs the script it for provisioning the VM.</p>
+
+<h3>Defining your workflow</h3>
+
+<ul>
+<li>Local git to be used for version controlling.</li>
+<li>Use Github for storing repositories remotely.</li>
+</ul>
+
+
+<h3>Writing and testing puppet modules (refrence the puppet cookbook.)-> remove this.</h3>
+]]></content>
+  </entry>
+  
+</feed>

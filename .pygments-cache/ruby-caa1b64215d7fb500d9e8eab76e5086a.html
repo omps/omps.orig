@@ -1,0 +1,11 @@
+<div class="highlight"><pre><span class="c1"># Twitter config (for tweeting posts)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">::</span><span class="no">REST</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">consumer_key</span> <span class="o">=</span> <span class="s2">&quot;YOUR_CONSUMER_KEY&quot;</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">consumer_secret</span> <span class="o">=</span> <span class="s2">&quot;YOUR_CONSUMER_SECRET&quot;</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">access_token</span> <span class="o">=</span> <span class="s2">&quot;YOUR_ACCESS_TOKEN&quot;&quot;</span>
+<span class="s2">  config.access_token_secret = &quot;</span><span class="no">YOUR_ACCESS_TOKEN_SECRET</span>
+<span class="k">end</span>
+
+<span class="c1"># MAKE SURE THERE IS A TRAILING SLASH, otherwise the linking won&#39;t work</span>
+<span class="n">blog_url</span> <span class="o">=</span> <span class="s2">&quot;YOUR_BLOG_URL/&quot;</span>
+</pre></div>
