@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://www.omps.in/blog/2016/04/25/create-box-from-vagrant-virtualmachines/</loc>
+<lastmod>2016-04-25T11:16:50+05:30</lastmod>
+</url>
+<url>
+<loc>http://www.omps.in/blog/2016/04/24/puppet-development-environment/</loc>
+<lastmod>2016-04-24T16:40:46+05:30</lastmod>
+</url>
+<url>
 <loc>http://www.omps.in/blog/2016/04/24/howto-tweet-new-posts-in-octopress/</loc>
 <lastmod>2016-04-24T08:19:20+05:30</lastmod>
 </url>
@@ -73,6 +81,9 @@
 <loc>http://www.omps.in/about/</loc>
 </url>
 <url>
+<loc>http://www.omps.in/books/</loc>
+</url>
+<url>
 <loc>http://www.omps.in/blog/categories/games/</loc>
 </url>
 <url>
@@ -83,5 +94,11 @@
 </url>
 <url>
 <loc>http://www.omps.in/blog/categories/howto/</loc>
+</url>
+<url>
+<loc>http://www.omps.in/blog/categories/puppet/</loc>
+</url>
+<url>
+<loc>http://www.omps.in/blog/categories/vagrant/</loc>
 </url>
 </urlset>
