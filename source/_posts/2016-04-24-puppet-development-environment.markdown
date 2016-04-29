@@ -70,25 +70,6 @@ the first two config.vm lines establish the box we want to use for our developme
 
 NOTE: For more documentation on these settings, [visit Vagrant’s documentation](http://docs.vagrantup.com/v1/docs/vagrantfile.html) site as it’s quite good. The post I referred to create my dev environment and the post I am writing has many changes may be because of Vagrant version changes. Please refer to the Vagrant docs in case you are reading in near future. 
 
-```ruby Vagrantfile
-Vagrant.configure(2) do |config|
-  config.vm.box = "dev-env"
-  config.vm.hostname = "development.puppetlabs.vm"
-  config.vm.network "private_network", ip: "172.31.0.202"
-  config.vm.network "forwarded_port", guest: 80, host: 8084
-  config.vm.provision :shell, :path => "centos_7_x.sh"
-
-  # Puppet shared folder
-  config.vm.synced_folder "puppet", "/puppet"
-
-  #puppet provision setup
-  config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "puppet/manifests"
-    puppet.module_path = "puppet/modules"
-    puppet.manifest_file = "site.pp"
-  end
-end
-```
 
 ### Installing virtualbox
 
@@ -98,6 +79,10 @@ Vagrant needs an underlying provider for it to run, the provider is an applicati
 ### Installing virtualbox Guest Additions
 
 While setting up all this, I did got lots of issue with some or the other feature not working, different OSes threw me different errors. But it is always good to have it installed. We may in further be taking about how to share folders with your virtual machine and the host machine. The Virtualbox tools is to be installed on to the Virtual Machine only. So, you may need to do it once box is created. Its an ISO image and can be downloaded from the [Virtualbox page](http://download.virtualbox.org/)
+
+or you can just do.
+
+    vagrant plugin install vagrant-vbguest
 
 ### Getting started with puppet on your VM.
 The final line of the `Vagrantfile` runs the 'Shell Provisioner' for vagrant. Essentially, this runs a shell script on the VM once its been booted and configured. 
@@ -151,14 +136,54 @@ Bringing machine 'default' up with 'virtualbox' provider...
 ==> default: flag to force provisioning. Provisioners marked to run always will still run.
 ```
 
-Vagrant first noticed and checked for the centos/7 box, since I already have the box added into my Vagrant it didn't redownload it but used the same box to create a custom VM. Then it configured the hostname and the network configuration as per our Vagrantfile, and Lastly it runs the script it for provisioning the VM. 
+Vagrant first noticed and checked for the centos/7 box locally, since I already have the box added into my Vagrant it didn't redownload it but used the same box to create a custom VM, if the machine is not present locally, Vagrant will download the box from hashicorp site. Next Vagrant moves to configuring the hostname and the network as per our Vagrantfile, and Lastly it runs the script it for provisioning the VM. 
 
+We have got the VM with puppet installed. Let's login to the VM and check the puppet version.
 
+```sh
+$ vagrant ssh
 
-### Defining your workflow
+Last login: Wed Apr 13 13:11:28 2016 from 10.0.2.2
+[vagrant@development ~]$ puppet --version
+3.8.6
+[vagrant@development ~]$ hostname
+development.puppetlabs.vm
+[vagrant@development ~]$ exit
+logout
+Connection to 127.0.0.1 closed.
+```
 
-- Local git to be used for version controlling.
-- Use Github for storing repositories remotely.
+So now we know how to SSH into the VM, check the Puppet version, check the hostname to check we are on the correct host. Now we go ahead and confiure puppet to do something with this machine.
 
+### Working with puppet
 
-### Writing and testing puppet modules (refrence the puppet cookbook.)-> remove this.
+Now we have got a clean VM, and were able to set up as well, the purpose of this doc was to set up a puppet development environment using vagrant. For writing puppet modules, [puppet cookbook](http://www.amazon.com/Puppet-Cookbook-Third-Thomas-Uphill/dp/1784394882/ref=sr_1_1?ie=UTF8&qid=1461809235&sr=8-1&keywords=puppet+cookbook) is a good beginning point.
+
+More on putting things in order and avoid messing up.
+
+I Locally use git to be for version controlling and source code management, with time to time push to remote. Use Github for storing repositories remotely.
+
+My final Vagrantfile contains as below.
+
+```ruby Vagrantfile
+Vagrant.configure(2) do |config|
+  config.vm.box = "dev-env"
+  config.vm.hostname = "development.puppetlabs.vm"
+  config.vm.network "private_network", ip: "172.31.0.202"
+  config.vm.network "forwarded_port", guest: 80, host: 8084
+  config.vm.provision :shell, :path => "centos_7_x.sh"
+
+  # Puppet shared folder
+  config.vm.synced_folder "puppet", "/puppet"
+
+  #puppet provision setup
+  config.vm.provision :puppet do |puppet|
+    puppet.manifests_path = "puppet/manifests"
+    puppet.module_path = "puppet/modules"
+    puppet.manifest_file = "site.pp"
+  end
+end
+```
+
+I ensured to share my local dir with my vagrant machine, so that my download modules can be directly available to the vagrant machine for work.
+
