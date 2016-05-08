@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Howto | my tech notes and what's going on]]></title>
+  <title><![CDATA[Category: howto | Om Prakash Singh]]></title>
   <link href="http://www.omps.in/blog/categories/howto/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-04-29T20:13:36+05:30</updated>
+  <updated>2016-05-08T18:31:54+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
-    
+    <email><![CDATA[omps@omps.in]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
   <entry>
-    <title type="html"><![CDATA[Tweet Posts With Octopress]]></title>
+    <title type="html"><![CDATA[Tweet Posts with Octopress]]></title>
     <link href="http://www.omps.in/blog/2016/04/24/howto-tweet-new-posts-in-octopress/"/>
     <updated>2016-04-24T08:19:20+05:30</updated>
     <id>http://www.omps.in/blog/2016/04/24/howto-tweet-new-posts-in-octopress</id>
@@ -158,7 +158,7 @@ end
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Working With Octopress]]></title>
+    <title type="html"><![CDATA[working with octopress]]></title>
     <link href="http://www.omps.in/blog/2016/04/23/working-with-octopress/"/>
     <updated>2016-04-23T11:58:21+05:30</updated>
     <id>http://www.omps.in/blog/2016/04/23/working-with-octopress</id>

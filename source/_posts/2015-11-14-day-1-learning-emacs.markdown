@@ -23,9 +23,9 @@ The below is the content I am planning to touch upon during my 30 Days challenge
     -   [ ] Exporting
 -   [ ] tramp
 -   [X] Running command by the name/ help/ commands for fixing typos. - Day 6
--   [ ] Commands for human languages.
+-   [X] Commands for human languages.
 -   [ ] Mark and the region / Killing and moving text / Registers
--   [ ] COntrlling the display / Multiple buffers / Multiple windows / frames and graphical display
+-   [ ] Contrlling the display / Multiple buffers / Multiple windows / frames and graphical display
 -   [ ] Search and replacement.
 -   [ ] File handelling.
 -   [ ] Editing compling, testing and mantaining programs.
