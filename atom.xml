@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[my tech notes and what's going on]]></title>
+  <title><![CDATA[Om Prakash Singh]]></title>
   <link href="http://www.omps.in/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-04-29T06:42:08+05:30</updated>
+  <updated>2016-05-08T11:51:40+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
-    
+    <email><![CDATA[omps@omps.in]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[books/Mastery]]></title>
+    <link href="http://www.omps.in/blog/2016/05/01/books-slash-mastery/"/>
+    <updated>2016-05-01T16:08:13+05:30</updated>
+    <id>http://www.omps.in/blog/2016/05/01/books-slash-mastery</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Day 11]]></title>
+    <link href="http://www.omps.in/blog/2016/05/01/day-11/"/>
+    <updated>2016-05-01T13:01:44+05:30</updated>
+    <id>http://www.omps.in/blog/2016/05/01/day-11</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Create Box From Vagrant Virtualmachines]]></title>
@@ -4531,9 +4549,9 @@ cs:ch-fr buf        pos line (major minor)</p>
 </li>
 <li>[ ] tramp</li>
 <li>[X] Running command by the name/ help/ commands for fixing typos. - Day 6</li>
-<li>[ ] Commands for human languages.</li>
+<li>[X] Commands for human languages.</li>
 <li>[ ] Mark and the region / Killing and moving text / Registers</li>
-<li>[ ] COntrlling the display / Multiple buffers / Multiple windows / frames and graphical display</li>
+<li>[ ] Contrlling the display / Multiple buffers / Multiple windows / frames and graphical display</li>
 <li>[ ] Search and replacement.</li>
 <li>[ ] File handelling.</li>
 <li>[ ] Editing compling, testing and mantaining programs.</li>

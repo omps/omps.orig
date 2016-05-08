@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://www.omps.in/blog/2016/05/01/books-slash-mastery/</loc>
+<lastmod>2016-05-01T16:08:13+05:30</lastmod>
+</url>
+<url>
+<loc>http://www.omps.in/blog/2016/05/01/day-11/</loc>
+<lastmod>2016-05-01T13:01:44+05:30</lastmod>
+</url>
+<url>
 <loc>http://www.omps.in/blog/2016/04/25/create-box-from-vagrant-virtualmachines/</loc>
 <lastmod>2016-04-25T11:16:50+05:30</lastmod>
 </url>
@@ -101,7 +109,7 @@
 <url>
 <loc>http://www.omps.in/blog/categories/vagrant/</loc>
 </url>
-</urlset>
->http://www.omps.in/posts/2/</loc>
+<url>
+<loc>http://www.omps.in/blog/posts/2/</loc>
 </url>
 </urlset>
