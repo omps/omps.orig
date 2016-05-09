@@ -4,7 +4,7 @@
   <title><![CDATA[Om Prakash Singh]]></title>
   <link href="http://www.omps.in/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-05-09T07:01:39+05:30</updated>
+  <updated>2016-05-09T07:04:35+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
@@ -12,17 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Day 11 - Fixing the Common Typos]]></title>
-    <link href="http://www.omps.in/blog/2016/05/01/day-11/"/>
-    <updated>2016-05-01T13:01:44+05:30</updated>
-    <id>http://www.omps.in/blog/2016/05/01/day-11</id>
-    <content type="html"><![CDATA[<p>While we are writing something, we tend to make typographical mistakes, spelling mistakes, how great would it be for my editor to understand and fix it while it automatically can, its easier to know you are being highlighted for your errors before you publish something which will look more like scribbling something on your good blog page, the worst part is to checck again for any serious spelling mistake. For me since I do most of my editing and blogging work on my emacs, I need to make sure what I am typing should be free from spelling errors and grammatical errors and it needs to be fast as Emacs is with while writing. I do use flyspell-mode and I am quite dependent on that too.</p>
-
-<p>But I am sure I need more than that, moving around your text is essential and while I am working on my keyboard, it feels pretty annoying to reach out for the pointer device or well simply the mouse to move across texts</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Create Box From Vagrant Virtualmachines]]></title>
