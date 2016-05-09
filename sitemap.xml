@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://www.omps.in/blog/2016/05/01/books-slash-mastery/</loc>
-<lastmod>2016-05-01T16:08:13+05:30</lastmod>
-</url>
-<url>
 <loc>http://www.omps.in/blog/2016/05/01/day-11/</loc>
 <lastmod>2016-05-01T13:01:44+05:30</lastmod>
 </url>
@@ -77,19 +73,19 @@
 <lastmod>2015-02-26T00:00:00+05:30</lastmod>
 </url>
 <url>
+<loc>http://www.omps.in/</loc>
+</url>
+<url>
 <loc>http://www.omps.in/blog/archives/</loc>
 </url>
 <url>
 <loc>http://www.omps.in/blog/</loc>
 </url>
 <url>
-<loc>http://www.omps.in/</loc>
+<loc>http://www.omps.in/books/</loc>
 </url>
 <url>
 <loc>http://www.omps.in/about/</loc>
-</url>
-<url>
-<loc>http://www.omps.in/books/</loc>
 </url>
 <url>
 <loc>http://www.omps.in/blog/categories/games/</loc>
@@ -108,8 +104,5 @@
 </url>
 <url>
 <loc>http://www.omps.in/blog/categories/vagrant/</loc>
-</url>
-<url>
-<loc>http://www.omps.in/blog/posts/2/</loc>
 </url>
 </urlset>
