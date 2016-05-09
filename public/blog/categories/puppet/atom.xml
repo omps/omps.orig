@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: puppet | Om Prakash Singh]]></title>
+  <title><![CDATA[Category: Puppet | Om Prakash Singh]]></title>
   <link href="http://www.omps.in/blog/categories/puppet/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-05-08T18:31:54+05:30</updated>
+  <updated>2016-05-09T21:39:10+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Puppet Development with vagrant]]></title>
+    <title type="html"><![CDATA[Puppet Development With Vagrant]]></title>
     <link href="http://www.omps.in/blog/2016/04/24/puppet-development-environment/"/>
     <updated>2016-04-24T16:40:46+05:30</updated>
     <id>http://www.omps.in/blog/2016/04/24/puppet-development-environment</id>

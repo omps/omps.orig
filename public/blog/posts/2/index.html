@@ -9,7 +9,7 @@
   <meta name="author" content="Om Prakash Singh">
 
   
-  <meta name="description" content="Mark and the region Many command in Emacs operate on parts of the current buffer, to specify the text for such commands, we need to select the text, &hellip;">
+  <meta name="description" content="Sixth day of writing my content, I had never thought i would be even writing for this many posts continuously(I am kind of a lazy writer) and I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,19 +18,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.omps.in/blog/posts/2">
+  <link rel="canonical" href="http://www.omps.in/blog/posts/2/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Om Prakash Singh" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
   
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -47,8 +46,14 @@
 
 </head>
 
-<body   class="collapse-sidebar sidebar-footer" >
-  <header role="banner">
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Om Prakash Singh</a></h1>
+  
+    <h2>Technology and me</h2>
+  
+</hgroup>
+
 </header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
   <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
@@ -57,7 +62,7 @@
   
 <form action="https://www.google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:www.omps.in" />
+    <input type="hidden" name="sitesearch" value="www.omps.in">
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -65,7 +70,6 @@
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/about">About</a></li>
 </ul>
 
 </nav>
@@ -78,1229 +82,9 @@
     <article>
       
   <header>
-  
-    
-      <h1 class="entry-title"><a href="/blog/2015/12/26/day-8-mark/">Day 8 - Mark and the Region</a></h1>
-      
-      
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-12-26T21:24:47+05:30" pubdate data-updated="true"></time>
-        
-         | <a href="/blog/2015/12/26/day-8-mark/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1>Mark and the region<a id="sec-1" name="sec-1"></a></h1>
-
-<p>Many command in Emacs operate on parts of the current buffer, to specify the text for such commands, we need to select the text, by marking it at one end of it and move the point to the other end. This text between the point and the mark is called as &ldquo;the region&rdquo; or &ldquo;the selection&rdquo;. This region always extend between the point and the mark, each time you move the point, the region changes.</p>
-
-<p>Setting the mark at the position also &ldquo;activates&rdquo; it. Emacs indicates the extent by highlighting the text within it, using the &lsquo;region&rsquo; face. Further on customizing it can be found under <span class="underline">Face Customization</span>.</p>
-
-<p>Once the commands are run the region, Emacs automatically deactivates this region and turns off the highlighting; this can also be explicitly deactivate by typing &lsquo;C-g&rsquo;. Movement commands <sethyperlink>  doesn&rsquo;t work on the region. The behaviour is known as Transient Mark mode. Disabling mark mode switched Emacs to an alternate behaviour. Also, when you mark something in one buffer, it doesn&rsquo;t have effect in anyother buffer, so while you come back you will see the mark still present at the same buffer at same location.</p>
-
-<p>Here are some commands for setting the mark; C is still the ctrl and M- is Meta or Alt or Esc key on your keyboard.</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">keybindings</th>
-<th scope="col" class="left">commands</th>
-<th scope="col" class="left">description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td class="left">C - SPC</td>
-<td class="left">set-mark-command</td>
-<td class="left">Set the mark at point and activate it</td>
-</tr>
-
-
-<tr>
-<td class="left">C - @</td>
-<td class="left">&#xa0;</td>
-<td class="left">The Same</td>
-</tr>
-
-
-<tr>
-<td class="left">C-x C-x</td>
-<td class="left">exchange-point-and-mark</td>
-<td class="left">set the mark at point and activate it and move point where the mark used to be.</td>
-</tr>
-
-
-<tr>
-<td class="left">Drag-Mouse-1</td>
-<td class="left">&#xa0;</td>
-<td class="left">Set the point and mark around the text you drag across.</td>
-</tr>
-
-
-<tr>
-<td class="left">Mouse-3</td>
-<td class="left">move-save-then-kill</td>
-<td class="left">Set the mark at point, then move point to where you click.</td>
-</tr>
-
-
-<tr>
-<td class="left">Shift and cursor motion keys</td>
-<td class="left">&#xa0;</td>
-<td class="left">set the mark at point if the mark is inactive, then move point</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>OK, so now we know how to mark the text, but why really I want to do it, and learn so many combinations, when it can simply be done by holding and moving the mouse around, remind me of selecting text in browser; well, some real line usage is: say, you want to select some text and make it uppercase, so just select that area of text using any of the above key bindings and run C-x C-u, and you see all the characters becoming uppercase, neat isn&rsquo;t it, I can use this same mark to remember the text, but ofcourse I can select the position of my text in the buffer too, it reminds me something like bookmark, so for an example in a text file or a code of more than 1000 lines, I encounter something interesting, but have to move ahead also, for this I only see 2 ways, either select and copy the text and save it in some place, or just remember it, the emacs remember function just does that.  I selected a region and do not want to do anything with it as such, but just remember the position of the mark in the buffer type so I type &ldquo;C-SPC C-SPC&rdquo; just does that, i.e remember my position, and C-u C-SPC later jumps back to the mark. I will speak more about the mark ring further in Today itself.</p>
-
-<p>Oh, now I know why I need it, but it may not be everytime I want to select the text and do something with it, so I activated the mark  by mistake using the key C-SPC and now wherever I move the cursor its just getting highlighted, and I am not sure what may happen if I type something, this is a time I really hate myself to be bought in, when I know how to enter into something, but do not know how to come out without making any unknown change. C-g comes to the rescue. It just is so cool, and a saviour isn&rsquo;t it.</p>
-
-<p>Ah, there are endless commands in emacs, and if there aren&rsquo;t one you can always create one, its pretty simple. For eg. C-x C-x exchanges the positions of the point and the mark(I need to find out its practical use). And there are many ways too to set mark and selecting region
-for eg. I can use mouse by pressing the left mouse button and moving around the text; clicking the right mouse button set the mark at point i.e first you click the left mouse button which will set the mark, right click to the place till where you want to make selection; further to this you can set the mark and use the cursor command or arrow keys to select the text. These are so cool tricks, I so despartley want to make video lessons now, nevermind will try to do some video lessons later once my 30 Days challenge is over.</p>
-
-<p><em>Notes:</em>
-<em>1. By any chance if your C-SPC is not working try using C-@ or vice-versa, this is also bound to the set mark command. I am not sure, but then some keyboards might not support C-SPC.</em></p>
-
-<h2>Marking objects like word, list, paragraph or page.<a id="sec-2" name="sec-2"></a></h2>
-
-<p>As we were taking earlier M-@ extend the mark on word and repeated invocation extend the region by advancing one word at a time and if the mark is active and located before point this same command moves the mark backward from its current position, one word at a time and while working with this we do not have to set the mark as well and it does accepts numeric arguments, so highlighting the next ten words would be C-u 10 M-@.</p>
-
-<p>The Numerical argument and repeated invocation works with all the command mentioned in the table, ofcourse, not the last one which marks the whole buffer, I doubt repeated invocation would start marking other buffers too ;).</p>
-
-<h2>Using the selected region and  Operating on the same<a id="sec-3" name="sec-3"></a></h2>
-
-<ul>
-<li>We can kill the region using C-w.</li>
-<li>We can copy the region M-w.</li>
-<li>Convert the case with C-x C-l or C-x C-u.</li>
-</ul>
-
-
-<p><em>as its already covered in my previous days, so I will save some effort explaining again.</em></p>
-
-<ul>
-<li>Undo change C-u C-/.</li>
-<li>Replace text withing using M-%. (Yay!! I was wishing I could find something like this.)</li>
-<li>Indent it with C-x TAB or C-M-\</li>
-<li>Fill it as text with M-x fill-region.</li>
-<li>Check the spelling M-$.</li>
-<li>Evaluate the lisp code, if you have one M-x eval-region. (Got the similar tip sometime back on IRC, I was earlier while making changes to my .emacs. I was actually closing emacs and then opening again.)</li>
-<li>Save it in a register. C-x r s.</li>
-<li>and ofcourse save this region in some file. I will be coming to this soon.</li>
-</ul>
-
-
-<h1>The Mark Ring<a id="sec-4" name="sec-4"></a></h1>
-
-<p>The command C-SPC C-SPC is hndy when you want to use the mark to remember a poistion if I wish to remember and may return to it later. It pushes the current point into the mark ring, without activating the mark. To return to the position, we can use &lsquo;set-mark-command&rsquo; with a prefix argument C-u C-SPC. This moves the point to where the mark was and deactivates the mark if it was active.Each subsequent C-u C-SPC jumps to a prior position stored in the mark ring.</p>
-
-<p>Each buffer has its own mark ring. All editing command use the current buffer&rsquo;s mark ring. In particular, C-u C-SPC always stays in the same buffer.</p>
-
-<h2>Marking texts globally<a id="sec-5" name="sec-5"></a></h2>
-
-<p>Apart from the ordinary mark ring that belongs to each buffer, Emacs has aloso a single mark mode &ldquo;global mark ring&rdquo;. Each time the mark is set, this is recorded in the global mark ring in addition to the current buffer&rsquo;s own mark ring.</p>
-
-<h2>Shift Selection<a id="sec-6" name="sec-6"></a></h2>
-
-<p>If you hold down the shift key while typing a cursor motion command, the sets the mark before the moving point, so that the region extends from the original position of point to its new position. This feature is referred to as &ldquo;shift-selection&rdquo;. It is similar to text is selected in other editors.</p>
-
-<p>To turn of shift selection, set &lsquo;shift-select-mode&rsquo; to &lsquo;nil&rsquo;</p>
-
-<h2>Disabling transient mark mode<a id="sec-7" name="sec-7"></a></h2>
-
-<p>Setting the mark activates and highlights the region, and is also called as Transient Mark mode. This is a minor mode and is enabled by default. It can be toggled with &rsquo;M-x transient-mark-mode' or with the &lsquo;Active Region Highlighting&rsquo; menu item from the options menu.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-  
-    
-      <h1 class="entry-title"><a href="/blog/2015/12/20/day-7-commands-for-human-languages-and-editing-them/">Day 7 - Commands for Human Languages and Editing Them</a></h1>
-      
-      
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-12-20T21:20:12+05:30" pubdate data-updated="true"></time>
-        
-         | <a href="/blog/2015/12/20/day-7-commands-for-human-languages-and-editing-them/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Emacs is wonderful for text editing and related stuff with text. It has many modes which helps in editing and managing text, which help increase the productive overall, here I explored some of the major modes and commands which can quickly help for editing text.</p>
-
-<h2>Text Editing in Emacs<a id="sec-1-1" name="sec-1-1"></a></h2>
-
-<p>Emacs has several major modes for handelling text, there is text mode for ordinary text which customizes emacs in small ways for syntactic convention of text. Outline mode provides special commands to handle text, Org Mode extends Outline mode and turns emacs into a full fledged organizer: we can manage TODO Lists, store notes and publish them in many formats and I would speak more about this in my coming days learnings. TeX and LaTeX mode contains embedded commands; HTML mode for HTML and SGML Modes; nxml-mode for XML Mode; Nroff Mode for Groff and Nroff Mode.</p>
-
-<p>It is also possible to edit pictures made out of text characters, also referred as *&ldquo;ASCII art&rdquo;* using Picture mode.</p>
-
-<h2>Words<a id="sec-1-2" name="sec-1-2"></a></h2>
-
-<p>There are several commnads in emacs for operating on words and many of these I have already covered in my Day-1 and Day-4, but let me redo, so I will remeber it for a long time.
-Again, the <strong>M</strong> refers the Meta i.e the Alt or Esc key on the keyboard and is followed by the character keys.</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Key bindings</th>
-<th scope="col" class="left">commands</th>
-<th scope="col" class="left">description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td class="left">M-f</td>
-<td class="left">forward-word</td>
-<td class="left">Self descriptive as it moves forward on word</td>
-</tr>
-
-
-<tr>
-<td class="left">M-b</td>
-<td class="left">backward-word</td>
-<td class="left">it moves one word back.</td>
-</tr>
-
-
-<tr>
-<td class="left">M-d</td>
-<td class="left">kill-word</td>
-<td class="left">kills up to the end of the word</td>
-</tr>
-
-
-<tr>
-<td class="left">M-<DEL></td>
-<td class="left">backward-kill-word</td>
-<td class="left">kill backward to the beginning of the word.</td>
-</tr>
-
-
-<tr>
-<td class="left">M-@</td>
-<td class="left">mark-word</td>
-<td class="left">Mark to the end of the word</td>
-</tr>
-
-
-<tr>
-<td class="left">M-t</td>
-<td class="left">transpose-words</td>
-<td class="left">Transpose the word and drag across others</td>
-</tr>
-
-
-<tr>
-<td class="left">M-=</td>
-<td class="left">count-words-region</td>
-<td class="left">gives the count of the words in the region.</td>
-</tr>
-</tbody>
-</table>
-
-
-<p><em>NOTES:</em>
-<em>1. These keys parrellel with the character-based movements</em>
-<em>2. The numeric arguments serves as the repeat count and the negative arguments would make the commands move in the opposite direction.</em>
-<em>3. M-<DEL> deletes the word to the point where M-b would end, it will kill the comma and space as well, M-b M-d to just kill the word but not the comma.</em>
-<em>4. If we choose there keybindings in our shell <strong>(set -o emacs)</strong>, these word keybindings can help us in moving around the long commands.</em></p>
-
-<h2>Sentences<a id="sec-1-3" name="sec-1-3"></a></h2>
-
-<p>The meta keys are also helpful in moving around the sentences.</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Keybindings</th>
-<th scope="col" class="left">commands</th>
-<th scope="col" class="left">description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td class="left">M-a</td>
-<td class="left">backward-sentence</td>
-<td class="left">This will move the point to the beginning of the sentence</td>
-</tr>
-
-
-<tr>
-<td class="left">M-e</td>
-<td class="left">forward-sentence</td>
-<td class="left">Will move forward to the end of sentence.</td>
-</tr>
-
-
-<tr>
-<td class="left">M-k</td>
-<td class="left">kill-sentence</td>
-<td class="left">Kill forward to the end of the sentence.</td>
-</tr>
-
-
-<tr>
-<td class="left">C-x <DEL></td>
-<td class="left">backward-kill-sentence</td>
-<td class="left">kill back to the beginning of the sentence.</td>
-</tr>
-</tbody>
-</table>
-
-
-<h3>Quoting from EMACS Manual<a id="sec-1-3-1" name="sec-1-3-1"></a></h3>
-
-<p>#+BEGIN<sub>SRC</sub> Quote
- The sentence commands assume that you follow the American typist&rsquo;s
-convention of putting two spaces at the end of a sentence.  That is, a
-sentence ends wherever there is a `.&lsquo;, `?&rsquo; or `!&lsquo; followed by the end
-of a line or two spaces, with any number of `)&rsquo;, `]&lsquo;, `&rsquo;&lsquo;, or `&ldquo;&rsquo;
-characters allowed in between.  A sentence also begins or ends wherever
-a paragraph begins or ends.  It is useful to follow this convention,
-because it allows the Emacs sentence commands to distinguish between
-periods that end a sentence and periods that indicate abbreviations.
-\#+END<sub>SRC</sub> Quote</p>
-
-<p><em>NOTE:</em>
-<em>1. To use just one space between sentences, set the variable sentence-end-double-space to nil and to make the sentence commands stop for single spaces.</em>
-<em>2. The variable sentence-end controls how to recognize the end of the sentence; its value is a regular expression, which is used to match the last few characters of the sentence.</em>
-<em>3. Some languages such as Thai, doesn&rsquo;t end with periods; such cases can be handeld by setting variable sentence-end-without-period to t.</em></p>
-
-<h2>Paragraphs<a id="sec-1-4" name="sec-1-4"></a></h2>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Keybindings</th>
-<th scope="col" class="left">Commands</th>
-<th scope="col" class="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td class="left">M-{</td>
-<td class="left">backward-paragraph</td>
-<td class="left">move to the beginning of paragraph.</td>
-</tr>
-
-
-<tr>
-<td class="left">M-}</td>
-<td class="left">forward-paragraph</td>
-<td class="left">Move to the end of the next paragraph.</td>
-</tr>
-
-
-<tr>
-<td class="left">M-h</td>
-<td class="left">mark-paragraph</td>
-<td class="left">put point and mark around this or next paragraph.</td>
-</tr>
-
-
-<tr>
-<td class="left">M-h C-w</td>
-<td class="left">&#xa0;</td>
-<td class="left">kills the paragraph around or after point.</td>
-</tr>
-</tbody>
-</table>
-
-
-<p><em>Notes:</em>
-<em>1. The definition of a paragraph boundary is controlled by the variables <strong>paragraph-separate</strong> and  <strong>paragraph-start</strong>. The value of these are regular expression.</em>
-<em>2. In fundamental mode, Paragraph-start is *&ldquo;\f\\|[ \t]*$&rdquo;* and matches lines that either start or separate paragraph.</em>
-<em>3. Paragraph separate is *&ldquo;[ \t\f]*$&rdquo;* and matches lines  that separate paragraph without being part of any paragraph.</em></p>
-
-<h2>Pages<a id="sec-1-5" name="sec-1-5"></a></h2>
-
-<p>The files are divided into pages delimited by the &ldquo;formfeed character&rdquo; (ASCII code 2, denoted as <contorl-l>) and in emacs is escape sequence .</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Keybindings</th>
-<th scope="col" class="left">Commands</th>
-<th scope="col" class="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td class="left">M-x What-page</td>
-<td class="left">&#xa0;</td>
-<td class="left">Display the page number and line number within that page</td>
-</tr>
-
-
-<tr>
-<td class="left">C-x [</td>
-<td class="left">backward-page</td>
-<td class="left">Move point to the previous page boundary.</td>
-</tr>
-
-
-<tr>
-<td class="left">C-x ]</td>
-<td class="left">forward-page</td>
-<td class="left">Move point ot next page boundary</td>
-</tr>
-
-
-<tr>
-<td class="left">C-x C-p</td>
-<td class="left">mark-page</td>
-<td class="left">put point and mark around this page.</td>
-</tr>
-
-
-<tr>
-<td class="left">C-x C-p C-w</td>
-<td class="left">&#xa0;</td>
-<td class="left">select and kill the page</td>
-</tr>
-
-
-<tr>
-<td class="left">C-x l</td>
-<td class="left">count-lines-page</td>
-<td class="left">Count the lines in this page.</td>
-</tr>
-</tbody>
-</table>
-
-
-<p><em>Note:</em>
-<em>page-delimiter control where the page begins. Its a regular expression *&ldquo;f&rdquo;* which matches a beginning of a line that separate pages.</em></p>
-
-<h2>Filling Text<a id="sec-1-6" name="sec-1-6"></a></h2>
-
-<p>Filling text means breaking up the lines that fit a specified width. Emacs does the filling in 2 ways. <strong>Auto Fill Mode</strong> inserts text with self-inserting characters and automatically fills it. <strong>Explicit fill Commands</strong>  can be used for editing texts.</p>
-
-<h3>Auto Fill<a id="sec-1-6-1" name="sec-1-6-1"></a></h3>
-
-<p>This is a minor mode in which the lines are broken automatically when they become too wide, breaking up of lines only happens when you type <SPC> or <RET>.</p>
-
-<p>&rsquo;M-x auto-fill-mode' : Toggles the Auto Fill mode.</p>
-
-<p>&lsquo;<SPC>/<RET>&rsquo; : Break lines when appropriate.</p>
-
-<p>From the command line the auto-fill mode enables or disables the mode for current buffer. From LISP <em>auto-fill</em> is enabled when called with omitted or nil argument. for enabling in the major modes, add auto-fill-mode in mode hooks. When the mode it enabled it will show <strong>Fill</strong> in the mode line.</p>
-
-<p>This mode breaks any line which goes longer than the desired width by pressing <SPC> or <RET>, and to insert a SPACE or any newline without breaking the lines tye <strong>C-q <SPC></strong> or <strong>C-q C-j</strong> and <strong>C-o</strong> for inserting new line.</p>
-
-<p>Auto fill mode does not refill the paragraphs; it break lines but does not merge lines, editing in the middle of the paragraph can result in paragraph which is not correctly filled. To fill them correctly we may need to use explicit Fill Commands.</p>
-
-<h3>Fill Commands<a id="sec-1-6-2" name="sec-1-6-2"></a></h3>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Key bindings</th>
-<th scope="col" class="left">Command</th>
-<th scope="col" class="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td class="left">M-q</td>
-<td class="left">fill-paragraph</td>
-<td class="left">Fill current paragraph</td>
-</tr>
-
-
-<tr>
-<td class="left">C-x f</td>
-<td class="left">set-fill-column</td>
-<td class="left">Set the fill column</td>
-</tr>
-
-
-<tr>
-<td class="left">M-x fill-region</td>
-<td class="left">fill-region</td>
-<td class="left">Fill each paragraph in the region.</td>
-</tr>
-
-
-<tr>
-<td class="left">M-x fill-region-as-paragraph</td>
-<td class="left">&#xa0;</td>
-<td class="left">Fill the region consider it as paragraph.</td>
-</tr>
-
-
-<tr>
-<td class="left">M-o M-s</td>
-<td class="left">&#xa0;</td>
-<td class="left">Center a line.</td>
-</tr>
-</tbody>
-</table>
-
-
-<p><em>Notes:</em>
-<em>1. M-q and fill-region uses the usual emacs criteria for finding paragraph boundaries, which refills everything between point and mark as single paragraph.</em>
-<em>2. Numeric argument to <strong>M-q</strong> justifies the text as well as fill it.</em>
-<em>3. To Remove extra spaces, use M-q with no argument.</em>
-<em>4. The default vault for fill column is 70.</em>
-<em>5. <strong>C-x f</strong> (sets-fill-column) sets the numeric value for fill column. With just C-u as argument it sets fill-column to the current horizantal position of point.</em>
-<em>6. By default, emacs consider a period followed  by two spaces or by a newline as the end of sentence; a period with just one space will be called as abbrevation and not the end of the sentence.</em>
-<em>7. Setting &lsquo;sentence-end-double-space&rsquo; to nil the fill commands will break a line after a period followed by a period and a space.</em></p>
-
-<h3>The Fill Prefix<a id="sec-1-6-3" name="sec-1-6-3"></a></h3>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Keybindings</th>
-<th scope="col" class="left">Command</th>
-<th scope="col" class="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td class="left">C-x .</td>
-<td class="left">set-fill-prefix</td>
-<td class="left">Set the fill prefix</td>
-</tr>
-
-
-<tr>
-<td class="left">M-q</td>
-<td class="left">fill-paragraph</td>
-<td class="left">Fill a paragraph using current fill prefix</td>
-</tr>
-
-
-<tr>
-<td class="left">M-x fill-individual-paragraphs</td>
-<td class="left">&#xa0;</td>
-<td class="left">Fill the region, considering each change of indentation as starting a new paragraph.</td>
-</tr>
-
-
-<tr>
-<td class="left">M-x fill-nonuniform-paragraphs</td>
-<td class="left">&#xa0;</td>
-<td class="left">Consider only paragraph separator lines as starting a new paragraph.</td>
-</tr>
-</tbody>
-</table>
-
-
-<p><em>Notes:</em>
-<em>1. Move to a line which starts with desired prefix, put point at the end of the prefix and type C-x .</em>
-<em>2. To turn off a prefix, specify an empty prefix: type C-x . with point at the beginning of line.</em>
-<em>3. The fill prefix is stored in fill-prefix variable. if the value is nil, then there is no fill prefix.</em></p>
-
-<p>This feature allows paragraphs to be filled so each line starts with a special string of characters (such a sequence of spaces, giving and indented paragraph). you can specify fill prefix explicitly; otherwise emacs tries to deduce automatically.</p>
-
-<h3>Adaptive Fill.<a id="sec-1-6-4" name="sec-1-6-4"></a></h3>
-
-<p>The fill command deduce the proper fill prefix for a paragraph automatically in some cases; either white spaces or certain precaution characters at the beginning of line are propagated to all lines of the paragraph.</p>
-
-<p>If the paragraph has two or more lines, the fill prefix is taken from the paragraph&rsquo;s second line, but only if it appears on the first line as well.</p>
-
-<p>If a paragraph has just one line, fill commands <span class="underline">may</span> take a prefix from that line.  The decision is complicated because there are three reasonable things to do in such a case:</p>
-
-<ul>
-<li><p>Use the first line&rsquo;s prefix on all the lines of the paragraph.</p></li>
-<li><p>Indent subsequent lines with whitespace, so that they line up under the text that follows the prefix on the first line, but don&rsquo;t actually copy the    <br/>
-prefix from the first line.</p></li>
-<li><p>Don&rsquo;t do anything special with the second and following lines.</p></li>
-</ul>
-
-
-<p>All three of these styles of formatting are commonly used.  So the fill commands try to determine what you would like, based on the prefix that appears and on the major mode.  Here is how.</p>
-
-<p>If the prefix found on the first line matches `adaptive-fill-first-line-regexp', or if it appears to be a comment-starting sequence (this depends on the major mode), then the prefix found is used for filling the paragraph, provided it would not act as a paragraph starter on subsequent lines.</p>
-
-<p>Otherwise, the prefix found is converted to an equivalent number of spaces, and those spaces are used as the fill prefix for the rest of the lines, provided they would not act as a paragraph starter on subsequent lines.</p>
-
-<p>In Text mode, and other modes where only blank lines and page delimiters separate paragraphs, the prefix chosen by adaptive filling never acts as a paragraph starter, so it can always be used for filling.</p>
-
-<p>The variable `adaptive-fill-regexp' determines what kinds of line beginnings can serve as a fill prefix: any characters at the start of the line that match this regular expression are used.  If you set the variable `adaptive-fill-mode' to `nil', the fill prefix is never chosen automatically.</p>
-
-<p>You can specify more complex ways of choosing a fill prefix automatically by setting the variable `adaptive-fill-function' to a function.  This function is called with point after the left margin of a line, and it should return the appropriate fill prefix based on that line.  If it returns `nil', `adaptive-fill-regexp' gets a chance to find a prefix.</p>
-
-<h2>Case<a id="sec-1-7" name="sec-1-7"></a></h2>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Keybindings</th>
-<th scope="col" class="left">Commands</th>
-<th scope="col" class="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td class="left">M-l</td>
-<td class="left">downcase-word</td>
-<td class="left">Convert the following word to lower case.</td>
-</tr>
-
-
-<tr>
-<td class="left">M-u</td>
-<td class="left">upcase-word</td>
-<td class="left">Convert the following word to upper case.</td>
-</tr>
-
-
-<tr>
-<td class="left">M-c</td>
-<td class="left">capitalize-word</td>
-<td class="left">Capitalize the following word.</td>
-</tr>
-
-
-<tr>
-<td class="left">C-x C-l</td>
-<td class="left">downcase-region</td>
-<td class="left">Convert region to lowercase.</td>
-</tr>
-
-
-<tr>
-<td class="left">C-x C-u</td>
-<td class="left">upcase-region</td>
-<td class="left">Convert region to upper case.</td>
-</tr>
-</tbody>
-</table>
-
-
-<p><em>Note:</em>
-<em>1. When a negative argument, the case conversion applies to appropriate no. of words before point, but do not move the point, its convinent if I typed something in wrong case and want to correct the case.</em>
-<em>2. In case the command to change case is given in the middle of the word, the case change would happen from the point to the end of the word.</em></p>
-
-<h2>Text Mode<a id="sec-1-8" name="sec-1-8"></a></h2>
-
-<p>This is the major mode for editing the text language, any file ending with .txt will automatically enables this mode; and this mode can also be called by M-x text-mode. Blank lines and page delimiters separate paragraphs, and as a result paragraphs can be indented, and adaptive filling determines what indentation to use when filling a paragraph. The <TAB> usually inserts whitespace up to the next tab stop, instead of indenting the current line.</p>
-
-<p>Text mode turns off comments features except when you explicitly invoke them. It changes so that the single quotes are considered part of the words. But if a word starts with a single quote it is treated as a prefix for the purpose of capitalization. Entering text-mode invokes text-mode-hook.</p>
-
-<h2>Outline Mode<a id="sec-1-9" name="sec-1-9"></a></h2>
-
-<p>This is major mode derived from Text mode, which is specialized for editing outlines; it provides commands to navigate between entries in the outline structure. Type M-x outline-mode to switch to outline mode, entering this mode runs the hook text-mode-hook followed by outline-mode-hook.</p>
-
-<p>When in outline mode use command to make a line invisible it disappears the line and ellipsis(three periods in a row) is displayed at the end of the previous visible line.</p>
-
-<p>Editing command on lines, such as C-n and C-p treat the text of the invisible line as part of the previous visible line.</p>
-
-<p>outline-minor-mode toggle outline minor mode in the current buffer, it is a buffer-local minor mode which provides the same commands as the major mode for the current buffer, this provides special keybindings with C-c prefix, and C-c @ as the prefix in minor-mode.</p>
-
-<h3>Outline Format<a id="sec-1-9-1" name="sec-1-9-1"></a></h3>
-
-<p>Outline mode assumes the the lines in the buffer are of two types:
-&ldquo;heading lines&rdquo; and &ldquo;body lines&rdquo;</p>
-
-<p>Heading line: start with one or more asterisk (&lsquo;*&rsquo;); the number of asterisks determines the depth of the heading in the outline structure.
-Body Line: Any line which is not a heading line is a body line. Body line belong with a preceding heading line.</p>
-
-<p>A heading line and a body line collectively is called as an entry.</p>
-
-<h3>Outline mode commands<a id="sec-1-9-2" name="sec-1-9-2"></a></h3>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Key bindings</th>
-<th scope="col" class="left">Commands</th>
-<th scope="col" class="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td class="left">C-c C-n</td>
-<td class="left">outline-next-visible-heading</td>
-<td class="left">Move point to the next visible heading</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-p</td>
-<td class="left">outline-previous-visible-heading</td>
-<td class="left">Move point to the previous visible heading.</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-f</td>
-<td class="left">outline-forward-same-level</td>
-<td class="left">Move point to the next visible heading line at the same level.</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-b</td>
-<td class="left">outline-backward-same-level</td>
-<td class="left">Move point to previous heading line at the same level.</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-u</td>
-<td class="left">outline-up-heading</td>
-<td class="left">Move point up to a lower-level.</td>
-</tr>
-</tbody>
-</table>
-
-
-<h3>Outline visibility commands<a id="sec-1-9-3" name="sec-1-9-3"></a></h3>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Keybindings</th>
-<th scope="col" class="left">Commands</th>
-<th scope="col" class="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td class="left">C-c C-c</td>
-<td class="left">hide-entry</td>
-<td class="left">Make the current heading line's body invisible</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-e</td>
-<td class="left">show-entry</td>
-<td class="left">Make the current heading line's body visible</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-d</td>
-<td class="left">hide-subtree</td>
-<td class="left">Make everything under the heading invisible excluding the heading</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-s</td>
-<td class="left">show-subtree</td>
-<td class="left">Make everything under the current heading visible</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-l</td>
-<td class="left">hide-leaves</td>
-<td class="left">Make the body of the current heading line, and all of its subheadings</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-k</td>
-<td class="left">show-branches</td>
-<td class="left">Make all subheading of the current heading line, at all levels, visible</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-i</td>
-<td class="left">show-children</td>
-<td class="left">Make immediate subheadings of the current heading line visible</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-t</td>
-<td class="left">hide-body</td>
-<td class="left">Make all body lines in the buffer invisible</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-a</td>
-<td class="left">show-all</td>
-<td class="left">Make all line in the buffer visible</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-q</td>
-<td class="left">hide-sublevels</td>
-<td class="left">Hide everything except the top N level of heading lines</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-o</td>
-<td class="left">hide-other</td>
-<td class="left">HIde everything except the heading or the body that point is in</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>And most of these commands may work differently in org-mode, the org-mode is an advance implementation of outline-mode. I will be writing about this mode in my later days. It may confuse me at a later stage as mainly I use org-mode for my purposes of note taking and writing this blog. Let me provide some brief introduction to the org-mode.</p>
-
-<h2>Org Mode<a id="sec-1-10" name="sec-1-10"></a></h2>
-
-<p>Org mode, as in outline mode, each entry has a heading line that starts with one or more asterisk (*); Any line beginning with a &lsquo;#&rsquo; is considered as a comment. and it also provides commands to view and manipulate the outline structure.</p>
-
-<p>The simplest of these commands is <TAB> (org-cycle). If invoked on heading line, it cycles through different visiblity states of that subtree:
-1.  Showing only the heading line.
-2.  Show only the heading lines and the heading lines of its direct children.
-3.  Show the entire subtree.</p>
-
-<p>The <S-TAB> (org-shifttab) in an org mode cycle visiblity of entire online subtree
-1.  Show only top-level heading lines.
-2.  Show all heading lines but no body lines.
-3.  Show everything.</p>
-
-<p>We can move the entire entry up and down in the buffer, including its body lines and subtree, by typing M-<up> (org-metaup) or M-<down> (org-metadown) on the heading line. Similarly, it can promote or demote the heading line with M-<left> (org-metaleft) and M-&lt;right (org-metaright). For details, The Org Mode Manual.</p>
-
-<h3>Org as an Organizer<a id="sec-1-10-1" name="sec-1-10-1"></a></h3>
-
-<p>You can tag an Org entry as a &ldquo;TODO&rdquo; by typing <strong>C-c C-t</strong> (org-todo) anywhere in the entry. This adds <em>TODO</em> keyword and typing the keyword <strong>C-c C-t</strong> again switches the keyword to <em>DONE</em>; press <strong>C-c C-t</strong> again and it will remove the keyword entirely. They keywords can be customized using the variable &lsquo;org-todo-keywords&rsquo;</p>
-
-<p>With the possiblity of marking an entry as TODO, we can also attach a date to it by typing <strong>C-c C-s</strong> (org-schedule), This prompts for a date by popping a calendar, and then adds the tag &lsquo;SCHEDULED&rsquo;, together with the selected date, beneath the heading line. <strong>C-c C-d</strong> (org-deadline) have the same effect except it adds the tag &lsquo;DEADLINE&rsquo;.</p>
-
-<p>Once you have some planned TODO items, you can add that file to the list of &ldquo;agenda fileS&rdquo; by typing <strong>C-c [</strong> (org-agenda-file-to-front). It allows us to maintain multiple agenda  files. The list of these agenda files are stored in the variable &lsquo;org-agenda-files&rsquo;.</p>
-
-<p>Typing M-x org-agenda lets view items coming from agenda file, this command prompts for what we want to see: a list of things to do this week, a list of TODO items with specific keywords.</p>
-
-<h3>Org as an authoring system<a id="sec-1-10-2" name="sec-1-10-2"></a></h3>
-
-<p>To format org notes nicely and to prepare them for export and publication, <strong>C-c C-e</strong> (org-export) to export buffer and prompts for a export format; includes HTML, LaTeX, OpenDocument(.odt), and PDF.</p>
-
-<p>To export several files at once to a specified directory, either locally or over the network, we can define a list of projects through the variable &lsquo;org-publish-project-alist&rsquo;</p>
-
-<p>Org supports a simple markup scheme for applying text formatting to exported documents:</p>
-
-<ul>
-<li>This text is <em>emphasized</em></li>
-<li>This text is <strong>in bold</strong></li>
-<li>This text is <span class="underline">underlined</span></li>
-<li>This text uses <code>a teletype font</code></li>
-</ul>
-
-
-<blockquote><p>``This is a quote.&lsquo;&rsquo;</p></blockquote>
-
-<pre><code>This is an example.
-</code></pre>
-
-<h2>TeX Mode<a id="sec-1-11" name="sec-1-11"></a></h2>
-
-<p>Emacs provides special major modes for editing files written in TeX and its related formats. TeX is a powerful text formatter written by Donald Knuth; like GNU Emacs. Latex is a simplified input format for TeX implemented using TeX macros. DocTeX is a special file format in which the LateX sources are written, combining sources with documentation.</p>
-
-<p>TeX mode has four variants:
-1.  Plain TeX mode
-2.  LateX mode.
-3.  DocTeX mode.
-4.  SliTeX mode.</p>
-
-<p>These distinc major modes differ only slightly, and are designed for editing the four different format. Emacs selects the appropriate mode by looking at the contents of the buffer. Emacs chooses the mode specified by the variable &lsquo;tex-default-mode&rsquo;; its default value is latex-mode. If Emacs doesn&rsquo;t get it right you can select the correct variant of TeX using the command &rsquo;M-x plain-tex-mode', &rsquo;M-x latex-mode', &rsquo;M-x slitex-mode', or &rsquo;M-x doctex-mode'.</p>
-
-<h2>SGML and HTML Modes<a id="sec-1-12" name="sec-1-12"></a></h2>
-
-<p>HTML mode is slightly customizable variant of SGML mode.</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Keybindings</th>
-<th scope="col" class="left">Command</th>
-<th scope="col" class="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td class="left">C-C C-n</td>
-<td class="left">sgml-name-char</td>
-<td class="left">Interactively specify a special character and insert the SGML '&' command for that character</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-t</td>
-<td class="left">sgml-tag</td>
-<td class="left">Specify a tag and its attribute.</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-a</td>
-<td class="left">sgml-attributes</td>
-<td class="left">insert attribute value for the current tag</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-f</td>
-<td class="left">sgml-skip-tag-forward</td>
-<td class="left">skip across a balanced tag group.</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-b</td>
-<td class="left">sgml-skip-tag-backward</td>
-<td class="left">skip backward across a balanced tag group.</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-d</td>
-<td class="left">sgml-delete-tag</td>
-<td class="left">Delete the tag</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c ? TAG <RET></td>
-<td class="left">sgml-tag-help</td>
-<td class="left">display the description and the meaning of the tag</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c /</td>
-<td class="left">sgml-close-tag</td>
-<td class="left">insert a close tag for the innermost undetermind tag</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c 8</td>
-<td class="left">sgml-name-8bit-mode</td>
-<td class="left">Toggle a minor mode in which Latin-1 characters insert the corresponding SGML commands.</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c C-v</td>
-<td class="left">sgml-validate</td>
-<td class="left">run a shell commands to validate the current buffer as SGML.</td>
-</tr>
-
-
-<tr>
-<td class="left">C-c <TAB></td>
-<td class="left">sgml-tags-invisible</td>
-<td class="left">Toggle the visiblity of existing tags in the buffer.</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>There is a major mode for editing XML documents called as nXML mode. This is a mode which can recognize any XML schema and use them to provide completion on XML elements via &rsquo;M-<TAB>, as well as on the fly XML validation with error highlighting. To enable nXML mode for existing buffer type <strong>M-x nxml-mode</strong> or <strong>M-x xml-mode</strong></p>
-
-<p>For files with extension .xml nxml-mode is used by default; and for files with xhtml html-mode is used.</p>
-
-<h2>Nroff mode<a id="sec-1-13" name="sec-1-13"></a></h2>
-
-<p>This is a major mode derived from Text mode and is specialized for editing nroff files e.g. UNIX man pages. <strong>M-x nroff-mode</strong> enters into this mode, and runs the hook &lsquo;text-mode-hook&rsquo;, then &lsquo;nroff-mode-hook&rsquo;; nroff command lines are treated as paragraph separators, pages are separated by &lsquo;.bp&rsquo; commands, and comments start with backslash-doublequote (\&ldquo;)</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Keybindings</th>
-<th scope="col" class="left">Commands</th>
-<th scope="col" class="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td class="left">M-n</td>
-<td class="left">forward-next-line</td>
-<td class="left">move to the beginning of next line, which is not a nroff command</td>
-</tr>
-
-
-<tr>
-<td class="left">M-p</td>
-<td class="left">backward-next-line</td>
-<td class="left">same but moves up</td>
-</tr>
-
-
-<tr>
-<td class="left">M-?</td>
-<td class="left">count-text-lines</td>
-<td class="left">display in the echo area the number of text lines.</td>
-</tr>
-</tbody>
-</table>
-
-
-<p><strong>M-x electric-nroff-mode</strong> toggles the Electric Nroff mode and is a minor-mode and can be used with Nroff mode.</p>
-
-<h2>Enriched Text<a id="sec-1-14" name="sec-1-14"></a></h2>
-
-<p>This is a minor mode for editing formatted text files in a WYSIWYG (&ldquo;what you see is what you get&rdquo;) fashion. When Enriched mode is enabled we can apply various formatting properties to the text in the buffer. This mode is typically used by Text mode and is not compatible with Font Lock Mode which is used by many major modes, for syntax highlighting. When you save a buffer with enriched mode enabled, it is saved using the &lsquo;text/enriched&rsquo; format, including the formatting indentation.</p>
-
-<p>To create a new file of formatted text, visit file and type <strong>M-x enriched-mode</strong></p>
-
-<h2>Editing Text Based Tables<a id="sec-1-15" name="sec-1-15"></a></h2>
-
-<p>The table package provides commands to easily edit the text-based tables. A &ldquo;table&rdquo; consist of t a rectangular text area which is divided into &ldquo;cells&rdquo;. Each cell must be one character wide and one character high, not counting its border lines. A cell can be subdivided into more cells, but they cannot overlap.</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Commands</th>
-<th scope="col" class="left">Default</th>
-<th scope="col" class="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td class="left">table-cell-vertical-char</td>
-<td class="left">Pipe</td>
-<td class="left">The character used for vertical lines.</td>
-</tr>
-
-
-<tr>
-<td class="left">table-cell-horizontal-chars</td>
-<td class="left">- =</td>
-<td class="left">character used for horizontal lines.</td>
-</tr>
-
-
-<tr>
-<td class="left">table-cell-intersection-char</td>
-<td class="left">+</td>
-<td class="left">character used for intersection of horizontal and vertical lines</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>The following are examples of <span class="underline">invalid</span> tables:</p>
-
-<!-- This HTML table template is generated by emacs 24.5.1 -->
-
-
-<table border="1">
-  <tr>
-    <td align="left" valign="top">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-      --+&nbsp;&nbsp;<br />
-      &nbsp;&nbsp;|&nbsp;&nbsp;<br />
-      &nbsp;&nbsp;|&nbsp;&nbsp;
-    </td>
-  </tr>
-</table>
-
-
-<p>a          b          c</p>
-
-<p>From left to right:</p>
-
-<ol>
-<li><p>Overlapped cells or non-rectangular cells are not allowed.</p></li>
-<li><p>The border must be rectangular.</p></li>
-<li><p>Cells must have a minimum width/height of one character.</p></li>
-</ol>
-
-
-<h2>Two column editing<a id="sec-1-16" name="sec-1-16"></a></h2>
-
-<p>Two columns lets you convinently edit two side-by-side columns of text. It uses two side-by-side windows, each showing its own buffer. There are three ways to enter two column mode:</p>
-
-<ol>
-<li><p><F2> 2 or C-x 6 2 - Enter two columns mode with the current buffer on the left and on the right, a buffer whose name is based on the current buffer&rsquo;s name.</p></li>
-<li><p><F2> s  or C-x 6 s - Split the current buffer, which contains two column text, into two buffers and display them side by side.</p></li>
-<li><p><F2> b BUFFER <RET> or C-x 6 b BUFFER <RET> - Enter two columns mode using the current buffer as the left-hand buffer, and using buffer BUFFER as the right-hand buffer.</p></li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-  
     
       <h1 class="entry-title"><a href="/blog/2015/12/13/day-6-help-and-run-command-by-their-name/">Day 6 - Help and Run Command by Their Name</a></h1>
-      
-      
+    
     
       <p class="meta">
         
@@ -1308,16 +92,10 @@ Body Line: Any line which is not a heading line is a body line. Body line belong
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2015-12-13T21:09:38+05:30" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2015-12-13T21:09:38+05:30'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:09 pm</span></time>
         
-         | <a href="/blog/2015/12/13/day-6-help-and-run-command-by-their-name/#disqus_thread">Comments</a>
+           | <a href="/blog/2015/12/13/day-6-help-and-run-command-by-their-name/#disqus_thread"
+             data-disqus-identifier="http://www.omps.in/blog/2015/12/13/day-6-help-and-run-command-by-their-name/">Comments</a>
         
       </p>
     
@@ -1889,11 +667,9 @@ Body Line: Any line which is not a heading line is a body line. Body line belong
     <article>
       
   <header>
-  
     
       <h1 class="entry-title"><a href="/blog/2015/12/03/day-5-minibuffer/">Day 5 - Minibuffer</a></h1>
-      
-      
+    
     
       <p class="meta">
         
@@ -1901,16 +677,10 @@ Body Line: Any line which is not a heading line is a body line. Body line belong
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2015-12-03T20:33:04+05:30" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2015-12-03T20:33:04+05:30'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>8:33 pm</span></time>
         
-         | <a href="/blog/2015/12/03/day-5-minibuffer/#disqus_thread">Comments</a>
+           | <a href="/blog/2015/12/03/day-5-minibuffer/#disqus_thread"
+             data-disqus-identifier="http://www.omps.in/blog/2015/12/03/day-5-minibuffer/">Comments</a>
         
       </p>
     
@@ -2112,11 +882,9 @@ Body Line: Any line which is not a heading line is a body line. Body line belong
     <article>
       
   <header>
-  
     
       <h1 class="entry-title"><a href="/blog/2015/11/28/day-4-editing/">Day 4 - Editing</a></h1>
-      
-      
+    
     
       <p class="meta">
         
@@ -2124,16 +892,10 @@ Body Line: Any line which is not a heading line is a body line. Body line belong
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2015-11-28T20:15:36+05:30" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2015-11-28T20:15:36+05:30'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:15 pm</span></time>
         
-         | <a href="/blog/2015/11/28/day-4-editing/#disqus_thread">Comments</a>
+           | <a href="/blog/2015/11/28/day-4-editing/#disqus_thread"
+             data-disqus-identifier="http://www.omps.in/blog/2015/11/28/day-4-editing/">Comments</a>
         
       </p>
     
@@ -2256,11 +1018,9 @@ Body Line: Any line which is not a heading line is a body line. Body line belong
     <article>
       
   <header>
-  
     
       <h1 class="entry-title"><a href="/blog/2015/11/23/day3-understanding-files-and-buffers/">Day 3 - Understanding Files and Buffers</a></h1>
-      
-      
+    
     
       <p class="meta">
         
@@ -2268,16 +1028,10 @@ Body Line: Any line which is not a heading line is a body line. Body line belong
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2015-11-23T20:06:40+05:30" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2015-11-23T20:06:40+05:30'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>8:06 pm</span></time>
         
-         | <a href="/blog/2015/11/23/day3-understanding-files-and-buffers/#disqus_thread">Comments</a>
+           | <a href="/blog/2015/11/23/day3-understanding-files-and-buffers/#disqus_thread"
+             data-disqus-identifier="http://www.omps.in/blog/2015/11/23/day3-understanding-files-and-buffers/">Comments</a>
         
       </p>
     
@@ -2557,11 +1311,9 @@ The buffer `src&rsquo; was made by Dired on the directory `~/cvs/emacs/src/&lsqu
     <article>
       
   <header>
-  
     
       <h1 class="entry-title"><a href="/blog/2015/11/14/day-2-the-real-estate/">Day 2 - the Emacs Real Estate</a></h1>
-      
-      
+    
     
       <p class="meta">
         
@@ -2569,16 +1321,10 @@ The buffer `src&rsquo; was made by Dired on the directory `~/cvs/emacs/src/&lsqu
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2015-11-14T00:31:00+05:30" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2015-11-14T00:31:00+05:30'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:31 am</span></time>
         
-         | <a href="/blog/2015/11/14/day-2-the-real-estate/#disqus_thread">Comments</a>
+           | <a href="/blog/2015/11/14/day-2-the-real-estate/#disqus_thread"
+             data-disqus-identifier="http://www.omps.in/blog/2015/11/14/day-2-the-real-estate/">Comments</a>
         
       </p>
     
@@ -2760,11 +1506,9 @@ cs:ch-fr buf        pos line (major minor)</p>
     <article>
       
   <header>
-  
     
       <h1 class="entry-title"><a href="/blog/2015/11/14/day-1-learning-emacs/">Day 1 - Learn Emacs in 30 Days Challenge</a></h1>
-      
-      
+    
     
       <p class="meta">
         
@@ -2772,16 +1516,10 @@ cs:ch-fr buf        pos line (major minor)</p>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2015-11-14T00:02:00+05:30" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2015-11-14T00:02:00+05:30'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:02 am</span></time>
         
-         | <a href="/blog/2015/11/14/day-1-learning-emacs/#disqus_thread">Comments</a>
+           | <a href="/blog/2015/11/14/day-1-learning-emacs/#disqus_thread"
+             data-disqus-identifier="http://www.omps.in/blog/2015/11/14/day-1-learning-emacs/">Comments</a>
         
       </p>
     
@@ -3118,11 +1856,9 @@ Shift will be denoted as &rsquo;S'.</p>
     <article>
       
   <header>
-  
     
       <h1 class="entry-title"><a href="/blog/2015/02/26/applications-for-kids/">Games of Kids</a></h1>
-      
-      
+    
     
       <p class="meta">
         
@@ -3130,16 +1866,10 @@ Shift will be denoted as &rsquo;S'.</p>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2015-02-26T00:00:00+05:30" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2015-02-26'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
         
-         | <a href="/blog/2015/02/26/applications-for-kids/#disqus_thread">Comments</a>
+           | <a href="/blog/2015/02/26/applications-for-kids/#disqus_thread"
+             data-disqus-identifier="http://www.omps.in/blog/2015/02/26/applications-for-kids/">Comments</a>
         
       </p>
     
@@ -3234,62 +1964,9 @@ Whether you&rsquo;re a parent, a teacher, or a kid, give Tux4Kids software a try
 <aside class="sidebar">
   
     <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2016/05/01/books-slash-mastery/">books/Mastery</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/05/01/day-11/">Day 11</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/25/create-box-from-vagrant-virtualmachines/">Create box from vagrant virtualmachines</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/24/puppet-development-environment/">Puppet Development with vagrant</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/24/howto-tweet-new-posts-in-octopress/">Tweet Posts with Octopress</a>
-      </li>
-    
-  </ul>
+  <h1>About Me</h1>
+  <p>A little something about me.</p>
 </section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
-  </ul>
-  
-  <a href="https://github.com/omps">@omps</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'omps',
-            count: 5,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
 
 <section class="googleplus">
   <h1>
@@ -3302,14 +1979,31 @@ Whether you&rsquo;re a parent, a teacher, or a kid, give Tux4Kids software a try
 
 
 
+<section id="twitter">
+  <h1 class="tweets">Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("ohgnis", , );
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <p>Follow <a href="http://twitter.com/ohgnis">@ohgnis</a></p>
+  
+</section>
+
+
   
 </aside>
 
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2016 - Om Prakash Singh <br/>
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, customized with <a href="https://github.com/mjhea0/whiterspace">whiterspace</a>.</span>
+  Copyright &copy; 2016 - Om Prakash Singh -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
 </footer>
@@ -3323,7 +2017,7 @@ Whether you&rsquo;re a parent, a teacher, or a kid, give Tux4Kids software a try
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -3347,7 +2041,7 @@ Whether you&rsquo;re a parent, a teacher, or a kid, give Tux4Kids software a try
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

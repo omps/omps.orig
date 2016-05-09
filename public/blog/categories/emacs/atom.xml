@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: emacs | Om Prakash Singh]]></title>
+  <title><![CDATA[Category: Emacs | Om Prakash Singh]]></title>
   <link href="http://www.omps.in/blog/categories/emacs/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-05-08T18:31:54+05:30</updated>
+  <updated>2016-05-09T21:39:10+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Day 10 - Search and Replace using regex]]></title>
+    <title type="html"><![CDATA[Day 10 - Search and Replace Using Regex]]></title>
     <link href="http://www.omps.in/blog/2016/01/20/day-10-search-and-replace-using-regex/"/>
     <updated>2016-01-20T21:44:31+05:30</updated>
     <id>http://www.omps.in/blog/2016/01/20/day-10-search-and-replace-using-regex</id>
@@ -1211,7 +1211,7 @@ inserted to the left or right of each line in the rectangle (on the same side as
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Day 8 - Mark and The Region]]></title>
+    <title type="html"><![CDATA[Day 8 - Mark and the Region]]></title>
     <link href="http://www.omps.in/blog/2015/12/26/day-8-mark/"/>
     <updated>2015-12-26T21:24:47+05:30</updated>
     <id>http://www.omps.in/blog/2015/12/26/day-8-mark</id>
@@ -1350,7 +1350,7 @@ for eg. I can use mouse by pressing the left mouse button and moving around the 
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Day 7 - Commands for human languages and editing them]]></title>
+    <title type="html"><![CDATA[Day 7 - Commands for Human Languages and Editing Them]]></title>
     <link href="http://www.omps.in/blog/2015/12/20/day-7-commands-for-human-languages-and-editing-them/"/>
     <updated>2015-12-20T21:20:12+05:30</updated>
     <id>http://www.omps.in/blog/2015/12/20/day-7-commands-for-human-languages-and-editing-them</id>
@@ -2367,7 +2367,7 @@ Body Line: Any line which is not a heading line is a body line. Body line belong
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Day 6 - Help and Run command by their name]]></title>
+    <title type="html"><![CDATA[Day 6 - Help and Run Command by Their Name]]></title>
     <link href="http://www.omps.in/blog/2015/12/13/day-6-help-and-run-command-by-their-name/"/>
     <updated>2015-12-13T21:09:38+05:30</updated>
     <id>http://www.omps.in/blog/2015/12/13/day-6-help-and-run-command-by-their-name</id>
