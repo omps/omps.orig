@@ -4,7 +4,7 @@
   <title><![CDATA[Om Prakash Singh]]></title>
   <link href="http://www.omps.in/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-05-10T07:26:42+05:30</updated>
+  <updated>2016-05-10T07:41:04+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
@@ -19,6 +19,9 @@
     <updated>2016-04-25T11:16:50+05:30</updated>
     <id>http://www.omps.in/blog/2016/04/25/create-box-from-vagrant-virtualmachines</id>
     <content type="html"><![CDATA[<p>Vagrant Boxes are prepackaged development environments that are the foundation of Vagrant. In most cases, this is usually just a stripped and naked operating system such as Ubuntu, Debian, or CentOS. Boxes exist with the intention to be provisioned with additional features like Apache and PHP using tools like Chef or Puppet. This is really powerful, but it can be time consuming to setup the first configuration and difficult for beginners. Plus, not everyone has the skill-set of a system admin or work with a huge collaborative team.</p>
+
+<!--more-->
+
 
 <p>This post will describe to you how to create your own prepackaged Vagrant Box from and existing virtual machine. In my opinion, it’s the quickest and easiest way for beginners to get started with Vagrant. This way you’ll be able to reuse it over and over and even share it. I feel this generally goes against the main idea of Vagrant where you provision your development environments from a single config. You generally lose a lot of the debugging and configurability of your development environment, but this should be helpful for plenty of developers, teams, and projects regardless.</p>
 
@@ -161,6 +164,9 @@ Puppet Apply Provisioner</p>
     <updated>2016-04-24T16:40:46+05:30</updated>
     <id>http://www.omps.in/blog/2016/04/24/puppet-development-environment</id>
     <content type="html"><![CDATA[<p>I started working DevOps which initiated me to learn the about the configuration management and automation tools, Though it does have a learning curve but it provides great oppurtunity to automate most of your tasks. Don&rsquo;t worry it will not make you redundant, learning automation may indeed inflate your profile. Searching on the internet for the same purpose I encountered with <a href="http://garylarizza.com/">Gary Larizza&rsquo;s</a> blog on <a href="http://garylarizza.com/blog/2013/02/01/repeatable-puppet-development-with-vagrant/">Repeatable puppet development with vagrant</a>. Of course the blog being 3 years old, need some rework with the commands, I am hence updating this article as my updated version of his workflow.</p>
+
+<!--more-->
+
 
 <p>In smaller organizations &lsquo;testing&rsquo; and &lsquo;development&rsquo; consist of making changes directly to the server, logging in to the running system and hoping the commands to just work. Once done we document the changes we made, but more OFTEN we happen to keep the information in our head to refer to it later. This is how the manual configuration works. In bigger organization though the things are pretty neat and ready, a centralized configuration management system with everything automated and well documented and code repositories to version control code. This is not a very likely situation while we are writing modules in a development environment and it really doesn&rsquo;t make sense that we put the code in production environment just to test. We need something smaller setup for ourselves, let it be either for the development environment or for my work setup on my personal laptop to automate the things, menial daily jobs, etc etc.. You never know when you find somethings interesting to automate and this can put us in to the good habit of automating things.</p>
 
@@ -473,6 +479,9 @@ Puppet Apply Provisioner</p>
     <id>http://www.omps.in/blog/2016/04/24/howto-tweet-new-posts-in-octopress</id>
     <content type="html"><![CDATA[<p>Thanks to the <a href="http://fusion94.org/blog/2013/01/13/howto-tweet-new-posts-in-octopress/">blog post</a> by <a href="http://fusion94.org">Tony Guntharp</a> who got inspired from another blog post by <a href="http://blog.prydoni.us">Adnan Abdulhussein</a> on how to integrate twitter posting with <a href="http://octopress.org">Octopress</a>. His post was some 3 Years old and the <a href="https://github.com/sferik/twitter">twitter gem</a> for <a href="http://octopress.org">Octopress</a> version <code>5.16.0</code> has gone through a lot of changes, So technically I did some rewrite into the ruby configuration code and fixed it so I can post the tweets with the latest twitter gem.</p>
 
+<!--more-->
+
+
 <p>The basic idea remains the same taken from the predecessors blogs, you create a post and print the tweet message you want to give and it create a link to the post in the tweet_queue file. When the <code>rake deploy</code> task is called, it reads from the <strong>tweet_queue</strong> file and tweets what&rsquo;s in their line by line. This way you can create multiple posts at a time, and they all will be tweeted when you run your <code>rake deploy</code> task for your blog.</p>
 
 <h3>Create a twitter application.</h3>
@@ -686,6 +695,9 @@ Puppet Apply Provisioner</p>
 
 <p>Well it is the good old saturday, when I planned to blog about something after around 2 weeks.</p>
 
+<!--more-->
+
+
 <h4>2 Weeks earlier</h4>
 
 <p>Two weeks earlier I sat up, migrated my blog from pelican to octopress keeping the underlying githubpages intact, hardly did I know after two weeks, I will again face the similar problem like with pelican, In anycase this time I was determined not to rework again on migration to a new platform, and Instead I will fix what was missing and will try to resolve the issue with octopress only.</p>
@@ -709,6 +721,9 @@ Puppet Apply Provisioner</p>
 
 <p>Finally, I make my mind and start finishing the stuff which I always wanted to finish. I have tidbits kept in here, which soon will be blogged.</p>
 
+<!--more-->
+
+
 <p>Its not really for anyone but for myself to keep me notes and help me see the progress.</p>
 
 <p>I have done a lot of migration on this blog. From wordpress to octopress to pelican then back to octopress. I think I will stay here with you. Octopress!!</p>
@@ -731,6 +746,9 @@ Puppet Apply Provisioner</p>
 <p>I am using arch linux running a 32 bit system, kernel version 4.4.5</p>
 
 <p>I run an aws system on amazon cloud and beleive me i am always kind of get confused with the immense set of tools they have and most of the time with their data centres. I tend to mess up the data centre and have to browse through all the data centres to find where my ec2 instance is running. I finally decided to have a look at how the aws cli works.</p>
+
+<!--more-->
+
 
 <h3>aws-cli tool installation.</h3>
 
@@ -849,6 +867,9 @@ The problem is the user which is configured doesn&rsquo;t have access to any pol
     <updated>2016-01-20T21:44:31+05:30</updated>
     <id>http://www.omps.in/blog/2016/01/20/day-10-search-and-replace-using-regex</id>
     <content type="html"><![CDATA[<p>It is important that I am also should be able to search within my text/code when using the editor. Emacs have commands to search for occurrences of a string within the buffer and across the buffers. Emacs has the commands to replace occurrences of a string with a different string. Emacs provides the ability to search multiple files under the control of a tags table or through dired &lsquo;A&rsquo; command , or ask the &lsquo;grep&rsquo; program to do it.</p>
+
+<!--more-->
+
 
 <h2>Incremental Search</h2>
 
@@ -1555,6 +1576,9 @@ A regexp denotes a class of alternative strings to match. Emacs provides both in
 
 <p>In my earlier days of using computers, copy and pasting something was such an interesting thing to do and the most innovative thing possibly could happen to computers. we just copy things around and move on. I started using emacs some couple of years back, and using it fully only some months back. So many things I learnt and learning. Believe me today, I am amused to know the possiblities cut and paste does have.</p>
 
+<!--more-->
+
+
 <p>In Emacs, killing means erasing the text and copying it into the &ldquo;kill ring&rdquo;. &ldquo;Yanking&rdquo; means bringing it back. The generalized terms for these are cutting and paste, copy and paste. Killing and yanking a text are the most common ways to move or copy text within emacs.</p>
 
 <h1>Commands which remove text</h1>
@@ -2049,6 +2073,9 @@ inserted to the left or right of each line in the rectangle (on the same side as
 
 <p>Many command in Emacs operate on parts of the current buffer, to specify the text for such commands, we need to select the text, by marking it at one end of it and move the point to the other end. This text between the point and the mark is called as &ldquo;the region&rdquo; or &ldquo;the selection&rdquo;. This region always extend between the point and the mark, each time you move the point, the region changes.</p>
 
+<!--more-->
+
+
 <p>Setting the mark at the position also &ldquo;activates&rdquo; it. Emacs indicates the extent by highlighting the text within it, using the &lsquo;region&rsquo; face. Further on customizing it can be found under <span class="underline">Face Customization</span>.</p>
 
 <p>Once the commands are run the region, Emacs automatically deactivates this region and turns off the highlighting; this can also be explicitly deactivate by typing &lsquo;C-g&rsquo;. Movement commands <sethyperlink>  doesn&rsquo;t work on the region. The behaviour is known as Transient Mark mode. Disabling mark mode switched Emacs to an alternate behaviour. Also, when you mark something in one buffer, it doesn&rsquo;t have effect in anyother buffer, so while you come back you will see the mark still present at the same buffer at same location.</p>
@@ -2185,6 +2212,9 @@ for eg. I can use mouse by pressing the left mouse button and moving around the 
     <updated>2015-12-20T21:20:12+05:30</updated>
     <id>http://www.omps.in/blog/2015/12/20/day-7-commands-for-human-languages-and-editing-them</id>
     <content type="html"><![CDATA[<p>Emacs is wonderful for text editing and related stuff with text. It has many modes which helps in editing and managing text, which help increase the productive overall, here I explored some of the major modes and commands which can quickly help for editing text.</p>
+
+<!--more-->
+
 
 <h2>Text Editing in Emacs<a id="sec-1-1" name="sec-1-1"></a></h2>
 
@@ -3201,7 +3231,7 @@ Body Line: Any line which is not a heading line is a body line. Body line belong
     <link href="http://www.omps.in/blog/2015/12/13/day-6-help-and-run-command-by-their-name/"/>
     <updated>2015-12-13T21:09:38+05:30</updated>
     <id>http://www.omps.in/blog/2015/12/13/day-6-help-and-run-command-by-their-name</id>
-    <content type="html"><![CDATA[<p>Sixth day of writing my content, I had never thought i would be even writing for this many posts continuously(I am kind of a lazy writer) and I realize this experience of writing blogs and sharing my learnings or acquired knowledge is actually encouraging. I started to think that if I am able to put some extra time and effort, I may also complete a lot of things by taking similar challenegs. My priority ones are loosing weight(I am still finding myself in tough situation on to get myself motivated) and learning the python programming language, which as I had been told is pretty easy to learning. I may get inconsistent at times due to other priorities coming up, but writing my learnings and posting everyday keeps me motivated and keep reminiding me I have pending stuff to do.</p>
+    <content type="html"><![CDATA[<p>Sixth day of writing my content, I had never thought i would be even writing for this many posts continuously(I am kind of a lazy writer) and I realize this experience of writing blogs and sharing my learnings or acquired knowledge is actually encouraging. I started to think that if I am able to put some extra time and effort, I may also complete a lot of things by taking similar challenegs. <!--more-->My priority ones are loosing weight(I am still finding myself in tough situation on to get myself motivated) and learning the python programming language, which as I had been told is pretty easy to learning. I may get inconsistent at times due to other priorities coming up, but writing my learnings and posting everyday keeps me motivated and keep reminiding me I have pending stuff to do.</p>
 
 <p>Every emacs command has a name which can be used against the convenient key bindings. Most emacs commands doesn&rsquo;t have key bindings so the only way to learn them is to use them as commands, by emacs convention all the command will consist one or more words separated  by &lsquo;-&rsquo;. For eg. auto-fill-mode or manual-entry. So to enter a command, type M-x enter the command name RET (to execute), C-g (to cancel). Its something similar to what we discussed in our Day 5, to enter the mini-buffer run the command and execute it and it does work similar for completion as it is to be done in mini-buffer.</p>
 
@@ -3763,7 +3793,7 @@ Body Line: Any line which is not a heading line is a body line. Body line belong
     <link href="http://www.omps.in/blog/2015/12/03/day-5-minibuffer/"/>
     <updated>2015-12-03T20:33:04+05:30</updated>
     <id>http://www.omps.in/blog/2015/12/03/day-5-minibuffer</id>
-    <content type="html"><![CDATA[<p>Emacs have a minibuffer, and called the same because of its small screen space, the minibuffer resides in the same area as echo area so many time when any error or informative message appear in the echo area, it just hides the minibuffer for a few seconds or till the time any new keypress is made.</p>
+    <content type="html"><![CDATA[<p>Emacs have a minibuffer, and called the same because of its small screen space, the minibuffer resides in the same area as echo area so many time when any error or informative message appear in the echo area, it just hides the minibuffer for a few seconds or till the time any new keypress is made. <!--more--></p>
 
 <p>Minibuffer can be activated using typing text to it, and exited by typing <strong><RET></strong> (execute the command) or <strong>C-g</strong> (cancel the command). The minibuffer prompt shows the default arguments suppose the commands that read buffer names usually show buffer name as the default and can be activated using <strong><RET></strong></p>
 
@@ -3957,6 +3987,9 @@ Body Line: Any line which is not a heading line is a body line. Body line belong
     <id>http://www.omps.in/blog/2015/11/28/day-4-editing</id>
     <content type="html"><![CDATA[<p>I am  becoming such an inconsistent learner and writer and have been not being able to post any new learnings a from last 4 days for emacs, but sometimes the work just take over us and do not allow any bandwidth, this really could be a lame excuse, but my sincerely I should be keeping my posts regular.</p>
 
+<!--more-->
+
+
 <p>Again, it&rsquo;s more the like learning from your (in this case my) mistakes and going through your work again and again it&rsquo;s a way of reorganising your work and fixing it wherever necessary, I would also need help to understanding the mistakes we should avoid overlooking while technical writing or a posting on a blog.</p>
 
 <h2>What new there could be there inserting text, believe me, emacs is pandora box for writers and enthusiasts.</h2>
@@ -4071,6 +4104,9 @@ Body Line: Any line which is not a heading line is a body line. Body line belong
     <content type="html"><![CDATA[<h1>The windows and the buffer.<a id="sec-1" name="sec-1"></a></h1>
 
 <p>I will touch upon one new topic and what I learned today. While writing my <a href="http://www.omps.in/blog/2015/11/14/day-2-the-real-estate/">Day 2</a> article I learnt intersting usage of windows and frames (well, the one where we do our editing and writing stuff. It would be good to understand how opening emacs creates the frame and window within.)</p>
+
+<!--more-->
+
 
 <p>We start emacs the same way we start our other application. (on Linux, by typing on the terminal window; on Windows and Mac, clicking on to the application icon.) When emacs starts up it usually display a special buffer name <strong>GNU Emacs</strong>. This contains information about emacs and links to common good stuff for begineers(in later days we will figure out how we can skip this)</p>
 
@@ -4340,7 +4376,7 @@ The buffer `src&rsquo; was made by Dired on the directory `~/cvs/emacs/src/&lsqu
     <id>http://www.omps.in/blog/2015/11/14/day-2-the-real-estate</id>
     <content type="html"><![CDATA[<h4>The Emacs Real estate.</h4>
 
-<p>This is about the screen organization of emacs, how the text is placed and how the screen is drawn for the editor, this is about telling you how the things in #emacs as they are, and why they are important this way. Though, i should have started understanding it and writng it down on Day 1, but understanding the key contol is equally important to me, if I did not had learned about it, I surely would have faced difficulty closing my emacs and moving around. Now let me just try to see how much I  am understanding about the screen here and how well I can put it in my words. :) ofcourse it is not a tech doc, but this my 30 Days challenege to learn more about emacs and understand emacs for good.</p>
+<p>This is about the screen organization of emacs, how the text is placed and how the screen is drawn for the editor, this is about telling you how the things in #emacs as they are, and why they are important this way. Though, i should have started understanding it and writng it down on Day 1, but understanding the key contol is equally important to me, if I did not had learned about it, I surely would have faced difficulty closing my emacs <!--more-->and moving around. Now let me just try to see how much I  am understanding about the screen here and how well I can put it in my words. :) ofcourse it is not a tech doc, but this my 30 Days challenege to learn more about emacs and understand emacs for good.</p>
 
 <p>I would be mainly using a lot of images compared to lot of writing that, understanding the screen can better be understood by rightly poining to the correct area.</p>
 
@@ -4513,6 +4549,9 @@ cs:ch-fr buf        pos line (major minor)</p>
     <content type="html"><![CDATA[<p>Thank you for your support and encouragement. So here I am writing about my beginning of Day 1: part and working with EMACS.</p>
 
 <p>The below is the content I am planning to touch upon during my 30 Days challenge. The checklist is not in any particular order, but just to remind me of the topics what I need to cover.</p>
+
+<!--more-->
+
 
 <ul>
 <li>[ ] Modes.</li>
@@ -4840,6 +4879,9 @@ Shift will be denoted as &rsquo;S'.</p>
     <content type="html"><![CDATA[<h5>Applications for Kids.</h5>
 
 <p>I was trying to figure out some application/games for kids based on Linux to teach my Kid about some programming, I tried to teach him some computer at times and found him very interested in leaning stuff. There must be many for windows but being myself an avid Linux user from quite a long time, I really want to introduce him to Linux quite early, unlike me, who got my hands on Linux late in life and still waiting to explore the endless possiblities it offers.<a id="sec-1" name="sec-1"></a></p>
+
+<!--more-->
+
 
 <p>There will always be these question, 1. Why computers? and 2. Why to kids? 3. Are they are smart enough to handle computers.</p>
 

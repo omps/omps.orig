@@ -99,6 +99,9 @@
 
 <p>Many command in Emacs operate on parts of the current buffer, to specify the text for such commands, we need to select the text, by marking it at one end of it and move the point to the other end. This text between the point and the mark is called as &ldquo;the region&rdquo; or &ldquo;the selection&rdquo;. This region always extend between the point and the mark, each time you move the point, the region changes.</p>
 
+<!--more-->
+
+
 <p>Setting the mark at the position also &ldquo;activates&rdquo; it. Emacs indicates the extent by highlighting the text within it, using the &lsquo;region&rsquo; face. Further on customizing it can be found under <span class="underline">Face Customization</span>.</p>
 
 <p>Once the commands are run the region, Emacs automatically deactivates this region and turns off the highlighting; this can also be explicitly deactivate by typing &lsquo;C-g&rsquo;. Movement commands <sethyperlink>  doesn&rsquo;t work on the region. The behaviour is known as Transient Mark mode. Disabling mark mode switched Emacs to an alternate behaviour. Also, when you mark something in one buffer, it doesn&rsquo;t have effect in anyother buffer, so while you come back you will see the mark still present at the same buffer at same location.</p>

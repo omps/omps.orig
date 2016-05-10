@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Howto | Om Prakash Singh]]></title>
   <link href="http://www.omps.in/blog/categories/howto/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-05-10T07:26:42+05:30</updated>
+  <updated>2016-05-10T07:41:04+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
@@ -19,6 +19,9 @@
     <updated>2016-04-24T08:19:20+05:30</updated>
     <id>http://www.omps.in/blog/2016/04/24/howto-tweet-new-posts-in-octopress</id>
     <content type="html"><![CDATA[<p>Thanks to the <a href="http://fusion94.org/blog/2013/01/13/howto-tweet-new-posts-in-octopress/">blog post</a> by <a href="http://fusion94.org">Tony Guntharp</a> who got inspired from another blog post by <a href="http://blog.prydoni.us">Adnan Abdulhussein</a> on how to integrate twitter posting with <a href="http://octopress.org">Octopress</a>. His post was some 3 Years old and the <a href="https://github.com/sferik/twitter">twitter gem</a> for <a href="http://octopress.org">Octopress</a> version <code>5.16.0</code> has gone through a lot of changes, So technically I did some rewrite into the ruby configuration code and fixed it so I can post the tweets with the latest twitter gem.</p>
+
+<!--more-->
+
 
 <p>The basic idea remains the same taken from the predecessors blogs, you create a post and print the tweet message you want to give and it create a link to the post in the tweet_queue file. When the <code>rake deploy</code> task is called, it reads from the <strong>tweet_queue</strong> file and tweets what&rsquo;s in their line by line. This way you can create multiple posts at a time, and they all will be tweeted when you run your <code>rake deploy</code> task for your blog.</p>
 
@@ -165,6 +168,9 @@ end
     <content type="html"><![CDATA[<h3>Good old saturday.</h3>
 
 <p>Well it is the good old saturday, when I planned to blog about something after around 2 weeks.</p>
+
+<!--more-->
+
 
 <h4>2 Weeks earlier</h4>
 

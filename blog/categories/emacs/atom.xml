@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Emacs | Om Prakash Singh]]></title>
   <link href="http://www.omps.in/blog/categories/emacs/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-05-10T07:26:42+05:30</updated>
+  <updated>2016-05-10T07:41:04+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
@@ -19,6 +19,9 @@
     <updated>2016-01-20T21:44:31+05:30</updated>
     <id>http://www.omps.in/blog/2016/01/20/day-10-search-and-replace-using-regex</id>
     <content type="html"><![CDATA[<p>It is important that I am also should be able to search within my text/code when using the editor. Emacs have commands to search for occurrences of a string within the buffer and across the buffers. Emacs has the commands to replace occurrences of a string with a different string. Emacs provides the ability to search multiple files under the control of a tags table or through dired &lsquo;A&rsquo; command , or ask the &lsquo;grep&rsquo; program to do it.</p>
+
+<!--more-->
+
 
 <h2>Incremental Search</h2>
 
@@ -725,6 +728,9 @@ A regexp denotes a class of alternative strings to match. Emacs provides both in
 
 <p>In my earlier days of using computers, copy and pasting something was such an interesting thing to do and the most innovative thing possibly could happen to computers. we just copy things around and move on. I started using emacs some couple of years back, and using it fully only some months back. So many things I learnt and learning. Believe me today, I am amused to know the possiblities cut and paste does have.</p>
 
+<!--more-->
+
+
 <p>In Emacs, killing means erasing the text and copying it into the &ldquo;kill ring&rdquo;. &ldquo;Yanking&rdquo; means bringing it back. The generalized terms for these are cutting and paste, copy and paste. Killing and yanking a text are the most common ways to move or copy text within emacs.</p>
 
 <h1>Commands which remove text</h1>
@@ -1219,6 +1225,9 @@ inserted to the left or right of each line in the rectangle (on the same side as
 
 <p>Many command in Emacs operate on parts of the current buffer, to specify the text for such commands, we need to select the text, by marking it at one end of it and move the point to the other end. This text between the point and the mark is called as &ldquo;the region&rdquo; or &ldquo;the selection&rdquo;. This region always extend between the point and the mark, each time you move the point, the region changes.</p>
 
+<!--more-->
+
+
 <p>Setting the mark at the position also &ldquo;activates&rdquo; it. Emacs indicates the extent by highlighting the text within it, using the &lsquo;region&rsquo; face. Further on customizing it can be found under <span class="underline">Face Customization</span>.</p>
 
 <p>Once the commands are run the region, Emacs automatically deactivates this region and turns off the highlighting; this can also be explicitly deactivate by typing &lsquo;C-g&rsquo;. Movement commands <sethyperlink>  doesn&rsquo;t work on the region. The behaviour is known as Transient Mark mode. Disabling mark mode switched Emacs to an alternate behaviour. Also, when you mark something in one buffer, it doesn&rsquo;t have effect in anyother buffer, so while you come back you will see the mark still present at the same buffer at same location.</p>
@@ -1355,6 +1364,9 @@ for eg. I can use mouse by pressing the left mouse button and moving around the 
     <updated>2015-12-20T21:20:12+05:30</updated>
     <id>http://www.omps.in/blog/2015/12/20/day-7-commands-for-human-languages-and-editing-them</id>
     <content type="html"><![CDATA[<p>Emacs is wonderful for text editing and related stuff with text. It has many modes which helps in editing and managing text, which help increase the productive overall, here I explored some of the major modes and commands which can quickly help for editing text.</p>
+
+<!--more-->
+
 
 <h2>Text Editing in Emacs<a id="sec-1-1" name="sec-1-1"></a></h2>
 
@@ -2371,7 +2383,7 @@ Body Line: Any line which is not a heading line is a body line. Body line belong
     <link href="http://www.omps.in/blog/2015/12/13/day-6-help-and-run-command-by-their-name/"/>
     <updated>2015-12-13T21:09:38+05:30</updated>
     <id>http://www.omps.in/blog/2015/12/13/day-6-help-and-run-command-by-their-name</id>
-    <content type="html"><![CDATA[<p>Sixth day of writing my content, I had never thought i would be even writing for this many posts continuously(I am kind of a lazy writer) and I realize this experience of writing blogs and sharing my learnings or acquired knowledge is actually encouraging. I started to think that if I am able to put some extra time and effort, I may also complete a lot of things by taking similar challenegs. My priority ones are loosing weight(I am still finding myself in tough situation on to get myself motivated) and learning the python programming language, which as I had been told is pretty easy to learning. I may get inconsistent at times due to other priorities coming up, but writing my learnings and posting everyday keeps me motivated and keep reminiding me I have pending stuff to do.</p>
+    <content type="html"><![CDATA[<p>Sixth day of writing my content, I had never thought i would be even writing for this many posts continuously(I am kind of a lazy writer) and I realize this experience of writing blogs and sharing my learnings or acquired knowledge is actually encouraging. I started to think that if I am able to put some extra time and effort, I may also complete a lot of things by taking similar challenegs. <!--more-->My priority ones are loosing weight(I am still finding myself in tough situation on to get myself motivated) and learning the python programming language, which as I had been told is pretty easy to learning. I may get inconsistent at times due to other priorities coming up, but writing my learnings and posting everyday keeps me motivated and keep reminiding me I have pending stuff to do.</p>
 
 <p>Every emacs command has a name which can be used against the convenient key bindings. Most emacs commands doesn&rsquo;t have key bindings so the only way to learn them is to use them as commands, by emacs convention all the command will consist one or more words separated  by &lsquo;-&rsquo;. For eg. auto-fill-mode or manual-entry. So to enter a command, type M-x enter the command name RET (to execute), C-g (to cancel). Its something similar to what we discussed in our Day 5, to enter the mini-buffer run the command and execute it and it does work similar for completion as it is to be done in mini-buffer.</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: How-to | Om Prakash Singh]]></title>
   <link href="http://www.omps.in/blog/categories/how-to/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-05-10T07:26:42+05:30</updated>
+  <updated>2016-05-10T07:41:04+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
@@ -25,6 +25,9 @@
 <p>I am using arch linux running a 32 bit system, kernel version 4.4.5</p>
 
 <p>I run an aws system on amazon cloud and beleive me i am always kind of get confused with the immense set of tools they have and most of the time with their data centres. I tend to mess up the data centre and have to browse through all the data centres to find where my ec2 instance is running. I finally decided to have a look at how the aws cli works.</p>
+
+<!--more-->
+
 
 <h3>aws-cli tool installation.</h3>
 
