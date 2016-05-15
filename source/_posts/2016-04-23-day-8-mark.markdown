@@ -10,7 +10,7 @@ tags: #emacs, #30daychallenge, #day8
 # Mark and the region<a id="sec-1" name="sec-1"></a>
 
 Many command in Emacs operate on parts of the current buffer, to specify the text for such commands, we need to select the text, by marking it at one end of it and move the point to the other end. This text between the point and the mark is called as "the region" or "the selection". This region always extend between the point and the mark, each time you move the point, the region changes.
-
+<!--more-->
 Setting the mark at the position also "activates" it. Emacs indicates the extent by highlighting the text within it, using the 'region' face. Further on customizing it can be found under <span class="underline">Face Customization</span>.
 
 Once the commands are run the region, Emacs automatically deactivates this region and turns off the highlighting; this can also be explicitly deactivate by typing 'C-g'. Movement commands <sethyperlink>  doesn't work on the region. The behaviour is known as Transient Mark mode. Disabling mark mode switched Emacs to an alternate behaviour. Also, when you mark something in one buffer, it doesn't have effect in anyother buffer, so while you come back you will see the mark still present at the same buffer at same location.

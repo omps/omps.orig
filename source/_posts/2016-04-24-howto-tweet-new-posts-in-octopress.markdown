@@ -8,7 +8,7 @@ tags: #twitter,#octopress, #howto
 ---
 
 Thanks to the [blog post](http://fusion94.org/blog/2013/01/13/howto-tweet-new-posts-in-octopress/) by [Tony Guntharp](http://fusion94.org) who got inspired from another blog post by [Adnan Abdulhussein](http://blog.prydoni.us) on how to integrate twitter posting with [Octopress](http://octopress.org). His post was some 3 Years old and the [twitter gem](https://github.com/sferik/twitter) for [Octopress](http://octopress.org) version `5.16.0` has gone through a lot of changes, So technically I did some rewrite into the ruby configuration code and fixed it so I can post the tweets with the latest twitter gem.
-
+<!--more-->
 The basic idea remains the same taken from the predecessors blogs, you create a post and print the tweet message you want to give and it create a link to the post in the tweet_queue file. When the ```rake deploy``` task is called, it reads from the **tweet_queue** file and tweets what's in their line by line. This way you can create multiple posts at a time, and they all will be tweeted when you run your ```rake deploy``` task for your blog.
 
 ### Create a twitter application.

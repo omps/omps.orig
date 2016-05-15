@@ -7,7 +7,7 @@ categories: emacs
 tags: #emacs, #day5, #30daychallenge
 ---
 
-Emacs have a minibuffer, and called the same because of its small screen space, the minibuffer resides in the same area as echo area so many time when any error or informative message appear in the echo area, it just hides the minibuffer for a few seconds or till the time any new keypress is made. 
+Emacs have a minibuffer, and called the same because of its small screen space, the minibuffer resides in the same area as echo area so many time when any error or informative message appear in the echo area, it just hides the minibuffer for a few seconds or till the time any new keypress is made. <!--more-->
 
 Minibuffer can be activated using typing text to it, and exited by typing **<RET>** (execute the command) or **C-g** (cancel the command). The minibuffer prompt shows the default arguments suppose the commands that read buffer names usually show buffer name as the default and can be activated using **<RET>**
 

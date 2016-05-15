@@ -8,7 +8,7 @@ tags: #emacs, #30daychallenge, #day4
 ---
 
 I am  becoming such an inconsistent learner and writer and have been not being able to post any new learnings a from last 4 days for emacs, but sometimes the work just take over us and do not allow any bandwidth, this really could be a lame excuse, but my sincerely I should be keeping my posts regular.
-
+<!--more-->
 Again, it's more the like learning from your (in this case my) mistakes and going through your work again and again it's a way of reorganising your work and fixing it wherever necessary, I would also need help to understanding the mistakes we should avoid overlooking while technical writing or a posting on a blog.
 
 ## What new there could be there inserting text, believe me, emacs is pandora box for writers and enthusiasts.

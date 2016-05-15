@@ -26,7 +26,8 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+  
+<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
@@ -60,16 +61,11 @@
   
 </ul>
   
-<form action="https://www.google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="sitesearch" value="www.omps.in">
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
 <ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog">Blog</a></li>
+  <li><a href="/books">Books</a></li>
+  <li><a href="/about">omps</a></li>
 </ul>
 
 </nav>
@@ -100,6 +96,9 @@
 
 
 <div class="entry-content"><p>I started working DevOps which initiated me to learn the about the configuration management and automation tools, Though it does have a learning curve but it provides great oppurtunity to automate most of your tasks. Don&rsquo;t worry it will not make you redundant, learning automation may indeed inflate your profile. Searching on the internet for the same purpose I encountered with <a href="http://garylarizza.com/">Gary Larizza&rsquo;s</a> blog on <a href="http://garylarizza.com/blog/2013/02/01/repeatable-puppet-development-with-vagrant/">Repeatable puppet development with vagrant</a>. Of course the blog being 3 years old, need some rework with the commands, I am hence updating this article as my updated version of his workflow.</p>
+
+<!--more-->
+
 
 <p>In smaller organizations &lsquo;testing&rsquo; and &lsquo;development&rsquo; consist of making changes directly to the server, logging in to the running system and hoping the commands to just work. Once done we document the changes we made, but more OFTEN we happen to keep the information in our head to refer to it later. This is how the manual configuration works. In bigger organization though the things are pretty neat and ready, a centralized configuration management system with everything automated and well documented and code repositories to version control code. This is not a very likely situation while we are writing modules in a development environment and it really doesn&rsquo;t make sense that we put the code in production environment just to test. We need something smaller setup for ourselves, let it be either for the development environment or for my work setup on my personal laptop to automate the things, menial daily jobs, etc etc.. You never know when you find somethings interesting to automate and this can put us in to the good habit of automating things.</p>
 
@@ -462,37 +461,84 @@
 <aside class="sidebar">
   
     <section>
-  <h1>About Me</h1>
-  <p>A little something about me.</p>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <style>
+  .blue-text {
+  color: blue;
+  h
+  }
+
+  .imp-text {
+  color: blue;
+  font-family: Lobster
+  }
+
+  h2 {
+    font-family: Lobster, Monospace;
+  }
+
+  p {
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  text-align: justify;
+  text-justify: inter-word;
+  }
+
+  .thick-white-border {
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
+  }
+
+  .smaller-image {
+    width: 200px;
+  }
+</style>
+
+  <h2>About Me</h2>
+  <a data-flickr-embed="true"  href="#" title="about_me"><img class="smaller-image thick-white-border" src="https://farm8.staticflickr.com/7450/27023372815_c72d36f3cf_b.jpg" alt="about_me"></a>
+
+    <p> I Just love automating things and in here as well, I do the same to find ways for  automating routine stuff and anything that can be autotmated.
+</p>
+  <p class="imp-text">When I am free I love to spend time with my kids and family.</p>
+  <p>I am also fond of <a href="https://goodreads.com/user/show/46467581-om-singh">reading</a> and <a href="/blog">writing</a>.</p>
+</p>
+
+<p>You can also reach me over:</p>
+<li>
+  <ul>Twitter: @ohgnis</ul>
+  <ul>email: o m p s at the rate o m p s dot i n</ul>
+</li>
+<p>know more <a href="/about">about me!!</a>.</p>
 </section>
-
-<section class="googleplus">
-  <h1>
-    <a href="https://plus.google.com/+OmPrakashomps?rel=author">
-      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
-      Google+
-    </a>
-  </h1>
-</section>
-
-
-
-<section id="twitter">
-  <h1 class="tweets">Tweets</h1>
-  <ul id="tweets">
-    <li class="loading">Status updating...</li>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/05/15/using-ipython-with-python3/">Using Ipython With Python3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/04/25/create-box-from-vagrant-virtualmachines/">Create Box From Vagrant Virtualmachines</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/04/24/puppet-development-environment/">Puppet Development With Vagrant</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/04/24/howto-tweet-new-posts-in-octopress/">Tweet Posts With Octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/04/23/working-with-octopress/">Working With Octopress</a>
+      </li>
+    
   </ul>
-  <script type="text/javascript">
-    $.domReady(function(){
-      getTwitterFeed("ohgnis", , );
-    });
-  </script>
-  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
-  
-    <p>Follow <a href="http://twitter.com/ohgnis">@ohgnis</a></p>
-  
 </section>
-
 
   
 </aside>

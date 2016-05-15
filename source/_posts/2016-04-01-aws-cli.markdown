@@ -14,7 +14,7 @@ comments: true
 I am using arch linux running a 32 bit system, kernel version 4.4.5
 
 I run an aws system on amazon cloud and beleive me i am always kind of get confused with the immense set of tools they have and most of the time with their data centres. I tend to mess up the data centre and have to browse through all the data centres to find where my ec2 instance is running. I finally decided to have a look at how the aws cli works.
-
+<!--more-->
 ### aws-cli tool installation.
 For aws cli installation on arch linux its pretty simple. You can use yaourt to simple download and install it. I would not go much into how to install yaourt and aws through it. I would write about that sometime later, but for now trush google and arch wiki.
 

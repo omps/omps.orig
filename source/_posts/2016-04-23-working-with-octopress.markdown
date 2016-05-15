@@ -10,7 +10,7 @@ tags: octopress, howto, notes
 ### Good old saturday.
 
 Well it is the good old saturday, when I planned to blog about something after around 2 weeks. 
-
+<!--more-->
 #### 2 Weeks earlier
 Two weeks earlier I sat up, migrated my blog from pelican to octopress keeping the underlying githubpages intact, hardly did I know after two weeks, I will again face the similar problem like with pelican, In anycase this time I was determined not to rework again on migration to a new platform, and Instead I will fix what was missing and will try to resolve the issue with octopress only.
 

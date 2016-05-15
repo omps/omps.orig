@@ -10,7 +10,7 @@ comments: true
 Thank you for your support and encouragement. So here I am writing about my beginning of Day 1: part and working with EMACS.
 
 The below is the content I am planning to touch upon during my 30 Days challenge. The checklist is not in any particular order, but just to remind me of the topics what I need to cover.
-
+<!--more-->
 -   [ ] Modes.
 -   [ ] IDO Mode
 -   [ ] org-mode

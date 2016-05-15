@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Python | Om Prakash Singh]]></title>
+  <link href="http://www.omps.in/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://www.omps.in/"/>
+  <updated>2016-05-15T15:04:47+05:30</updated>
+  <id>http://www.omps.in/</id>
+  <author>
+    <name><![CDATA[Om Prakash Singh]]></name>
+    <email><![CDATA[omps@omps.in]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Using Ipython With Python3]]></title>
+    <link href="http://www.omps.in/blog/2016/05/15/using-ipython-with-python3/"/>
+    <updated>2016-05-15T13:25:37+05:30</updated>
+    <id>http://www.omps.in/blog/2016/05/15/using-ipython-with-python3</id>
+    <content type="html"><![CDATA[<p>I started to move along with using python 3, and for the sake of using it, wanted my python shell for to be working properly, now you must have been aware, I use ipython for most of my python work, so while I downloaded and installed python3. I was unable to use ipython. The <code>pip3 install ipython3</code> didn&rsquo;t came of much help. Technicall, I am having two versions of python running on to my system, one is the native python version <code>2.7.11</code> which by default came with my OS, other python version <code>3.5.1</code> which I had explicity downloaded for using python3.</p>
+
+<p>Googling around did helped me, and the solution was pretty simple for implementation.</p>
+
+<pre><code>$ which ipython
+/usr/local/bin/ipython
+$ which python3
+/usr/local/bin/python3
+
+cp /usr/local/bin/ipython /usr/local/bin/ipython3
+</code></pre>
+
+<p>edit the ipython3 file.</p>
+
+<pre><code class="python">#!/usr/local/bin/python
+
+# -*- coding: utf-8 -*-
+import re
+import sys
+
+from IPython import start_ipython
+
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(start_ipython())
+</code></pre>
+
+<p>Change the shebang which is <code>#!/usr/local/bin/python</code>  to <code>#!/usr/local/bin/python3</code></p>
+
+<p>Save the file.</p>
+
+<p>run ipython3, I am assuming <code>/usr/local/bin</code> is in the system path.</p>
+
+<pre><code class="sh">$ ipython
+Python 3.5.1 (v3.5.1:37a07cee5969, Dec  5 2015, 21:12:44) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 4.2.0 -- An enhanced Interactive Python.
+?         -&gt; Introduction and overview of IPython's features.
+%quickref -&gt; Quick reference.
+help      -&gt; Python's own help system.
+object?   -&gt; Details about 'object', use 'object??' for extra details.
+
+In [1]: 
+</code></pre>
+
+<p>What we basically did, was copied the original ipython file which was being used by python version 2 and ensured that to work with python3 by changing its shebang line, which tells ipython to use the desired python version. In case, if you do not already have ipython installed then <code>pip install ipython</code> will just work, post your python 3 installation.</p>
+]]></content>
+  </entry>
+  
+</feed>

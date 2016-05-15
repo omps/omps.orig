@@ -9,7 +9,7 @@ tags: #emacs, #30daychallenge, #day3
 # The windows and the buffer.<a id="sec-1" name="sec-1"></a>
 
 I will touch upon one new topic and what I learned today. While writing my [Day 2](http://www.omps.in/blog/2015/11/14/day-2-the-real-estate/) article I learnt intersting usage of windows and frames (well, the one where we do our editing and writing stuff. It would be good to understand how opening emacs creates the frame and window within.) 
-
+<!--more-->
 We start emacs the same way we start our other application. (on Linux, by typing on the terminal window; on Windows and Mac, clicking on to the application icon.) When emacs starts up it usually display a special buffer name **GNU Emacs**. This contains information about emacs and links to common good stuff for begineers(in later days we will figure out how we can skip this)
 
 It is good not to start multiple emacs session, instead just start once and do all the editing in the same sessions. In this way the emacs context accumlates valuable context, such as kill ring, registers, undo history, which helps a lot at advanced stages.

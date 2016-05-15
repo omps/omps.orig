@@ -8,7 +8,7 @@ tags: #emacs, #30daychallenge, #day7
 ---
 
 Emacs is wonderful for text editing and related stuff with text. It has many modes which helps in editing and managing text, which help increase the productive overall, here I explored some of the major modes and commands which can quickly help for editing text.
-
+<!--more-->
 ## Text Editing in Emacs<a id="sec-1-1" name="sec-1-1"></a>
 
 Emacs has several major modes for handelling text, there is text mode for ordinary text which customizes emacs in small ways for syntactic convention of text. Outline mode provides special commands to handle text, Org Mode extends Outline mode and turns emacs into a full fledged organizer: we can manage TODO Lists, store notes and publish them in many formats and I would speak more about this in my coming days learnings. TeX and LaTeX mode contains embedded commands; HTML mode for HTML and SGML Modes; nxml-mode for XML Mode; Nroff Mode for Groff and Nroff Mode.

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vagrant | Om Prakash Singh]]></title>
   <link href="http://www.omps.in/blog/categories/vagrant/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-05-09T21:39:10+05:30</updated>
+  <updated>2016-05-15T15:04:47+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
@@ -19,6 +19,9 @@
     <updated>2016-04-25T11:16:50+05:30</updated>
     <id>http://www.omps.in/blog/2016/04/25/create-box-from-vagrant-virtualmachines</id>
     <content type="html"><![CDATA[<p>Vagrant Boxes are prepackaged development environments that are the foundation of Vagrant. In most cases, this is usually just a stripped and naked operating system such as Ubuntu, Debian, or CentOS. Boxes exist with the intention to be provisioned with additional features like Apache and PHP using tools like Chef or Puppet. This is really powerful, but it can be time consuming to setup the first configuration and difficult for beginners. Plus, not everyone has the skill-set of a system admin or work with a huge collaborative team.</p>
+
+<!--more-->
+
 
 <p>This post will describe to you how to create your own prepackaged Vagrant Box from and existing virtual machine. In my opinion, it’s the quickest and easiest way for beginners to get started with Vagrant. This way you’ll be able to reuse it over and over and even share it. I feel this generally goes against the main idea of Vagrant where you provision your development environments from a single config. You generally lose a lot of the debugging and configurability of your development environment, but this should be helpful for plenty of developers, teams, and projects regardless.</p>
 

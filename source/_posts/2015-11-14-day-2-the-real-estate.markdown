@@ -7,7 +7,7 @@ tags: #emacs, #day2, #30daychallenge
 ---
 #### The Emacs Real estate.
 
-This is about the screen organization of emacs, how the text is placed and how the screen is drawn for the editor, this is about telling you how the things in #emacs as they are, and why they are important this way. Though, i should have started understanding it and writng it down on Day 1, but understanding the key contol is equally important to me, if I did not had learned about it, I surely would have faced difficulty closing my emacs and moving around. Now let me just try to see how much I  am understanding about the screen here and how well I can put it in my words. :) ofcourse it is not a tech doc, but this my 30 Days challenege to learn more about emacs and understand emacs for good.
+This is about the screen organization of emacs, how the text is placed and how the screen is drawn for the editor, this is about telling you how the things in #emacs as they are, and why they are important this way. Though, i should have started understanding it and writng it down on Day 1, but understanding the key contol is equally important to me, if I did not had learned about it, I surely would have faced difficulty closing my emacs <!--more-->and moving around. Now let me just try to see how much I  am understanding about the screen here and how well I can put it in my words. :) ofcourse it is not a tech doc, but this my 30 Days challenege to learn more about emacs and understand emacs for good.
 
 I would be mainly using a lot of images compared to lot of writing that, understanding the screen can better be understood by rightly poining to the correct area.
 

@@ -9,7 +9,7 @@ tags: howto, vagrant, puppet
 
 
 Vagrant Boxes are prepackaged development environments that are the foundation of Vagrant. In most cases, this is usually just a stripped and naked operating system such as Ubuntu, Debian, or CentOS. Boxes exist with the intention to be provisioned with additional features like Apache and PHP using tools like Chef or Puppet. This is really powerful, but it can be time consuming to setup the first configuration and difficult for beginners. Plus, not everyone has the skill-set of a system admin or work with a huge collaborative team.
-
+<!--more-->
 This post will describe to you how to create your own prepackaged Vagrant Box from and existing virtual machine. In my opinion, it’s the quickest and easiest way for beginners to get started with Vagrant. This way you’ll be able to reuse it over and over and even share it. I feel this generally goes against the main idea of Vagrant where you provision your development environments from a single config. You generally lose a lot of the debugging and configurability of your development environment, but this should be helpful for plenty of developers, teams, and projects regardless.
 
 * The first thing you’ll need to do is pick a box that you want to build from. The Vagrant Cloud lets you easily find boxes that people have shared. We’ll be working off of Hashicorp’s (Vagrant’s) Precise64. This box is a good one to work off of because Chef and Puppet are already installed, plus all the settings we’re configured by the creator(s) of Vagrant.

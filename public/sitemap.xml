@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://www.omps.in/blog/2016/05/15/using-ipython-with-python3/</loc>
+<lastmod>2016-05-15T13:25:37+05:30</lastmod>
+</url>
+<url>
 <loc>http://www.omps.in/blog/2016/04/25/create-box-from-vagrant-virtualmachines/</loc>
 <lastmod>2016-04-25T11:16:50+05:30</lastmod>
 </url>
@@ -72,10 +76,10 @@
 <loc>http://www.omps.in/blog/archives/</loc>
 </url>
 <url>
-<loc>http://www.omps.in/blog/</loc>
+<loc>http://www.omps.in/</loc>
 </url>
 <url>
-<loc>http://www.omps.in/</loc>
+<loc>http://www.omps.in/blog/</loc>
 </url>
 <url>
 <loc>http://www.omps.in/about/</loc>
@@ -105,7 +109,9 @@
 <loc>http://www.omps.in/blog/categories/vagrant/</loc>
 </url>
 <url>
-<loc>http://www.omps.in/books/mastery.html</loc>
-<lastmod>2016-05-09T19:55:14+05:30</lastmod>
+<loc>http://www.omps.in/blog/categories/python/</loc>
+</url>
+<url>
+<loc>http://www.omps.in/blog/posts/2/</loc>
 </url>
 </urlset>

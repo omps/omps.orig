@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Puppet | Om Prakash Singh]]></title>
   <link href="http://www.omps.in/blog/categories/puppet/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-05-09T21:39:10+05:30</updated>
+  <updated>2016-05-15T15:04:47+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
@@ -19,6 +19,9 @@
     <updated>2016-04-24T16:40:46+05:30</updated>
     <id>http://www.omps.in/blog/2016/04/24/puppet-development-environment</id>
     <content type="html"><![CDATA[<p>I started working DevOps which initiated me to learn the about the configuration management and automation tools, Though it does have a learning curve but it provides great oppurtunity to automate most of your tasks. Don&rsquo;t worry it will not make you redundant, learning automation may indeed inflate your profile. Searching on the internet for the same purpose I encountered with <a href="http://garylarizza.com/">Gary Larizza&rsquo;s</a> blog on <a href="http://garylarizza.com/blog/2013/02/01/repeatable-puppet-development-with-vagrant/">Repeatable puppet development with vagrant</a>. Of course the blog being 3 years old, need some rework with the commands, I am hence updating this article as my updated version of his workflow.</p>
+
+<!--more-->
+
 
 <p>In smaller organizations &lsquo;testing&rsquo; and &lsquo;development&rsquo; consist of making changes directly to the server, logging in to the running system and hoping the commands to just work. Once done we document the changes we made, but more OFTEN we happen to keep the information in our head to refer to it later. This is how the manual configuration works. In bigger organization though the things are pretty neat and ready, a centralized configuration management system with everything automated and well documented and code repositories to version control code. This is not a very likely situation while we are writing modules in a development environment and it really doesn&rsquo;t make sense that we put the code in production environment just to test. We need something smaller setup for ourselves, let it be either for the development environment or for my work setup on my personal laptop to automate the things, menial daily jobs, etc etc.. You never know when you find somethings interesting to automate and this can put us in to the good habit of automating things.</p>
 
