@@ -4,7 +4,7 @@
   <title><![CDATA[Om Prakash Singh]]></title>
   <link href="http://www.omps.in/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-05-10T07:41:04+05:30</updated>
+  <updated>2016-05-15T13:42:29+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
@@ -12,6 +12,85 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Using Ipython With Python3]]></title>
+    <link href="http://www.omps.in/blog/2016/05/15/using-ipython-with-python3/"/>
+    <updated>2016-05-15T13:25:37+05:30</updated>
+    <id>http://www.omps.in/blog/2016/05/15/using-ipython-with-python3</id>
+    <content type="html"><![CDATA[<p>I started to move along with using python 3, and for the sake of using it, wanted my python shell for to be working properly, now you must have been aware, I use ipython for most of my python work, so while I downloaded and installed python3. I was unable to use ipython. The <code>pip3 install ipython3</code> didn&rsquo;t came of much help. Technicall, I am having two versions of python running on to my system, one is the native python version <code>2.7.11</code> which by default came with my OS, other python version <code>3.5.1</code> which I had explicity downloaded for using python3.</p>
+
+<p>Googling around did helped me, and the solution was pretty simple for implementation.</p>
+
+<pre><code>$ which ipython
+/usr/local/bin/ipython
+$ which python3
+/usr/local/bin/python3
+
+cp /usr/local/bin/ipython /usr/local/bin/ipython3
+</code></pre>
+
+<p>edit the ipython3 file.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/local/bin/python</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># -*- coding: utf-8 -*-</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">re</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">start_ipython</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&#39;(-script\.pyw|\.exe)?$&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span><span class='line'>    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">start_ipython</span><span class="p">())</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Change the shebang which is <code>#!/usr/local/bin/python</code>  to <code>#!/usr/local/bin/python3</code></p>
+
+<p>Save the file.</p>
+
+<p>run ipython3, I am assuming <code>/usr/local/bin</code> is in the system path.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>ipython
+</span><span class='line'>Python 3.5.1 <span class="o">(</span>v3.5.1:37a07cee5969, Dec  <span class="m">5</span> 2015, 21:12:44<span class="o">)</span>
+</span><span class='line'>Type <span class="s2">&quot;copyright&quot;</span>, <span class="s2">&quot;credits&quot;</span> or <span class="s2">&quot;license&quot;</span> <span class="k">for</span> more information.
+</span><span class='line'>
+</span><span class='line'>IPython 4.2.0 -- An enhanced Interactive Python.
+</span><span class='line'>?         -&gt; Introduction and overview of IPython<span class="s1">&#39;s features.</span>
+</span><span class='line'><span class="s1">%quickref -&gt; Quick reference.</span>
+</span><span class='line'><span class="s1">help      -&gt; Python&#39;</span>s own <span class="nb">help </span>system.
+</span><span class='line'>object?   -&gt; Details about <span class="s1">&#39;object&#39;</span>, use <span class="s1">&#39;object??&#39;</span> <span class="k">for</span> extra details.
+</span><span class='line'>
+</span><span class='line'>In <span class="o">[</span>1<span class="o">]</span>:
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What we basically did, was copied the original ipython file which was being used by python version 2 and ensured that to work with python3 by changing its shebang line, which tells ipython to use the desired python version. In case, if you do not already have ipython installed then <code>pip install ipython</code> will just work, post your python 3 installation.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Create Box From Vagrant Virtualmachines]]></title>
