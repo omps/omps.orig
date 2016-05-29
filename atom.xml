@@ -4,7 +4,7 @@
   <title><![CDATA[Om Prakash Singh]]></title>
   <link href="http://www.omps.in/atom.xml" rel="self"/>
   <link href="http://www.omps.in/"/>
-  <updated>2016-05-15T21:45:33+05:30</updated>
+  <updated>2016-05-29T13:56:21+05:30</updated>
   <id>http://www.omps.in/</id>
   <author>
     <name><![CDATA[Om Prakash Singh]]></name>
@@ -12,6 +12,52 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Notes]]></title>
+    <link href="http://www.omps.in/blog/2016/05/29/notes/"/>
+    <updated>2016-05-29T12:55:18+05:30</updated>
+    <id>http://www.omps.in/blog/2016/05/29/notes</id>
+    <content type="html"><![CDATA[<h1>Only Notes and FAQ.</h1>
+
+<p>This page is collection of all the quick notes and tips and tricks, which I get while searching and solving any issue. If there is much variation in the original content and while deployment, I will keep my blog ready on that topic.</p>
+
+<h3>Installing Jenkins on centos/redhat.</h3>
+
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Red+Hat+distributions">https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Red+Hat+distributions</a></p>
+
+<div><script src='https://gist.github.com/385e7f4958dd99d364d73edfb652214a.js?file=jenkins-centos.md'></script>
+<noscript><pre><code>
+    sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+    sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+    sudo yum install jenkins
+
+    sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo #Installation of a stable version LTS YUM repository for the LTS Release Lin
+    sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+    sudo yum install jenkins
+
+    sudo yum install java #jenkins require Java to be present.
+
+    sudo service jenkins start/stop/restart #For centos
+    sudo chkconfig jenkins on
+    # disable the firewall
+    firewall-cmd --zone=public --add-port=8080/tcp --permanent
+    firewall-cmd --zone=public --add-service=http --permanent
+    firewall-cmd --reload
+    firewall-cmd --list-all
+
+    # In case of Java version errors remove the previous version and install latest Java from yum.
+    yum install java-1.7.0-openjdk
+
+    java -version
+    java version &quot;1.7.0_79&quot;
+    OpenJDK Runtime Environment (rhel-2.5.5.1.el6_6-x86_64 u79-b14)
+    OpenJDK 64-Bit Server VM (build 24.79-b02, mixed mode)</code></pre></noscript></div>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Using Ipython With Python3]]></title>

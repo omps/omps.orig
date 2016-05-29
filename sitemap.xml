@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://www.omps.in/blog/2016/05/29/notes/</loc>
+<lastmod>2016-05-29T12:55:18+05:30</lastmod>
+</url>
+<url>
 <loc>http://www.omps.in/blog/2016/05/15/using-ipython-with-python3/</loc>
 <lastmod>2016-05-15T13:25:37+05:30</lastmod>
 </url>
@@ -113,5 +117,11 @@
 </url>
 <url>
 <loc>http://www.omps.in/blog/categories/python/</loc>
+</url>
+<url>
+<loc>http://www.omps.in/blog/categories/notes/</loc>
+</url>
+<url>
+<loc>http://www.omps.in/blog/posts/2/</loc>
 </url>
 </urlset>
